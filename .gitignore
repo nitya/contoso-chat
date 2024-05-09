@@ -2,6 +2,7 @@
 __pycache__/
 .promptflow/
 .env
+.env.debug
 config.json
 eval/downloaded_artifacts/remote/eval_results.jsonl
 connections/create-connections.py

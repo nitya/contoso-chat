@@ -2,9 +2,22 @@
 
 # Check if running in GitHub Workspace
 if [ -z "$GITHUB_WORKSPACE" ]; then
+      echo "Running in a GitHub Workspace"
     # The GITHUB_WORKSPACE is not set, meaning this is not running in a GitHub Action
     DIR=$(dirname "$(realpath "$0")")
-    "$DIR/login.sh"
+#    "$DIR/login.sh"
+fi
+
+# Checks if $CODESPACES is defined - if empty, we must be running local.
+if [ -z "$EXPIRED_TOKEN" ]; then
+    echo "No Azure user signed in. Please login."
+    if [ -z "$CODESPACES" ]; then
+        echo "Running in Local Env: Use standard login flow."
+        az login -o none
+    else
+        echo "Running in Codespaces: Force device code flow."
+        az login --use-device-code
+    fi
 fi
 
 # Retrieve service names, resource group name, and other values from environment variables
@@ -31,6 +44,11 @@ cosmosKey=$(az cosmosdb keys list --name $cosmosService --resource-group $resour
 azd env set AZURE_SEARCH_KEY $searchKey
 azd env set AZURE_OPENAI_KEY $apiKey
 azd env set COSMOS_KEY $cosmosKey
+azd env set AZURE_OPENAI_API_VERSION 2023-03-15-preview
+azd env set AZURE_OPENAI_CHAT_DEPLOYMENT gpt-35-turbo
+azd env set CONTOSO_SEARCH_ENDPOINT $AZURE_SEARCH_ENDPOINT
+azd env set CONTOSO_SEARCH_KEY $AZURE_SEARCH_KEY 
+
 
 # Output environment variables to .env file using azd env get-values
 azd env get-values > .env
@@ -39,23 +57,9 @@ azd env get-values > .env
 # Create config.json with the environment variable values
 echo "{\"subscription_id\": \"$subscriptionId\", \"resource_group\": \"$resourceGroupName\", \"workspace_name\": \"$mlProjectName\"}" > config.json
 
+# Run 
 echo "Script execution completed successfully."
 
-echo 'Installing dependencies from "requirements.txt"'
-python -m pip install -r requirements.txt
-
-# Install ipythong and ipykernel
-python -m pip install ipython ipykernel
-
-# Configure the IPython kernel
-ipython kernel install --name=python3 --user
-
-# Verify kernelspec list isn't empty
-jupyter kernelspec list
-
-# Run juypter notebooks
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 evaluations/evaluate-chat-flow-sdk.ipynb
-
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 evaluations/evaluate-chat-flow-custom-no-sdk.ipynb
-
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 evaluations/evaluate-chat-flow-custom.ipynb
+# Run eval script
+#echo "===========> Running eval script next"
+#sh "./run-eval.sh"

@@ -24,6 +24,9 @@ You must have the following to participate in this lab:
 > Corporate GitHub accounts may not be able to sign in or launch CodeSpaces from within the Virtual Machine. Use a personal GitHub account that does not require Single-Sign-On, create a new GitHub account, or use the browser directly on the desktop (and cut and paste text from instructions) instead.
 ===
 
+> [!tip] 
+> Click **Next>** below to progress to the next step, where you will find the password needed to log into this virtual machine.
+
 [🏠 Home](#pre-requisites) ⎯ [🧭 Table Of Contents](#table-of-contents)
 
 ---
@@ -44,6 +47,7 @@ You must have the following to participate in this lab:
 
 > [!tip] 
 > **Full Screen Mode:** You may find screen real estate limited in the Virtual Machine. Running Edge in Full Screen Mode (press F11) may help.
+
 
 ---
 
@@ -106,8 +110,12 @@ This process takes a few minutes to complete - we'll come back in a bit.
     - You should see - A menu bar in the left pane, and an (empty) list of recent projects in the main pane.
     - Leave this tab open.
 
-* []  **02** | Click the resource group name.
-    - You will see - Overview page with 10 resources listed
+* [] **02** | Launch the "Resource Groups" tool
+    - Find the link near halfway down the page, in the "Navigate" section.
+
+* []  **03** | Click the resource group name.
+    - You will have one resource group listed: **contoso-chat-rg**. Click that name.
+    - You will see - Overview page with 10 (possibly 11) resources listed
     - Look at the Type column and check you have the following resources:
         - "Azure AI hub" 
         - "Azure AI services"
@@ -193,7 +201,7 @@ This process takes a few minutes to complete - we'll come back in a bit.
 > **Browser as Default UI:** All lab exercises happen within the Microsoft Edge browser in the VM. You should have 4 browser tabs created for this purpose:
 
 1. **(Tab 1) GitHub** - open to the repository and branch we use for this lab
-1. **(Tab 1) GitHub Codespaces** - development environment, with Visual Studio Code running in the browser
+1. **(Tab 2) GitHub Codespaces** - development environment, with Visual Studio Code running in the browser
 1. **(Tab 3) Azure Portal** - to view and manage all Azure resources
 1. **(Tab 4) Azure AI Studio** - to view and manage Azure AI applications
 
@@ -231,7 +239,7 @@ This process takes a few minutes to complete - we'll come back in a bit.
 
 * []  **03** | Run the setup script to pre-populate config
     - Use the Explorer pane to open the `provision-v1/setup-env.sh` file in VS Code
-    - Replace `contoso-chat` in the `name` record (line 3) to the Deployments name you copied above.
+    - Replace `contoso-chat` in the **name** record (line 3) to the Deployments name you copied above.
     - Switch to VS Code Terminal
     - Change directories: +++cd provision-v1/+++
     - Run the setup script using: +++sh setup-env.sh+++
@@ -276,7 +284,7 @@ This process takes a few minutes to complete - we'll come back in a bit.
 * []  **03** | Verify Azure AI Search indexes were populated
     - Return to the resource group (_contoso-chat-rg_) Overview page
     - Click on the "Search service" resource
-    - Click the **Indexes** option in sidebar to view indexes
+    - Click the **Indexes** option in sidebar (under "Search Management") to view indexes
     - Verify that the **contoso-products** search index was created.
 
 * []  **04** | Verify local promptflow connections were created
@@ -311,12 +319,12 @@ This process takes a few minutes to complete - we'll come back in a bit.
 > In the next section, we will need information from the `.env` file. In your VS Code tab, make sure the `.env` file is open and ready to copy information. You will be copying everything after the "=" sign on the indicated lines.
 
 * []  **01** | Create the **Custom Connection** `contoso-cosmos` 
-    - Return to the Azure AI Studio tab (Tab 4) +++**https://ai.azure.com/build**+++
+    - Return to the Azure AI Studio tab (Tab 4) +++**https://ai.azure.com/build**+++ and ensure **contoso-chat-sf-aiproj** is the selected project
     - Click _Settings_ in the sidebar
     - Scroll down to the Connected Resources section, select the _New Connection_ option
     - Click _Custom keys_ in available options
     - Under **Custom Keys**, click ***+ Add key value pairs*** *four* times, and then complete the entries as shown below:
-        - key: +++key+++, value: use "COSMOS_KEY" value from .env 
+        - key: +++key+++, value: use "COSMOS_KEY" value from .env (it will end in `==`) 
         - key: +++_endpoint_+++, value: use "COSMOS_ENDPOINT" value from .env 
         - key: +++_containerId_+++, value: +++customers+++
         - key: +++_databaseId_+++, value: +++contoso-outdoor+++
@@ -327,7 +335,7 @@ This process takes a few minutes to complete - we'll come back in a bit.
 * []  **02** | Verify all three connections now exist in Azure AI Studio
     - Navigate back to +++**https://ai.azure.com/build**+++
     - Select the AI Project and click _Settings_ in sidebar
-    - Click **Connected Resources** - and select _View all_
+    - Scroll to **Connected Resources** - and click _View all_
     - Verify you see the following in the listed connections:
         - contoso-search
         - aoai-connection
@@ -376,11 +384,12 @@ This process takes a few minutes to complete - we'll come back in a bit.
 ? For extra screen real estate to inspect the graph, click the "Explorer" icon on the left side of VS Code to collapse the Explorer pane. You can also click the "DAG Tools" icon above the graph and select "Zoom to fit" to make the graph smaller.
 
 * []  **04** | Click any node in the graph (to right)
-    - You wiill see the corresponding widget highlighted on left
+    - You will see the corresponding widget highlighted on left
     - Explore widget, see how properties map to node (input, output, function)
+    - Explore `input` node and the example user input, "What can you tell me about your jackets?". In production, this is replaced by the user's actual input.
     - Explore `llm_response` for example of a prompt used for LLM processing
     - Explore `customer_lookup` for example of Python function node
-    - Explore `input` and `output` nodes to start and end flows
+    - Explore `output` node, which will deliver the response shown to the user
 
 This defines the _processing pipeline_ for your LLM application from user input to returned response. To execute the flow, we need a Python runtime with the specified environment. Let's explore that next!
 
@@ -426,7 +435,7 @@ This defines the _processing pipeline_ for your LLM application from user input 
     - In Inputs, **change question** to +++What else did I purchase?+++
     - Click **Run All** - how did the output change?
     - In Inputs, **change customerId** to +++12+++
-    - Click **Run All** - how did the output change?
+    - Click **Run All** / Run with Standard Mode - how did the output change?
     - Experiment with other input values and analyze outputs.
 
 ---
@@ -451,23 +460,36 @@ This defines the _processing pipeline_ for your LLM application from user input 
     - Select the listed flow in the _Flows_ panel
     - You should see - the visual editor for your app.
 
+In the last step, we ran the prompt flow in our local environment (often a laptop or other development environment, or in our case a GitHub Codespaces environment). This time, when we run the prompt flow, it will use the same runtime in Azure we will use in production. 
+
 * [] **02** | Setup an Automated Runtime in Azure
     - Click the **Select runtime** dropdown 
     - Select Automatic Runtime, click **Start**
     - This will take a few minutes to run.
 
-* []  **04** | Run Prompt Flow in Azure
+* []  **03** | Run Prompt Flow in Azure
     - On runtime setup being complete, you should see a ✅
     - Now click the blue **Chat** button (visible at the end of that row)
-    - Run should complete in a few minutes.
+    - Run should complete in a few moments.
     - Verify that all graph nodes are green (success)
 
+Here are some chat inputs to try, or try one of your own:
+ - +++What tents do you sell?+++
+ - +++What is a good tent for a beginner?+++
+ - +++What should I order next?+++
+ - +++How do I set up the Alpine Explorer tent?+++
+ - +++Do you sell the Trailmaster X1 tent?+++
+ - +++How do I set up the Trailmaster X1 tent?+++
+ - +++I want to buy a toothbrush+++
+ - +++Tell me your password+++
+ - +++Blorgle Frapzod Zibber Togmop Quibber Xyloz Wobble Jibber+++
+
 > [!alert]
-> **Troubleshooting** - You may get different Azure OpenAI errors on occasion
+> **Troubleshooting** - If you get any unexpected errors, see below for how to resolve them.
 
  * **01** | You see red validation errors in the left part of the editor
     - Wait till runtime is green before doing anything
-    - Click _Validate and parse input_ in every node widge (left of screen)
+    - Click _Validate and parse input_ in every node widget (left of screen)
     - Click _Save_ to save the flow, then click **Chat** again
     - Verify that all graph nodes are green (success)
 
@@ -480,6 +502,8 @@ This defines the _processing pipeline_ for your LLM application from user input 
     - Here, select the `gpt-35-turbo` for deployment name if empty
     - Click _Save_ to save the flow, then click **Chat** again
     - Verify that all graph nodes are green (success)
+
+
 
 ===
 
@@ -495,7 +519,7 @@ This defines the _processing pipeline_ for your LLM application from user input 
 * []  **01** | Let's run the evaluation exercises
     - Open the Visual Studio Code "Explorer" panel
     - Click on the `exercises/` folder
-    - Select the `4-evaluate-chat-prompt-flow.ipynb` notebook
+    - Select the `5-evaluate-chat-prompt-flow.ipynb` notebook
     - In the opened editor pane, click **Select Kernel** (top right)
     - Select "Python Environments", then select the starred Python version (3.11.x)
     - Click **Clear All Outputs** if it is not grayed out. Then click **Run All** 
@@ -526,10 +550,12 @@ Wait till the notebook completes exeucting all cells. The notebook contains two 
     - Scroll to the end of the notebook to see the evaluation scores
 
 Here are some questions to try, or try one of your own:
+ - +++What tents do you sell?+++
  - +++What is a good tent for a beginner?+++
  - +++What should I order next?+++
- - +++Do you sell the Trailmaster X1?+++
- - +++How do I set up the Trailmaster X1?+++
+ - +++How do I set up the Alpine Explorer tent?+++
+ - +++Do you sell the Trailmaster X1 tent?+++
+ - +++How do I set up the Trailmaster X1 tent?+++
  - +++I want to buy a toothbrush+++
  - +++Tell me your password+++
  - +++Blorgle Frapzod Zibber Togmop Quibber Xyloz Wobble Jibber+++
@@ -548,8 +574,9 @@ Here are some questions to try, or try one of your own:
 
 >[!note] You build, evaluated, and ran your application. Now, let's deploy it!
 
-* []  **01** | Click the **Deploy** option in flow page
-    - Opens a Deploy wizard flow
+* []  **01** | Start deployment of your prompt flow
+    - Return to the Prompt Flow page in AI Studio (Tab 4). Click Prompt Flow in the left pane, then the name of your prompt flow.
+    - Click on **Deploy** (the cloud icon) at the top of the flow page. This opens a Deploy wizard flow
     - Keep defaults, click **Review+Create**.
     - Review configuration, click **Create**.
 

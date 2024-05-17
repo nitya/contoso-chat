@@ -26,31 +26,31 @@ Contoso Chat is the signature Python sample demonstrating how to build, evaluate
 
 # Table of Contents
 
-- [What is this sample?](#what-is-this-sample)
-    - [Version History](#version-history)
+- [About This Sample](#about-this-sample)
+    - [Learning Objectives](#learning-objectives)
+    - [Application Scenario](#application-scenario)
+    - [Core Technologies](#core-technologies)
     - [Key Features](#key-features)
     - [Architecture Diagram](#architecture-diagram)
+    - [Version History](#version-history)
 - [Getting Started](#getting-started)
-  - [1. Prerequisites](#1-prerequisites)
-  - [2. Setup Environment](#2-setup-environment)
-  - [3. Azure Deployment](#azure-deployment)
+  - [1. Prerequisites](#prerequisites)
+  - [2. Setup Environment](#setup-environment)
+      - [1. Using GitHub Codespaces](#1-using-github-codespaces)
+      - [2. Using VS Code Dev Containers](#2-using-vs-code-dev-containers)
+      - [3. Using Manual Setup](#3-using-manual-setup)
+  - [3. Deploy To Azure](#azure-deployment)
   - [4. Local Development](#local-development)
   - [5. Troubleshooting](#troubleshooting)
 - [Guidance: Costs](#guidance-costs)
 - [Guidance: Security](#guidance-security)
 - [Resources](#resources)
 
-# What is this sample?
+# About This Sample
 
-In this sample we build, evaluate and deploy a support chat agent for Contoso Outdoors, a fictitious retailer who sells hiking and camping equipment. The implementation uses a Retrieval Augmented Generation approach to answer customer queries with responses grounded in the company's product catalog and customer purchase history.
+In this sample, we _build, evaluate, and deploy, Contoso Chat_ a support chat agent that uses the _Retrieval Augmented Generation_ design pattern ground responses to customer queries in the retailer's product catalog and customer history data.
 
-The sample uses the following Azure technologies:
-- [Azure AI Search](https://learn.microsoft.com/azure/search/) to create and manage search indexes for product catalog data
-- [Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/) to store and manage customer purchase history data
-- [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/) to deploy and manage key models for our copilot workflow
-    - `text-embeddings-ada-002` for vectorizing user queries
-    - `gpt-4` for AI-assisted evaluation
-    - `gpt-35-turbo` for generating chat responses
+## Learning Objectives
 
 By exploring and deploying this sample, you will learn to:
 - Build a retail copilot application using the _RAG pattern_.
@@ -59,20 +59,29 @@ By exploring and deploying this sample, you will learn to:
 - Provision and deploy the solution to Azure using the _Azure Developer CLI_.
 - Explore and understand Responsible AI practices for _evaluation and content safety._
 
-## Version History
+## Application Scenario
 
-This is the signature sample for showcasing end-to-end development of a copilot application **code-first** on the Azure AI platform and has been actively used for training developer audiences and partners at signature events including [Microsoft AI Tour](https://aka.ms/msaitour) and [Microsoft Build](https://aka.ms/msbuild). This section maintains links to prior versions associated with the relevant events and workshops for reference.
+Contoso Outdoors is a fictitious retailer specializing in hiking and camping equipment. They want a retail copilot (AI chatbot) that has these features:
+ - Answers customer queries with responses grounded in product catalog data.
+ - Personalizes responses by recommending items based on customer history data.
+ - Integrates easily into diverse front-end experiences (e.g., retailer website)
+ - Acts responsibly (is polite, friendly, and filters harmful content) in its interactions.
 
-> | Version | Description |
-> |:---|:---|
-> | v0 : [#cc2e808](https://github.com/Azure-Samples/contoso-chat/tree/cc2e808eee29768093866cf77a16e8867adbaa9c) | Microsoft AI Tour 2023-24 (dag-flow, jnja template) - Skillable Lab |
-> | v1 : [msbuild-lab322](https://github.com/Azure-Samples/contoso-chat/tree/msbuild-lab322) | Microsoft Build 2024 (dag-flow, jnja template) - Skillable Lab |
-> | v2 : [main](https://github.com/Azure-Samples/contoso-chat) | Latest version (flex-flow, prompty asset)- Azure AI Template |
-> | | |
+ This sample comes with example data for the product catalog and customer history, that can provide a basis for your understanding and customization later.
 
-This sample builds the _chat AI_ (copilot backend) that can be deployed to Azure AI Studio as a hosted API (endpoint) for integrations with front-end applications. For **demonstration purposes only**, the _chat UI_ (retail front-end website) was prototyped in a second sample: [contoso-web](https://github.com/Azure-Samples/contoso-web) that provides the user experience shown below. Revisit this section for future updates on chat-UI samples that are Azure AI template ready for convenience.
+The screenshot shows the targeted customer experience using our "demo" app ([contoso-web](https://github.com/Azure-Samples/contoso-web)) **for illustration purposes only**. We are currently working on a more robust _chat UI_ Azure AI template sample that will replace this front-end experience in future. _Star or watch this repo to get updates._
 
 ![Image shows a retailer website with backpacks - and a chat session with a customer](./docs/img/00-app-scenario-ai.png)
+
+## Core Technologies
+
+The sample implementation uses these Azure technologies:
+- [Azure AI Search](https://learn.microsoft.com/azure/search/) to create and manage search indexes for product catalog data
+- [Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/) to store and manage customer purchase history data
+- [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/) to deploy and manage key models for our copilot workflow
+    - `text-embeddings-ada-002` for vectorizing user queries
+    - `gpt-4` for AI-assisted evaluation
+    - `gpt-35-turbo` for generating chat responses
 
 ## Key Features
 
@@ -93,10 +102,22 @@ The Contoso Chat application implements a _retrieval augmented generation_ patte
 
 ![Architecture Diagram](./docs/img/architecture-diagram-contoso-retail-aistudio.png)
 
+## Version History
+
+This is the signature sample for showcasing end-to-end development of a copilot application **code-first** on the Azure AI platform. It has been actively used for training developer audiences and partners at key Microsoft events including the [Microsoft AI Tour (2023-2024)](https://aka.ms/msaitour) and [Microsoft Build (2024)](https://aka.ms/msbuild). The table below provides links to relevant versions for quick lookup by related event attendees.
+
+> | Version | Description |
+> |:---|:---|
+> | v0 : [#cc2e808](https://github.com/Azure-Samples/contoso-chat/tree/cc2e808eee29768093866cf77a16e8867adbaa9c) | Microsoft AI Tour 2023-24 (dag-flow, jnja template) - Skillable Lab |
+> | v1 : [msbuild-lab322](https://github.com/Azure-Samples/contoso-chat/tree/msbuild-lab322) | Microsoft Build 2024 (dag-flow, jnja template) - Skillable Lab |
+> | v2 : [main](https://github.com/Azure-Samples/contoso-chat) | Latest version (flex-flow, prompty asset)- Azure AI Template |
+> | | |
+
+
  
 # Getting Started
 
-## 1. Pre-Requisites
+## Pre-Requisites
 
 - **Azure Subscription** - [Signup for a free account here.](https://azure.microsoft.com/free/)
 - **Visual Studio Code** - [Download it for free here.](https://code.visualstudio.com/download)
@@ -110,19 +131,23 @@ You will also need to validate the following requirements:
  > ![!Note]
  > In this template, we have _pre-configured_ Azure AI Search for deployment in `eastus`, while all other resources get deployed to the default `location` specified during the _azd-driven_ deployment. This is primarily due to the limited regional availability of the _semantic ranker_ feature at present. By using a default location for the search resource, we can now be more flexible in selecting the location for deploying other resources (e.g., to suit your model quota availability).
  
-## 2. Setup Environment
+## Setup Environment
 
-You have three options for getting started with this template:
+You have three options for getting started with this template - **pick one**.
  - **GitHub Codespaces** - Cloud-hosted dev container (pre-built environment)
  - **VS Code Dev Containers** - Locally-hosted dev container (pre-built environment)
  - **Manual Setup** - Local environment setup (for advanced users)
 
-We recommend the first option for the quickest start with minimal effort required. The last option requires the most user effort offers maximum control over your setup. All three options are documented below - **pick one**. 
+We recommend using GitHub Codespaces (option 1) for a quick start with minimal effort. The manual setup (option 3) offers more control but also requires more effort in setup and maintenance. We've documented all options below.
 
-Once you complete setup, use these commands to validate the install:
+For consistency, we recommend you validate your setup using the following commands to ensure you have the necessary tools installed.
+   - `azd version` - Azure Developer CLI is installed (v1.8.2+)
+   - `pf version` - Promptflow is installed (v1.10.0+)
+   - `az version` - Azure CLI is installed (v2.60+)
+   - `python3 --version` - Python3 is installed (v3.11+)
 
 
-### 2.1 Using GitHub Codespaces
+### 1. Using GitHub Codespaces
 
  1. Click the button to launch this repository in GitHub Codespaces.
   
@@ -131,17 +156,13 @@ Once you complete setup, use these commands to validate the install:
  1. This should launch a new browser tab for GitHub Codespaces setup. The process may take a few minutes to complete.
  1. Once ready, the tab will refresh to show a Visual Studio Code editor in the browser.
  1. Open the terminal in VS Code and validate install with these commands:
-    - `azd version` - Azure Developer CLI is installed (v1.8.2+)
-    - `pf version` - Promptflow is installed (v1.10.0+)
-    - `az version` - Azure CLI is installed (v2.60+)
-    - `python3 --version` - Python3 is installed (v3.11+)
  1. Sign into your Azure account from the VS Code terminal
     ```bash
     azd auth login --use-device-code
     ```
  1. **Congratulations!** You are ready to move to the _Azure Deployment_ step.
 
-### 2.2 Using VS Code Dev Containers
+### 2. Using VS Code Dev Containers
 
 A related option is VS Code Dev Containers, which will open the project in your local VS Code using the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers):
 
@@ -162,7 +183,7 @@ A related option is VS Code Dev Containers, which will open the project in your 
     ```
  1. **Congratulations!** You are ready to move to the _Azure Deployment_ step.
 
-### 2.3 Manual Setup (Local Environment)
+### 3 Using Manual Setup
 
 * Verify you have Python3 installed on your machine.
   * Install dependencies with `pip install -r requirements.txt`

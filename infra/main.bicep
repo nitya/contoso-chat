@@ -7,24 +7,40 @@ param environmentName string
 
 @minLength(1)
 @description('Primary location for all resources')
+@allowed(['australiaeast', 'eastus', 'eastus2', 'francecentral', 'norwayeast', 'swedencentral', 'uksouth'])
 param location string
 
-param appInsightsName string = ''
-param openAiName string = ''
-param containerRegistryName string = ''
-param cosmosAccountName string = ''
-param keyVaultName string = ''
+@description('The Azure resource group where new resources will be deployed')
 param resourceGroupName string = ''
-param searchServiceName string = ''
-param storageAccountName string = ''
-param endpointName string = ''
-param aiResourceGroupName string = ''
-param aiProjectName string = ''
+@description('The Azure AI Studio Hub resource name. If ommited will be generated')
 param aiHubName string = ''
+@description('The Azure AI Studio project name. If ommited will be generated')
+param aiProjectName string = ''
+@description('The application insights resource name. If ommited will be generated')
+param appInsightsName string = ''
+@description('The Open AI resource name. If ommited will be generated')
+param openAiName string = ''
+@description('The Azure Container Registry resource name. If ommited will be generated')
+param containerRegistryName string = ''
+@description('The Azure Key Vault resource name. If ommited will be generated')
+param keyVaultName string = ''
+@description('The Azure Storage Account resource name. If ommited will be generated')
+param storageAccountName string = ''
+@description('The log analytics workspace name. If ommited will be generated')
 param logAnalyticsName string = ''
+@description('The name of the machine learning online endpoint. If ommited will be generated')
+param endpointName string = ''
 @description('Id of the user or app to assign application roles')
 param principalId string = ''
+
+@description('Id of the user or app to assign application roles')
 param principalType string = 'User'
+
+// --- These were not defined in other samples
+param cosmosAccountName string = ''
+param searchServiceName string = ''
+param aiResourceGroupName string = ''
+// --------------------
 
 var abbrs = loadJsonContent('./abbreviations.json')
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))

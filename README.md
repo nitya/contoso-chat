@@ -230,6 +230,18 @@ You can now [test the flow](https://microsoft.github.io/promptflow/how-to-guides
  - Convert it to a flow, then use `pf flow test --flow ...`
  - Start a UI to chat with the flow using `pf flow test --flow ... --ui`
 
+Example:
+
+```bash
+pf flow test --flow ./contoso_chat/flow.flex.yaml  --inputs question="Tell me about hiking shoes" customerId="2" chat_history=[]
+```
+
+or use `--ui` to get the Trace View UI.
+
+```bash
+pf flow test --flow ./contoso_chat/flow.flex.yaml  --inputs question="Tell me about hiking shoes" customerId="2" chat_history=[] --ui
+```
+
 🌟 | Watch this space for more testing guidance.
 
 

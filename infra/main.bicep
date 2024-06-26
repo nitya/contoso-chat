@@ -11,6 +11,7 @@ param location string
 
 param appInsightsName string = ''
 param openAiName string = ''
+param openAiContentSafetyConnectionName string = ''
 param containerRegistryName string = ''
 param cosmosAccountName string = ''
 param keyVaultName string = ''
@@ -90,6 +91,7 @@ module ai 'core/host/ai-environment.bicep' = {
       ? storageAccountName
       : '${abbrs.storageStorageAccounts}${resourceToken}'
     openAiName: !empty(openAiName) ? openAiName : 'aoai-${resourceToken}'
+    openAiContentSafetyConnectionName: !empty(openAiContentSafetyConnectionName) ? openAiContentSafetyConnectionName : 'aoai-content-safety-connection'
     openAiModelDeployments: openAiModelDeployments
     searchName: !empty(searchServiceName) ? searchServiceName : 'srch-${resourceToken}'
   }

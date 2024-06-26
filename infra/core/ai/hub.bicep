@@ -11,9 +11,11 @@ param appInsightsId string = ''
 @description('The container registry ID to use for the AI Studio Hub Resource')
 param containerRegistryId string = ''
 @description('The OpenAI Cognitive Services account name to use for the AI Studio Hub Resource')
-param openAiName string
+param openAiName string = ''
 @description('The Azure Cognitive Search service name to use for the AI Studio Hub Resource')
 param aiSearchName string = ''
+@description('The OpenAI Content Safety connection name to use for the AI Studio Hub Resource')
+param openAiContentSafetyConnectionName string
 
 @description('The SKU name to use for the AI Studio Hub Resource')
 param skuName string = 'Basic'
@@ -55,17 +57,6 @@ resource hub 'Microsoft.MachineLearningServices/workspaces@2024-04-01' = {
     discoveryUrl: 'https://${location}.api.azureml.ms/discovery'
   }
 
-/* NN:TODO
-  resource contentSafetyDefaultEndpoint 'endpoints' = {
-    name: 'Azure.ContentSafety'
-    properties: {
-      name: 'Azure.ContentSafety'
-      endpointType: 'Azure.ContentSafety'
-      associatedResourceId: openAi.id
-    }
-  }
-*/
-
 /*
   NN:TODO
   Connections are not in the GA Swagger - they are only in public preview of 2024-04-01-preview version
@@ -81,7 +72,27 @@ resource hub 'Microsoft.MachineLearningServices/workspaces@2024-04-01' = {
       isSharedToAll: true
       target: openAi.properties.endpoints['OpenAI Language Model Instance API']
       metadata: {
-        //ApiVersion: '2023-07-01-preview'
+        //NN:TODO ApiVersion: '2023-07-01-preview'
+        ApiVersion: '2024-02-01'
+        ApiType: 'azure'
+        ResourceId: openAi.id
+      }
+      credentials: {
+        key: openAi.listKeys().key1
+      }
+    }
+  }
+
+  // NN:TODO - replaced endpoints
+  resource contentSafetyConnection 'connections' = {
+    name: openAiContentSafetyConnectionName
+    properties: {
+      category: 'AzureOpenAI'
+      authType: 'ApiKey'
+      isSharedToAll: true
+      target: openAi.properties.endpoints['Content Safety']
+      metadata: {
+        //NN:TODO ApiVersion: '2023-07-01-preview'
         ApiVersion: '2024-02-01'
         ApiType: 'azure'
         ResourceId: openAi.id

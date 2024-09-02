@@ -6,8 +6,10 @@ from promptflow.core import AzureOpenAIModelConfiguration
 from promptflow.evals.evaluators import RelevanceEvaluator, GroundednessEvaluator, FluencyEvaluator, CoherenceEvaluator
 from promptflow.evals.evaluate import evaluate
 
-sys.path.append('../contoso_chat')
-from chat_request import get_response
+sys.path.append('/workspaces/contoso-chat/contoso_chat')
+print(sys.path)
+
+from chat_request import get_response # type: ignore
 
 if __name__ == '__main__':
     # Initialize Azure OpenAI Connection
@@ -18,7 +20,7 @@ if __name__ == '__main__':
         )
     
     # set the path to the data file to use for evaluations
-    data_path = "../data/data.jsonl"
+    data_path = "/workspaces/contoso-chat/data/data.jsonl"
 
     # Check if the file exists and is not empty
     if os.path.isfile(data_path) and os.path.getsize(data_path) > 0:
@@ -36,7 +38,7 @@ if __name__ == '__main__':
 
     # Perform evaluation using the evaluate function
     result_eval = evaluate(
-        data="../data/data.jsonl",
+        data="/workspaces/contoso-chat/data/data.jsonl",
         target=get_response,
         evaluators={
             "relevance": relevance_evaluator,

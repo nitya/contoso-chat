@@ -1,65 +1,94 @@
-# Part 0: Preprovision Resources (Deconstructing Contoso Chat - An Interactive Workshop)
+# Part 0: Provision Infrastructure
 
-This document describes the steps needed for lab-organizers or self-guided participants to pre-provision resources. 
+For instructor-guided sessions, the infrastructure will have been pre-provisioned for you (learners). You can skip ahead to the next section to **Get Started**.
 
-For workshops with multiple users, each participant will need an Azure account, and you will need to follow these instructions for each participant.
+Continue here only if you are a self-guided learner or a workshop organizer setting up the workshop resources for your session. For workshops with multiple users, each participant will need an Azure account - so you will need to follow these instructions once for each one.
 
-## Required Resources
 
-TODO: Provide a list of resources that will be deployed here, and give an indication of cost for those resources.
+## 1. Resource Requirements
 
-## Deploy Azure Resources
+The workshop requires these resources to be provisioned:
+- Azure AI hub resource
+- Azure AI project resource
+- Azure AI search resource - the product index
+- Azure CosmosDB resource - the customer database
+- Azure Open AI resource - the model deployments
+   - `text-embedding-ada-002` = for embeddings
+   - `gpt-35-turbo` = for chat completion
+   - `gpt-4` = for chat evaluation
+- Azure Application insights - for monitoring
 
-**Clone** the contents of this repository to the terminal. 
-   * Skip this step if using CodeSpaces (this has already been done for you)
+**TODO**: _Provide links to cost and pricing options for resources_.
 
-```
-git clone https://github.com/revodavid/contoso-chat/tree/aitour-fy25
-```
+## 2. Setup Environment
 
-**Log in** to the Azure Subscription the participant will use for the workshop. You can use any of:
+The project suppports _infrastructure-as-code_ configuration with a Bicep template that can be deployed using the [Azure Developer CLI](https://aka.ms/azd) with a single command. But before we can do this, we need to setup the development environment to run the command.
 
-   * [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/overview)
-   * Any terminal with [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/) installed
-   * [GitHub Codespaces](https://docs.github.com/codespaces/overview) launched on the **aitour-fy25** branch of `https://github.com/revodavid/contoso-chat`
+The project supports _configuration-as-code_ with a `devcontainer.json` file that can be activated with Docker Desktop (local device) or GitHub Codespaces (cloud hosted) to give you a pre-built development container with no added effort.
 
-If not using Azure Cloud Shell, you can use the commands below (both are required)
+**We recommend using GitHub Codespaces** for 3 reasons:
+ - Gives a quick start with minimal effort
+ - Ensures the development environment has latest codebase & tools
+ - Ensures all attendees get the same development experience
 
-```
+To get started
+ 1. Open a browser log into your personal GitHub account.
+ 1. Fork the [Contoso Chat](https://aka.ms/aitour/contoso-chat) repo - uncheck `main only` to get all branches.
+ 1. Open your fork and switch to the `aitour-fy25` branch
+ 1. Click `Code` dropdown, and select `Codespaces` tab.
+ 1. Click `Create Codespaces on aitour-fy25` to launch a codespace.
+
+This will open a new browser tab with a Visual Studio Code IDE in the browser that already has the codebases loaded in, and has the relevant tools, extensions and libraries installed. **Wait for the loading process to complete** - you should see a VS Code terminal with a live cursor. 
+
+## 3. Connect VS Code to Azure
+
+Since we are running in GitHub Codespaces, we will need to use the `--use-device-code` flag to trigger the authentication flow via the browser. Note that you will need to run both the commands below to ensure both tools are authenticated with Azure.
+
+```bash
+# Login with Azure Developer CLI
 azd auth login --use-device-code
-```
-```
+
+# Login with Azure CLI
 az login --use-device-code
 ```
 
-**Configure deployment**
+## 4. Provision & Deploy with AZD
 
-In this step we will create an [AZD environment](https://learn.microsoft.com/azure/developer/azure-developer-cli/manage-environment-variables#environment-specific-env-file) called AITOUR to store configurations. This will also capture needed resource information after deployment in the file `.azure\AITOUR\.env`.
+### 4.1 **Create Azure environment**
 
-Choose a **region** that provides the required resources and in which the subscriptions have sufficient quote available. In the example below, we use the `--location` parameter to select the region **francecentral**.
+First, we'll create an [AZD environment](https://learn.microsoft.com/azure/developer/azure-developer-cli/manage-environment-variables#environment-specific-env-file) called `AITOUR` for our deployment. 
 
-```
-azd env new AITOUR --location francecentral --subscription $(az account show --query id --output tsv)
-```
+- This creates a _resource group_ (`rg-AITOUR`) and provisions the resources specified in our AZD template to the specified _location_ (region) on Azure. 
+- It also creates a local `.azure/AITOUR/` folder to store configuration information locally, with a `.azure\AITOUR\.env` file that will be updated later to reflect Azure environment variables required for local development.
 
-TODO: Does this work? If so we won't need the `az login` step.
-```
-azd env new AITOUR --location francecentral --subscription $(azd env get-value AZURE_SUBSCRIPTION_ID)
-```
+To get started, follow one of these options:
 
-**Deploy resources**
+1. Choose a **region** that provides the required resources and in which the subscriptions have sufficient quote available. In the example below, we use the `--location` parameter to select the region **`francecentral`**.
 
-Now that yo have selected a region, begin the deployment with the command below. 
+   ```
+   azd env new AITOUR --location francecentral --subscription $(az account show --query id --output tsv)
+   ```
+1. Alternatively try this with `azd` directly. `🚨 TODO:` _See if this works - then we won't need the `az login` step_
+   ```
+   azd env new AITOUR --location francecentral --subscription $(azd env get-value AZURE_SUBSCRIPTION_ID)
+   ```
+
+### 4.2 Provision & Deploy Resources
+
+Once the environment is setup, use the following command to provision Azure infrastructure and deploy relevant resources from the commandline:
 
 ```
 azd up -e AITOUR --no-prompt
 ```
 
-Wait until provisioning completes. This can take 30-40 minutes depending on region.
+Wait for provisioning to complete. This can take 30-40 minutes depending on region and load. 
 
-### Troubleshooting
+You can monitor the deployment status via the VS Code terminal (console output) or by visiting the Azure Portal and looking at the `Deployments` page for the `rg-AITOUR` resource group in your subscription.
 
-#### Failed: Key Vault
+
+### 4.3 Troubleshooting
+
+#### 4.3.1 Failed: Key Vault
 
 If you get an error like this:
 
@@ -75,46 +104,60 @@ az keyvault purge -n kv-ga6xwbwbqulka
 
 Once the purge completes, run the `azd up` command again.
 
-#### InvalidTemplateDeployment: The template deployment 'cognitiveServices' is not valid according to the validation procedure.
+#### 4.3.2 InvalidTemplateDeployment
+
+You might see a message like this: `InvalidTemplateDeployment: The template deployment 'cognitiveServices' is not valid according to the validation procedure.`
+
+This is typically due to insufficient quota for deploying required models. Either increase available quota and retry - or see if you can release existing quota for reuse.
 
 If you get an error like:
+
 ```
-FlagMustBeSetForRestore: An existing resource with ID '/subscriptions/265d8bce-3441-475d-8ee1-a1037b8c3eae/resourceGroups/rg-AITOUR/providers/Microsoft.CognitiveServices/accounts/aoai-ga6xwbwbqulka' has been soft-deleted. To resto1re the resource, you must specify 'restore' to be 'true' in the property. If you don't want to restore existing resource, please purge it first.
+FlagMustBeSetForRestore: An existing resource with ID '/subscriptions/<snipped>/resourceGroups/rg-AITOUR/providers/Microsoft.CognitiveServices/accounts/aoai-ga6xwbwbqulka' has been soft-deleted. To restore the resource, you must specify 'restore' to be 'true' in the property. If you don't want to restore existing resource, please purge it first.
 ```
 
 Purge the resource as follows:
-* Go to the portal
-* search for "Azure AI Service" and select the one with the logo (not the one with the cloud)
+* Go to the portal - search for "Azure AI Service" 
+* Select the one with the logo (not the one with the cloud)
 * click Manage Deleted Resources
-* select the named resource
-* click purge.
+* select the named resource - click purge.
 
-You should be able to purge with this command, but it doesn't seem to work.
+`🚨 TODO:` _See if this works - you should be able to purge with this command, but it has not been validated.
+
 ```
 az resource delete --ids /subscriptions/265d8bce-3441-475d-8ee1-a1037b8c3eae/resourceGroups/rg-AITOUR/providers/Microsoft.CognitiveServices/accounts/aoai-ga6xwbwbqulka
 ```
 
-You can also search for 
 
+## 5. Validate Environment
 
+The `azd deploy` command should have executed postprovisioning scripts that create two files in your local directory:
+ - `config.json`  - capturing your Azure subscription & environment info
+ - `.env` - capturing deployment-specific environment variables
 
-## Capture environment
+These files will be used later for code-first interactions from the local development environment, with our Azure backend.
 
-If the participant is not going to use the same filesystem just used to deploy (for example, they will log into a different machine, or launch a new instance of CodeSpaces), you will need to capture the environment file and provide it to their workspace.
+## 6. Refresh Environment
 
-1. Capture the file `.azure/AITOUR/.env` after deployment is complete
-2. Install the file to `.azure/AITOUR/.env` in the student's filesystem
+You may encounter a situation where the deployment is done in one environment (e.g., workshop organizer) and the development is done in another (e.g., learner Codespace) later. We need a way for the _learner_ environment to be retrieve and save the above configuration information from the provisioned infrastructure.
 
-How you do this depends on lab format. Options include:
+To do this, learner should do the following:
 
-* Take no action, and continue the workshop in the same filesystem used to deploy resources (ideal for self-guided participants)
-* Upload the file to Azure storage, and provide instructions for participants to download and install it on their system
-* Embed the contents of the `.env` file in the lab instructions, and ask participants to paste in the contents to the file `.azure/AITOUR/.env`
+1. Launch GitHub Codespaces to get a development environment from repo
+1. `azd auth login --use-device-code` to autenticate with Azure
+1. `azd env refresh -e AITOUR` to recreate the `.azure/AITOUR/.env` file 
+1. `azd provision` to re-run provision and post-provision steps
+
+Note that since the Azure resources are already provisioned, this last step simply refreshes timestamps then completes post-provisioning to recreate the `.env` and `config.json` files in the new Codespaces environment.
+
+You can now run `azd deploy` on any changes to codebase, to redeploy the application or infrastructure changes as relevant.
+
+`🚨 TODO:` _Verify this works_
+
 
 ## Next step
 
-If you are a self-guided student, congratulations! You have completed the provisioning step.
+Congratulations!! You just finished provisioning the Azure infrastructure for developing our Contoso Chat application - and configured your local development environment to work with the Azure backend.
 
-Continue to [1-GetStarted.md](1-GetStarted.md) to start the workshop experience.
-
-Once you've finished with the workshop, visit [3-CleanUp.md](3-CleanUp.md) for information on how to delete the Azure resources.
+- Continue to [1-GetStarted.md](1-GetStarted.md) to start the workshop experience.
+- Don't forget to visit [3-CleanUp.md](3-CleanUp.md) on workshop completion, to delete resources.

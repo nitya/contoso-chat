@@ -10,3 +10,7 @@ python-dotenv==1.0.1
 jsonlines
 promptflow.evals
 nbconvert
+prompty
+
+# For worskhop docs
+mkdocs-material

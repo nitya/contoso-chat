@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-    "name": "Contoso Chat (v2)",
+    "name": "Contoso Chat (Retail RAG Copilot)",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".."
@@ -23,8 +23,14 @@
                 "ms-python.python",
                 "ms-toolsai.jupyter",
                 "ms-azuretools.vscode-bicep",
-                "rogalmic.bash-debug"
+                "rogalmic.bash-debug",
+                "ms-toolsai.prompty"
             ]
-        }
+        },
+        "codespaces": {
+            "openFiles": [
+              "docs/README.md"
+            ]
+        }   
     }
 }

@@ -20,7 +20,7 @@
     
     
       
-        <title>2️⃣ | Validate Setup - Contoso Chat Workshop</title>
+        <title>2️⃣ | Provision Infra - Contoso Chat Workshop</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2-validate-setup" class="md-skip">
+        <a href="#2-provision-infra" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2️⃣ | Validate Setup
+              2️⃣ | Provision Infra
             
           </span>
         </div>
@@ -463,7 +463,7 @@
         
   
   <span class="md-ellipsis">
-    2️⃣ | Validate Setup
+    2️⃣ | Provision Infra
   </span>
   
 
@@ -724,8 +724,40 @@
                   
 
 
-<h1 id="2-validate-setup">2️⃣ | Validate Setup</h1>
-<p>We don't have any post-provisioning steps since they are all done at the start. </p>
+<h1 id="2-provision-infra">2️⃣ | Provision Infra</h1>
+<details class="note">
+<summary>Step 6: Provision infra with <code>azd</code> in tab 2️⃣</summary>
+<ol>
+<li>Stay in tab 2️⃣ - enter <code>azd up</code> and follow prompts<ol>
+<li>Enter a new environment name - use <code>AITOUR</code></li>
+<li>Select a subscription - pick the same one from step 5.</li>
+<li>Select a location - pick <code>francecentral</code> (or <code>swedencentral</code>)</li>
+<li>You should see: <em>"You can view detailed progress in the Azure Portal ..."</em></li>
+</ol>
+</li>
+<li>Provisioning takes a while to complete - let's track status next.</li>
+<li>✅ | Your Azure infra is currently being provisioned..</li>
+</ol>
+</details>
+<details class="note">
+<summary>Step 7: Track provisioning status in tab 3️⃣</summary>
+<ol>
+<li>Switch to the Azure Portal in tab 3️⃣</li>
+<li>Click on Resource Groups - see: <code>rg-AITOUR</code></li>
+<li>Click on <code>rg-AITOUR</code> - see <code>Deployments</code> under <strong>Essentials</strong></li>
+<li>Click <code>Deployments</code> - see Deployments page with activity and status ...</li>
+<li>Wait till all deployments complete - <strong>this can take 20-25 minutes</strong></li>
+<li>See <code>Overview</code> page - <strong>you should have 35 Deployment Items</strong></li>
+<li>See <code>Overview</code> page - <strong>you should have 15 Deployed Resources</strong></li>
+<li>Return to tab 2️⃣ and look at terminal - you should see:<ol>
+<li><strong>SUCCESS: Your up workflow to provision and deploy to Azure completed in XX minutes YY seconds.</strong></li>
+</ol>
+</li>
+<li>✅ | Your Azure infra is ready!</li>
+</ol>
+</details>
+<p>The last step provisions the Azure infrastructure <strong>and</strong> deploys the first version of your application. We are now ready to get to work.</p>
+<hr />
 <p>!!! info "Next → 3️⃣ <a href="../../03-Workshop-Build/03-infra/">Validate Infra</a> before we start building!</p>
 
 

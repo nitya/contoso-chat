@@ -628,7 +628,7 @@
             
   
   <span class="md-ellipsis">
-    04 Summary Teardown
+    04 Workshop Wrapup
   </span>
   
 
@@ -638,7 +638,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            04 Summary Teardown
+            04 Workshop Wrapup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -649,11 +649,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/07-cleanup/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/07-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7️⃣ | Wrap-up Tasks
+    7️⃣ | Cleanup
   </span>
   
 
@@ -670,11 +670,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/08-resources/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8️⃣ | Next Steps
+    8️⃣ | Resources
   </span>
   
 
@@ -725,6 +725,19 @@
 
 
 <h1 id="4-ideate-with-prompty">4️⃣ | Ideate With Prompty</h1>
+<div class="admonition success">
+<p class="admonition-title">Let's Review where we are right now</p>
+<p>We still have these 5 tabs open.</p>
+<ol>
+<li>Github Repo - starting tab 1️⃣</li>
+<li>GitHub Codespaces 2️⃣</li>
+<li>Azure Portal 3️⃣</li>
+<li>Azure AI Studio 4️⃣</li>
+<li>Azure Container Apps 5️⃣</li>
+</ol>
+<p>We also have a fully-provisioned Azure infrastructure (backend), successfully deployed the first version of our application - and tested it manually, with a single input.</p>
+</div>
+<p><em>Now it's time to understand how that application was developed - and specifically, understand how we can go from "prompt to prototype" in the <strong>Ideation</strong> phase of our developer workflow</em>.</p>
 <details class="danger">
 <summary>Step 1: Create a New Prompty</summary>
 <ul>
@@ -800,17 +813,22 @@
 <li>Run the file by clicking the play icon. You should see a valid result.</li>
 </ul>
 </details>
-<details class="success">
-<summary>Congratulations 🎉 - You learned prompt engineering with Prompty!</summary>
+<div class="admonition quote">
+<p class="admonition-title">Congratulations! You just learned prompt engineering with Prompty!</p>
+<p>Let's recap what we tried:</p>
 <ul>
-<li>First, create a base prompt and configure the model, parameters</li>
-<li>Next, modify frontmatter to personalize usage, define inputs &amp; test sample</li>
-<li>Then, modify body to reflect system context, instructions and template structure</li>
-<li>Last, create code to run Prompty from command-line or in automated workflows</li>
+<li>First, create a base prompt → configure the model, parameters</li>
+<li>Next, modify frontmatter → spersonalize usage, define inputs &amp; test sample</li>
+<li>Then, modify the body →  reflect system context, instructions and template structure</li>
+<li>Finally, create executable code →  run Prompty from command-line or in automated workflows</li>
 </ul>
-<p>Iterate and explore changes and their impact on prompt response quality &amp; cost. With each iteration, you should get closer to the <code>contoso_chat/chat.prompty</code> final version. Delete your <code>sandbox/</code> folder when done, to keep original app source in focus</p>
-</details>
+<p>We saw how these simple tools can help us implement safety guidance for our prompts and iterate on our prompt template design quickly and flexibly, to get to our first prototype. The sample data file  provides a test input for rapid iteration, and it allows us understand the "shape" of data we will need, to implement this application in production.</p>
+</div>
 <hr />
+<p><em>In this section, you saw how Prompty tooling supports rapid prototyping - starting with a basic prompty. Continue iterating on your own to get closer to the <code>contoso_chat/chat.prompty</code> target. You can now delete the <code>sandbox/</code> folder, to keep original app source in focus</em>.</p>
+<div class="admonition example">
+<p class="admonition-title">Next → <a href="./">Let's Evaluate with AI!</a> and learn about custom evaluators!</p>
+</div>
 
 
 

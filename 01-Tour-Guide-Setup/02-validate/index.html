@@ -412,9 +412,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#on-github-codespaces" class="md-nav__link">
+  <a href="#1-check-vs-code-ready" class="md-nav__link">
     <span class="md-ellipsis">
-      On GitHub Codespaces
+      1. Check: VS Code Ready
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-check-tools-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Check: Tools Installed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-authenticate-with-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Authenticate: with Azure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-azure-env-vars" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure Azure Env Vars
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-run-postprovision-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Run Postprovision Hooks
     </span>
   </a>
   
@@ -667,7 +703,7 @@
             
   
   <span class="md-ellipsis">
-    04 Summary Teardown
+    04 Workshop Wrapup
   </span>
   
 
@@ -677,7 +713,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            04 Summary Teardown
+            04 Workshop Wrapup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -688,11 +724,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/07-cleanup/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/07-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7️⃣ | Wrap-up Tasks
+    7️⃣ | Cleanup
   </span>
   
 
@@ -709,11 +745,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/08-resources/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8️⃣ | Next Steps
+    8️⃣ | Resources
   </span>
   
 
@@ -757,9 +793,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#on-github-codespaces" class="md-nav__link">
+  <a href="#1-check-vs-code-ready" class="md-nav__link">
     <span class="md-ellipsis">
-      On GitHub Codespaces
+      1. Check: VS Code Ready
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-check-tools-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Check: Tools Installed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-authenticate-with-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Authenticate: with Azure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-azure-env-vars" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure Azure Env Vars
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-run-postprovision-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Run Postprovision Hooks
     </span>
   </a>
   
@@ -781,43 +853,51 @@
 
 
 <h1 id="2-validate-setup">2️⃣ | Validate Setup</h1>
-<div class="admonition info">
-<p class="admonition-title">Let's Review: We should have these tabs open in browser</p>
+<div class="admonition success">
+<p class="admonition-title">Let's Review where we are right now</p>
+<p>We should have the following windows and tabs open in our device:</p>
 <ol>
-<li>Tab A = Skillable Lab </li>
-<li>Tab B = Skillable VM</li>
-<li>Tab 1️⃣ = GitHub Repo</li>
-<li>Tab 2️⃣ = GitHub Codespaces</li>
-<li>Tab 3️⃣ = Azure Portal</li>
-<li>Tab 4️⃣ = Azure AI Studio</li>
-<li>Tab 5️⃣ = Azure Container Apps.</li>
+<li>Window A = Skillable Lab (starting point)</li>
+<li>Window B = Skillable VM (with our Azure credentials)</li>
+<li>Tab 1️⃣ = GitHub Repo (starting point)</li>
+<li>Tab 2️⃣ = GitHub Codespaces (development environment)</li>
+<li>Tab 3️⃣ = Azure Portal (provisioned resources)</li>
+<li>Tab 4️⃣ = Azure AI Studio (AI project &amp; models)</li>
+<li>Tab 5️⃣ = Azure Container Apps (Deployment target)</li>
 </ol>
 </div>
-<p><em>In this section we'll authenticate with Azure from our GitHub Codespaces environment, and do some post-provisioning steps to get us ready for development</em>.</p>
-<h2 id="on-github-codespaces">On GitHub Codespaces</h2>
-<p>Lets authenticate with Azure and configure local development environment to use  infrastructure.</p>
-<details class="note">
+<p><em>We have our Azure infrastructure resources pre-provisioned, but we need to populate our data and deploy the initial application to Azure. Let's get this done</em>.</p>
+<h2 id="1-check-vs-code-ready">1. Check: VS Code Ready</h2>
+<p><em>We had left GitHub Codespaces in loading mode - let's verify that loading completed and our Visual Studio Code IDE is ready!</em>.</p>
+<details class="info">
 <summary>Step 1: Validate Codespaces Ready in 2️⃣</summary>
 <ol>
 <li>Return to GitHub Codespaces tab </li>
 <li>See: VS Code editor with terminal open</li>
 <li>Verify: <code>Prompty Extension</code> in sidebar (left, bottom)</li>
 <li>Verify: Cursor ready in VS Code terminal (bottom)</li>
-<li>
-<p>Verify Python installed: ✅</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
-</code></pre></div>
-</li>
-<li>
-<p>Verify Azure CLI installed: <code>az version</code> ✅</p>
-</li>
-<li>Verify Azure Developer CLI installed: <code>azd version</code> ✅</li>
-<li>Verify Prompty installed: <code>prompty --version</code> ✅</li>
-<li>Verify FastAPI installed: <code>fastapi --version</code> ✅</li>
 </ol>
 </details>
-<details class="note">
-<summary>Step 2: Authenticate with Azure via CLIs in 2️⃣</summary>
+<h2 id="2-check-tools-installed">2. Check: Tools Installed</h2>
+<p><em>We need specific tools for running, testing &amp; deploying our app. Let's verify we have these installed</em>.</p>
+<details class="info">
+<summary>Step 2: Verify tools installed in 2️⃣</summary>
+<p>Copy/paste these commands into the VS Code terminal to verify required tools are installed</p>
+<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>version
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>azd<span class="w"> </span>version
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>fastapi<span class="w"> </span>--version
+</code></pre></div></p>
+</details>
+<h2 id="3-authenticate-with-azure">3. Authenticate: with Azure</h2>
+<p><em>To access our Azure resources, we need to be authenticated from VS Code. Let's do that now. Since we'll be using both the <code>az</code> and <code>azd</code> tools, we'll authenticate in both</em>.</p>
+<details class="info">
+<summary>Step 3: Authenticate with Azure via CLIs in 2️⃣</summary>
 <ol>
 <li>Log into Azure CLI - <code>az login --use-device-code</code></li>
 <li>Complete authflow - use default tenant, subscription</li>
@@ -826,8 +906,10 @@
 <li>Complete authflow - see: "Logged in to Azure" ✅</li>
 </ol>
 </details>
-<details class="note">
-<summary>Step 3: Refresh Azure Dev Env in local env in 2️⃣</summary>
+<h2 id="4-configure-azure-env-vars">4. Configure Azure Env Vars</h2>
+<p><em>To build code-first solutions, we will need to use the Azure SDK from our development environment. This requires configuration information for the various resources we've provisioned. Let's retrieve those here.</em></p>
+<details class="info">
+<summary>Step 4: Refresh Azure Dev Env in local env in 2️⃣</summary>
 <ol>
 <li>Run <code>azd env refresh -e AITOUR</code> in terminal</li>
 <li>Select default subscription</li>
@@ -836,8 +918,10 @@
 <li>See: <code>.azure/AITOUR/.env</code> created with values  ✅</li>
 </ol>
 </details>
-<details class="note">
-<summary>Step 4: Run post-provisioning hooks in 2️⃣</summary>
+<h2 id="5-run-postprovision-hooks">5. Run Postprovision Hooks</h2>
+<p><em>We can now use these configured tools and SDK to perform some post-provisioning tasks. This includes populating data in Azure AI Search (product indexes) and Azure Cosmos DB (customer data), and deploying the initial version of our application to Azure Container Apps</em>.</p>
+<details class="info">
+<summary>Step 5: Run post-provisioning hooks in 2️⃣</summary>
 <ol>
 <li>Run <code>bash ./docs/workshop/src/0-setup/azd-update-roles.sh</code> in terminal</li>
 <li>This will take a few minutes ....</li>
@@ -848,9 +932,11 @@
 <li>Refresh Container App in tab 5️⃣ - verify that you see "Hello world" ✅</li>
 </ol>
 </details>
-<p>We completed all the post-provisioning steps and are now ready to get to work.</p>
 <hr />
-<p>!!! info "Next → 3️⃣ <a href="../../03-Workshop-Build/03-infra/">Validate Infra</a> before we start building!</p>
+<p><em>We are ready to start the development workflow segment of our workshop. But let's first check that all these setup operations were successful!</em>.</p>
+<div class="admonition example">
+<p class="admonition-title">Next → <a href="../../03-Workshop-Build/03-infra/">Let's Validate our Infra</a> before we start building!</p>
+</div>
 
 
 

@@ -628,7 +628,7 @@
             
   
   <span class="md-ellipsis">
-    04 Summary Teardown
+    04 Workshop Wrapup
   </span>
   
 
@@ -638,7 +638,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            04 Summary Teardown
+            04 Workshop Wrapup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -649,11 +649,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/07-cleanup/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/07-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7️⃣ | Wrap-up Tasks
+    7️⃣ | Cleanup
   </span>
   
 
@@ -670,11 +670,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/08-resources/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8️⃣ | Next Steps
+    8️⃣ | Resources
   </span>
   
 
@@ -725,7 +725,19 @@
 
 
 <h1 id="3-validate-infra">3️⃣ | Validate Infra</h1>
-<details class="note">
+<div class="admonition success">
+<p class="admonition-title">Let's Review where we are right now</p>
+<ol>
+<li>We set up our development environment (GitHub Codespaces)</li>
+<li>We provisioned our infrastructure (Azure Resources)</li>
+<li>We connected our dev environment to our infra (Auth &amp; Env Vars)</li>
+<li>We used SDK and CLI tools to push updates to infra (Data &amp; App)</li>
+</ol>
+</div>
+<p><em>In this section, we'll take a minute to understand what our Azure infrastructure looks like, and validate that the resources are deployed and initialized correctly. Here's a reminder of the Azure Application Architecure showing the key resources used. Let's dive in.</em></p>
+<p><img alt="ACA Architecture" src="../../img/aca-architecture.png" /></p>
+<p><em>The Azure CosmosDB resources holds the "customer data" for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made</em>.</p>
+<details class="info">
 <summary>Step 1: Validate Azure Cosmos DB is ready in tab 3️⃣</summary>
 <ol>
 <li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
@@ -740,7 +752,8 @@
 <li>✅ | Your Azure Cosmos DB resources is ready!</li>
 </ol>
 </details>
-<details class="note">
+<p><em>The Azure AI Search resources contains the "product index" for our retailer's product catalog. It is the information "retrieval" service for RAG solutions, using sentence similarity and semantic ranking to return the most relevant results for a given customer query</em>.</p>
+<details class="info">
 <summary>Step 2: Validate Azure AI Search is ready in tab 3️⃣</summary>
 <ol>
 <li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
@@ -754,7 +767,8 @@
 <li>✅ | Your Azure AI Search resource is ready!</li>
 </ol>
 </details>
-<details class="note">
+<p><em>The Azure AI project is the key AI resources for an application - and is associated with an Azure AI hub resources that manages admininstrative responsibilities like billing. The project maintains application state (including model deployments) for generative AI solutions.</em></p>
+<details class="info">
 <summary>Step 3: Validate Azure AI Project is ready in tab 4️⃣</summary>
 <ol>
 <li>Switch to Azure AI Studio in tab 4️⃣ - start on Home page</li>
@@ -770,7 +784,8 @@
 <li>✅ | Your Azure AIProject resource is ready!</li>
 </ol>
 </details>
-<details class="note">
+<p><em>Azure Container Apps (ACA) is an easy-to-use compute solution for hosting our chat AI application. The application is implemented as a FastAPI server that exposes a simple <code>/create_request</code> API endpoint to clients for direct use or integration with third-party clients</em>.</p>
+<details class="info">
 <summary>Step 4: Validate Azure Container Apps is ready in tab 3️⃣</summary>
 <ol>
 <li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
@@ -780,7 +795,8 @@
 <li>✅ | Your Azure Container App resource is ready <strong>and</strong> has app deployed!</li>
 </ol>
 </details>
-<details class="note">
+<p><em>When iterating on a prototype application, we start with manual testing - using a single "test prompt" to validate our prioritzed scenario interactively, before moving to automated evaluations with larger test datasets. The FastAPI server exposes a <code>Swagger API</code> endpoint that can be used to conduct such testing in both local (Codespaces) and cloud (Container Apps). Let's try it!</em></p>
+<details class="info">
 <summary>Step 5: Test the Deployed Container App in tab 5️⃣ </summary>
 <ol>
 <li>Visit the <code>Application Url</code> page from Step 10 in tab 5️⃣</li>
@@ -797,20 +813,11 @@
 <li>✅ | Your Contoso Chat AI is deployed - and works with valid inputs!</li>
 </ol>
 </details>
-<details class="tip">
-<summary>This Completes Setup. Let's Review Status.</summary>
-<p>At this stage you should have the following <strong>5 tabs</strong> open:</p>
-<ol>
-<li>Github Repo - starting tab 1️⃣</li>
-<li>GitHub Codespaces 2️⃣</li>
-<li>Azure Portal 3️⃣</li>
-<li>Azure AI Studio 4️⃣</li>
-<li>Azure Container Apps 5️⃣</li>
-<li>✅ | All Azure resources are provisioned</li>
-<li>✅ | Contoso Chat is deployed to ACA endpoint</li>
-</ol>
-</details>
-<p>We can now get to work on exploring the codebase and understanding how the application is architected, developed, evaluated, and deployed.</p>
+<hr />
+<p><em>Now you understand the application architecture, and have a sense for the retail copilot API, it's time to dig into the codebase and understand the three stages of our GenAIOps workflow - ideation, evaluation, and operationalization</em>.</p>
+<div class="admonition example">
+<p class="admonition-title">Next → <a href="../04-ideation/">Let's Ideate Apps With Prompty!</a> and learn about prompt engineering!</p>
+</div>
 
 
 

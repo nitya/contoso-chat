@@ -400,9 +400,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-setup-development-env" class="md-nav__link">
+  <a href="#2-setup-dev-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Setup Development Env
+      2. Setup Dev Environment
     </span>
   </a>
   
@@ -676,7 +676,7 @@
             
   
   <span class="md-ellipsis">
-    04 Summary Teardown
+    04 Workshop Wrapup
   </span>
   
 
@@ -686,7 +686,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            04 Summary Teardown
+            04 Workshop Wrapup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -697,11 +697,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/07-cleanup/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/07-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7️⃣ | Wrap-up Tasks
+    7️⃣ | Cleanup
   </span>
   
 
@@ -718,11 +718,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-Summary-Teardown/08-resources/" class="md-nav__link">
+      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8️⃣ | Next Steps
+    8️⃣ | Resources
   </span>
   
 
@@ -775,9 +775,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-setup-development-env" class="md-nav__link">
+  <a href="#2-setup-dev-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Setup Development Env
+      2. Setup Dev Environment
     </span>
   </a>
   
@@ -804,83 +804,92 @@
 <li><a href="https://aitour.microsoft.com/"><strong>Register to attend</strong></a> at a tour stop near you.</li>
 <li><a href="https://aka.ms/aitour/wrk550"><strong>View Lab resources</strong></a> to continue your journey.</li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">First → Review <a href="../../00-Before-You-Begin/"> 0️⃣ | Pre-requisites</a> before you begin setup</p>
+<div class="admonition quote">
+<p class="admonition-title">Did you already check the <a href="../../00-Before-You-Begin/">Pre-requisites</a> and verify you met the requirements?</p>
 </div>
+<hr />
 <h2 id="1-launch-skillable-lab">1. Launch Skillable Lab</h2>
-<p>Your instructor should have shared a <em>Skillable Lab Link</em> with you at this time. In this section, we'll launch the Skillable VM and verify that we have the right credentials for the workshop. </p>
-<details class="note">
-<summary>Step 0: Launch Browser Window In Incognito Mode</summary>
+<p>The <strong>WRK550 Lab</strong> is run using the Skillable platform which provides you with an active Azure account (<em>username</em>, <em>password</em>, <em>subscription</em>) that comes pre-provisioned with the resources you need for this lab (<em>Azure AI project</em>, <em>Azure OpenAI models</em>, supporting <em>Azure resources</em>, and data). </p>
+<p><strong>Important:</strong> Once the Skillable VM is activated, you will have a fixed time limit (75 minutes) to complete the workshop before the VM shuts down. You can track the remaining time in the display at the top-right corner of the Skillable VM.</p>
+<p><em>If you are currently in an AI Tour session and have already launched the Skillable lab and verified credentials - move on to Section 2 below! Otherwise,  complete these two steps now</em>.</p>
+<details class="abstract">
+<summary>Step 0: Launch Browser Window In Incognito Mode (window A)</summary>
 <p>The workshop is conducted completely within a browser environment. You may have an enterprise Azure or GitHub account that you are logged into that may cause conflicts. To avoid this, we recommend opening a new browser window in <strong>incognito mode</strong> (private mode) with your preferred browser. </p>
 <ul>
 <li>Open a new browser window in incognito or private mode</li>
-<li><strong>Tip</strong>: If you're using Microsoft Edge, we recommend creating 2 tab groups as follows:<ul>
-<li>Group 1 = <strong>"Skillable"</strong> - open tabs A and B below for Skillable setup</li>
-<li>Group 2 = <strong>"Development"</strong> - open tabs 1️⃣-4️⃣ below for all workshop development</li>
 </ul>
-</li>
-</ul>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your Learning journey has begun!</p>
 </details>
-<details class="note">
-<summary>Step 1: Launch Skillable Lab</summary>
+<details class="abstract">
+<summary>Step 1: Launch Skillable VM and log in (window B)</summary>
 <ol>
-<li>Open a new browser window (in incognito mode)</li>
-<li>Navigate to Skillable Lab (<strong>use insrtuctor provided link</strong>) = Tab A </li>
-<li>Click <code>Launch</code> - opens window with Login, Instructions = Tab B</li>
-<li>Click <code>Resources</code> tab - find admin <code>Password</code></li>
-<li>Click to fill password for login - confirm</li>
-<li>You should see: Windows 11 Desktop ✅</li>
-<li>Revisit <code>Resources</code> tab - look for <code>Azure Portal</code> section</li>
-<li>Verify <code>Subscription</code>, <code>Username</code>, <code>Password</code> assigned ✅</li>
-<li>Keep this browser open - you will need the credentials in the next step</li>
+<li>Navigate to the <strong>WRK550 Lab</strong> link </li>
+<li>Click <code>Launch</code> - open new window with split panes (window B)</li>
+<li><strong>Check</strong>: You see <code>Login</code> prompt in left pane</li>
+<li><strong>Check</strong>: You see a "Resources" tab in right pane</li>
+<li><strong>Check</strong>: You see an <code>Azure Portal</code> section under Resources</li>
+<li><strong>Check</strong>: You see <code>Subscription</code>, <code>Username</code>, <code>Password</code> in that section</li>
+<li><strong>Check</strong>: You see an <code>Admin</code>/<code>Password</code> section lower in Resources tab</li>
+<li>Click login (left), then click admin <code>Password</code> (right) and confirm</li>
+<li><strong>Check</strong>: You see a Windows 11 Desktop in the left pane</li>
+<li>Keep window B open - you will need credentials in the next step.</li>
 </ol>
-<p><strong>🌟 | CONGRATULATIONS!</strong> - Your Skillable VM is live!</p>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your Skillable VM is live!</p>
 </details>
-<h2 id="4-setup-development-env">4. Setup Development Env</h2>
-<details class="note">
-<summary>Step 2: Open GitHub in tab 1️⃣, Launch Codespaces in tab 2️⃣</summary>
+<h2 id="2-setup-dev-environment">2. Setup Dev Environment</h2>
+<p>The <strong>WRK550 Lab</strong> requires a Python development runtime (with package dependencies), Visual Studio Code (with specific extensions) and Azure CLI tooling - before we can begin building. The sample comes pre-configured with a <a href="https://containers.dev"><code>devcontainer.json</code></a>, allowing us to get a <strong>pre-built development environment</strong> using GitHub Codespaces, with no manual effort required.</p>
+<p><em>In this section, we'll fork the sample repo to our personal profiles - then launch GitHub Codespaces to activate that environment with a Visual Studio Code editor, right in the browser</em>.</p>
+<details class="info">
+<summary>Step 2: Open GitHub in tab 1️⃣</summary>
 <ol>
 <li>Open a new browser tab = Tab 1️⃣</li>
-<li>Navigate to the workshop sample (<a href="https://aka.ms/aitour/contoso-chat">Contoso Chat</a>) </li>
+<li>Navigate to the workshop sample with this link - <a href="https://aka.ms/aitour/contoso-chat">Contoso Chat</a></li>
 <li>Log into GitHub - use a personal login account</li>
-<li>Fork this sample to your profile - uncheck <code>main</code> to get branches</li>
-<li>Switch to <code>WRK-550</code> branch in your fork</li>
-<li>Click green <code>Code</code> button, select <code>Codespaces</code> tab</li>
-<li>Click <code>Create new codespaces on WRK-550</code></li>
-<li>This should launch a new browser tab = Tab 2️⃣</li>
-<li>Verify the new tab shows a VS Code editor ✅</li>
-<li>Codespaces is loading ... this take a while</li>
+<li>Fork the sample to your profile - uncheck <code>main</code> to get all branches</li>
+<li>Switch to your fork of the repo - check that you have the <code>aitour-WRK550</code> branch</li>
 </ol>
-<p><strong>🌟 | CONGRATULATIONS!</strong> - Your Codespaces is running</p>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your have a personal copy of the sample to explore!</p>
 </details>
-<details class="note">
-<summary>Step 3: View Azure Portal in tab 3️⃣</summary>
+<details class="info">
+<summary>Step 3: Launch Codespaces in tab 2️⃣</summary>
+<ol>
+<li>Use the branch dropdown - switch to the <code>aitour-WRK550</code> branch</li>
+<li>Click the green <code>Code</code> button - select the <code>Codespaces</code> tab</li>
+<li>Click the <code>Create new codespaces on aitour-WRK550</code> button</li>
+<li>This should launch a new browser tab = Tab 2️⃣</li>
+<li><strong>Check:</strong> The loading tab should show a VS Code editor </li>
+<li>Codespaces is loading ... this may take a while (leave it open)</li>
+</ol>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your Codespaces is running!</p>
+</details>
+<details class="info">
+<summary>Step 4: Open Azure Portal in tab 3️⃣</summary>
 <ol>
 <li>Open a new browser tab = Tab 3️⃣</li>
 <li>Navigate to the <a href="https://portal.azure.com">Azure Portal</a></li>
-<li>Sign in with Skillable <code>Username</code>-<code>Password</code> from Step 1.</li>
+<li>Sign in with Skillable <code>Username</code>-<code>Password</code> from <strong>Step 1</strong> (above).</li>
 <li>Click <code>Resource Groups</code> - refresh it periodically if needed</li>
-<li>See: resource group <code>rg-AITOUR</code> created ✅</li>
+<li><strong>Check:</strong> A resource group <code>rg-AITOUR</code> is created</li>
 <li>Click resource group item - see 'Overview' in details page</li>
-<li>View <code>Deployments</code> under <strong>Essentials</strong> - see 35 deployments ✅</li>
-<li>View <code>Overview</code> resources listed - veriify 15 resources created ✅</li>
+<li><strong>Check:</strong> Deployments (under "Essentials") - <strong>has 35 deployments</strong></li>
+<li><strong>Check:</strong> Resources (in Overview) - <strong>has 15 resources created</strong></li>
 </ol>
-<p><strong>🌟 | CONGRATULATIONS!</strong> - Your Azure Infra is Provisioned!</p>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your Azure Infra is Provisioned!</p>
 </details>
-<details class="note">
-<summary>Step 4: View Azure AI Studio in tab 4️⃣</summary>
+<details class="info">
+<summary>Step 5: Open Azure AI Studio in tab 4️⃣</summary>
 <ol>
 <li>Open a new browser tab = Tab 4️⃣</li>
 <li>Navigate to the <a href="https://ai.azure.com">Azure AI Studio</a></li>
 <li>Click <code>Sign in</code> - should auto-login with Azure credentials</li>
-<li>Click <code>All resources</code> - see: a hub resource listed</li>
-<li>Click hub resource - see: a project resource listed</li>
-<li>Click <code>Deployments</code> tab - see: 4 models under <code>aoai-connection</code> ✅</li>
-<li>Check: <code>gpt-4</code>, <code>gpt-35-turbo</code>, <code>text-embedding-ada-002</code> listed ✅</li>
+<li>Click <code>All resources</code> - <strong>Check:</strong> one hub resource listed</li>
+<li>Click hub resource - <strong>Check:</strong> one project resource listed</li>
+<li>Click <code>Deployments</code> tab - <strong>Check:</strong> 4 models under <code>aoai-connection</code> </li>
+<li><strong>Check:</strong> Models include - <code>gpt-4</code>, <code>gpt-35-turbo</code>, <code>text-embedding-ada-002</code> </li>
 </ol>
-<p><strong>🌟 | CONGRATULATIONS!</strong> - Your Azure AI Project was created!</p>
+<p><strong>✅ | CONGRATULATIONS!</strong> - Your Azure AI Project is ready!</p>
 </details>
-<details class="note">
+<details class="info">
 <summary>Step 5: View Container Apps Endpoint in tab 5️⃣</summary>
 <ol>
 <li>Return to Azure Portal = Tab 3️⃣</li>
@@ -892,10 +901,12 @@
 </ol>
 <p><strong>🌟 | CONGRATULATIONS!</strong> - Your ACA Endpoint is alive!</p>
 </details>
-<p>We verified our Skillable credentials worked, and launched our Codespaces environment!</p>
 <hr />
-<div class="admonition info">
-<p class="admonition-title">Next → 2️⃣ <a href="../02-validate/">Validate Setup</a> before you begin building</p>
+<blockquote>
+<p>We verified our Skillable credentials worked, and launched our Codespaces environment!</p>
+</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Next → Let's <a href="../02-validate/">Validate Our Setup</a> before we begin building</p>
 </div>
 
 

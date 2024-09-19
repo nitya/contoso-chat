@@ -291,6 +291,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    0️⃣ | Pre-Requisites
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -300,6 +311,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Learn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick-your-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pick Your Path
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -711,6 +759,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You Learn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick-your-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pick Your Path
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -726,44 +800,62 @@
 
 <h1 id="0-pre-requisites">0️⃣ | Pre-Requisites</h1>
 <div class="admonition warning">
-<p class="admonition-title">PRE-REQUISITES FOR THIS WORKSHOP</p>
-<p>To participate in this workshop you will need the following:</p>
+<p class="admonition-title">To participate in this workshop you will need the following</p>
 <ol>
-<li><strong>Your own laptop.</strong> Should have a modern browser, preferably Microsoft Edge.</li>
-<li><strong>A GitHub account.</strong> A personal account with GitHub Codespaces access.</li>
-<li><strong>An Azure subscription.</strong> With access to Azure OpenAI Model deployments.</li>
-<li><strong>Familiarity with VS Code.</strong> Our default development environment.</li>
-<li><strong>Familiarity with Python</strong>. Our default coding language.</li>
-<li><strong>Familiarity with Azure CLIs.</strong> Our default deployment tooling.</li>
+<li><strong>Your own laptop.</strong><ul>
+<li>It need only be capable of running a browser and GitHub Codespaces, so almost any laptop will do.</li>
+<li>A recent version of Edge, Chrome or Safari is recommended.</li>
+</ul>
+</li>
+<li><strong>A GitHub Account.</strong><ul>
+<li>If you don't have one, you can <a href="https://github.com/signup">sign up for a free account</a> now.</li>
+<li>After this workshop is complete, you will have a fork of the "contoso-chat" repository in your GitHub account, which includes all the materials you will need to reproduce this workshop at home.</li>
+</ul>
+</li>
+<li>(recommended) <strong>Familiarity with Visual Studio Code.</strong> <ul>
+<li>We will run all code in GitHub Codespaces, a virtualized Linux machine, instead of your local laptop. We won't be running anything on your laptop directly.</li>
+<li>VS Code Online will be our development environment in GitHub Codespaces.</li>
+<li>If you are familiar with running Codespaces within VS Code Desktop on your laptop, feel free to do so. </li>
+</ul>
+</li>
+<li>(preferred) <strong>Familiarity with the <code>bash</code> shell.</strong><ul>
+<li>We'll be using <code>bash</code> to run commands in the VS Code terminal, including Azure CLI commands.</li>
+</ul>
+</li>
+<li>(preferred) <strong>Familiarity with Python and Jupyter Notebooks</strong><ul>
+<li>We'll be creating Python scripts and running them from the command line and from Notebooks.</li>
+</ul>
+</li>
 </ol>
 </div>
-<details class="example">
-<summary>WHAT YOU WILL LEARN</summary>
-<p>In this hands-on workshop, you will learn to:</p>
+<h2 id="what-you-learn">What You Learn</h2>
+<p>In this hands-on workshop, you will learn to use the Azure AI platform for code-first development of custom copilot solutions:</p>
 <ul>
-<li>Use the Azure AI platform for code-first development of custom copilot solutions</li>
 <li><strong>Infrastructure</strong>: Simplified provisioning and deployment with Azure Developer CLI</li>
 <li><strong>Ideation</strong>: Rapid prototyping with Prompty asset and Azure AI model deployments</li>
 <li><strong>Evaluation</strong>: Manual and AI-assisted testing with custom evaluators (for quality, safety)</li>
 <li><strong>Operationalization</strong>: Deployment using Azure Container Apps (next: monitoring &amp; actions)</li>
 <li><strong>Customization</strong>: adapt to your application needs (data, prompts, models, evaluators)</li>
 </ul>
+<h2 id="pick-your-path">Pick Your Path</h2>
+<p>The workshop is designed for delivery on the Microsoft AI Tour as an <strong>instructor-guided</strong> session lasting 75 minutes. It can also be completed as a <strong>self-guided</strong> lab where you walk through the instructions on your own at home. Pick the relevant option and let's get started.</p>
+<p><em>Tip: every page will have these handy <strong>Next →</strong> markers to help you navigate the sections</em>.</p>
+<details class="example">
+<summary><strong>Next</strong> → Joining the instructor-led session at Microsoft AI Tour? <a href="../01-Tour-Guide-Setup/01-setup/">Get Started Here</a></summary>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You will be provided with an Azure subscription. Just bring your laptop.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The infrastructure is pre-provisioned for you. Just launch the lab to get started.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The sessions run for a fixed time. You have 75 minutes to complete the lab.</li>
+</ul>
 </details>
-<p>The workshop is designed for delivery in two formats:</p>
-<ol>
-<li>
-<p>This option is if you are in an instructor-led session on the Microsoft AI Tour.</p>
-<div class="admonition info">
-<p class="admonition-title">Start Here: 01 | Tour Guided: Setup → <a href="../01-Tour-Guide-Setup/01-setup/">1️⃣ | Getting Started</a></p>
-</div>
-</li>
-<li>
-<p>Use this option if you are working through the workshop yourself.</p>
-<div class="admonition info">
-<p class="admonition-title">Start Here: 02 | Self Guided: Setup → <a href="../02-Self-Guide-Setup/01-setup/">1️⃣ | Getting Started</a></p>
-</div>
-</li>
-</ol>
+<details class="example">
+<summary><strong>Next</strong> → Doing a self-guided walkthrough of the workshop? <a href="../02-Self-Guide-Setup/02-provision/">Get Started Here</a></summary>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You will use your own Azure subscription and laptop.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You will provision Azure infrastructure and deploy the application yourself. </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Work at your own pace. Explore the codebase without time constraints.</li>
+</ul>
+</details>
 
 
 

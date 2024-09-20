@@ -20,7 +20,7 @@
     
     
       
-        <title>3️⃣ | Validate Infra - Contoso Chat Workshop</title>
+        <title>3️⃣ | Explore App Infrastructure - Contoso Chat Workshop</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3-validate-infra" class="md-skip">
+        <a href="#3-explore-app-infrastructure" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3️⃣ | Validate Infra
+              3️⃣ | Explore App Infrastructure
             
           </span>
         </div>
@@ -347,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    1️⃣ | Getting Started
+    1️⃣ | Getting Started: Instructor-Led Workshop
   </span>
   
 
@@ -368,7 +368,7 @@
         
   
   <span class="md-ellipsis">
-    2️⃣ | Validate Setup
+    2️⃣ | Validate Setup and Provision
   </span>
   
 
@@ -431,7 +431,7 @@
         
   
   <span class="md-ellipsis">
-    1️⃣ | Getting Started
+    1️⃣ | Getting Started (Self-Guided Workshop)
   </span>
   
 
@@ -522,15 +522,72 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3️⃣ | Explore App Infrastructure
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    3️⃣ | Validate Infra
+    3️⃣ | Explore App Infrastructure
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-validate-azure-cosmos-db-is-populated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Validate Azure Cosmos DB is populated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-validate-azure-ai-search-is-populated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Validate Azure AI Search is populated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-test-the-deployed-container-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Test the Deployed Container App
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -711,6 +768,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-validate-azure-cosmos-db-is-populated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Validate Azure Cosmos DB is populated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-validate-azure-ai-search-is-populated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Validate Azure AI Search is populated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-test-the-deployed-container-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Test the Deployed Container App
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -724,7 +816,7 @@
                   
 
 
-<h1 id="3-validate-infra">3️⃣ | Validate Infra</h1>
+<h1 id="3-explore-app-infrastructure">3️⃣ | Explore App Infrastructure</h1>
 <div class="admonition success">
 <p class="admonition-title">Let's Review where we are right now</p>
 <ol>
@@ -736,83 +828,54 @@
 </div>
 <p><em>In this section, we'll take a minute to understand what our Azure infrastructure looks like, and validate that the resources are deployed and initialized correctly. Here's a reminder of the Azure Application Architecure showing the key resources used. Let's dive in.</em></p>
 <p><img alt="ACA Architecture" src="../../img/aca-architecture.png" /></p>
-<p><em>The Azure CosmosDB resources holds the "customer data" for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made</em>.</p>
-<details class="info">
-<summary>Step 1: Validate Azure Cosmos DB is ready in tab 3️⃣</summary>
+<h2 id="step-1-validate-azure-cosmos-db-is-populated">Step 1: Validate Azure Cosmos DB is populated</h2>
+<p>The Azure CosmosDB resource holds the customer data for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made.</p>
 <ol>
-<li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
-<li>Click the <code>Azure Cosmos DB account</code> resource - visit details page</li>
-<li>Click <code>Data Explorer</code> in top-nav menu on details page <ul>
-<li>dismiss the popup dialog </li>
+<li>Switch to the <strong>Azure Portal</strong> (Tab 3️⃣) and display the <code>rg-AITOUR</code> resource group Overview</li>
+<li><strong>Click</strong> the <code>Azure Cosmos DB account</code> resource name to visit its details page</li>
+<li><strong>Click</strong> <code>Data Explorer</code> in the top-nav menu <ul>
+<li>dismiss the popup dialog to skip the movie</li>
 <li>see: <code>contoso-outdoors</code> container with <code>customers</code> database</li>
-<li>click <code>customers</code> - select <code>Items</code></li>
+<li>click <code>customers</code>, then select <code>Items</code></li>
 <li>you should see: <strong>12 data items in database</strong></li>
 </ul>
 </li>
-<li>✅ | Your Azure Cosmos DB resources is ready!</li>
 </ol>
-</details>
-<p><em>The Azure AI Search resources contains the "product index" for our retailer's product catalog. It is the information "retrieval" service for RAG solutions, using sentence similarity and semantic ranking to return the most relevant results for a given customer query</em>.</p>
-<details class="info">
-<summary>Step 2: Validate Azure AI Search is ready in tab 3️⃣</summary>
+<p>✅ | Your Azure Cosmos DB resource is ready!</p>
+<h2 id="step-2-validate-azure-ai-search-is-populated">Step 2: Validate Azure AI Search is populated</h2>
+<p>The Azure AI Search resources contains the product index for our retailer's product catalog. It is the information <strong>retrieval</strong> service for <strong>R</strong>AG solutions, using sentence similarity and semantic ranking to return the most relevant results for a given customer query.</p>
 <ol>
-<li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
-<li>Click the <code>Search service</code> resource - visit details page</li>
-<li>Click <code>Search Explorer</code> in top-nav menu on details page <ul>
+<li>Switch to the Azure Portal (Tab 3️⃣) and display the  <code>rg-AITOUR</code> resource group Overview</li>
+<li>Click the <code>Search service</code> resource name to visit its details page</li>
+<li>Click <code>Search Explorer</code> in the top-nav menu  <ul>
 <li>see Search explorer with default index <code>contoso-products</code></li>
-<li>click "Search" with no other input</li>
-<li>should see: Results dialog fill with index data</li>
+<li><strong>click</strong> "Search" with no other input</li>
+<li>you will see: Results dialog filled with index data for the product database.</li>
 </ul>
 </li>
-<li>✅ | Your Azure AI Search resource is ready!</li>
 </ol>
-</details>
-<p><em>The Azure AI project is the key AI resources for an application - and is associated with an Azure AI hub resources that manages admininstrative responsibilities like billing. The project maintains application state (including model deployments) for generative AI solutions.</em></p>
-<details class="info">
-<summary>Step 3: Validate Azure AI Project is ready in tab 4️⃣</summary>
+<p>✅ | Your Azure AI Search resource is ready!</p>
+<h2 id="step-3-test-the-deployed-container-app">Step 3: Test the Deployed Container App</h2>
+<p>When iterating on a prototype application, we start with manual testing - using a single "test prompt" to validate our prioritzed scenario interactively, before moving to automated evaluations with larger test datasets. The FastAPI server exposes a <code>Swagger API</code> endpoint that can be used to conduct such testing in both local (Codespaces) and cloud (Container Apps). Let's try it on a fully functional version of the endpoint!</p>
 <ol>
-<li>Switch to Azure AI Studio in tab 4️⃣ - start on Home page</li>
-<li>Click <code>All resources</code> in sidebar - <em>Note: this may say <code>All hubs</code></em>.</li>
-<li>Verify that you see a Hub resource - <em>Note: you may also see an AI Services resource</em></li>
-<li>Click the hub resource - you should see a project listed in hub overview page</li>
-<li>Click the project resource - visit <code>Deployments</code> in the sidebar<ul>
-<li>see <code>aoai-connection</code> and <code>aoai-safety-connection</code> sections</li>
-<li>each has 3 model deployments - we care about three of these
-    -gpt-35-turbo, gpt-4, text-embedding-ada-002</li>
-</ul>
-</li>
-<li>✅ | Your Azure AIProject resource is ready!</li>
-</ol>
-</details>
-<p><em>Azure Container Apps (ACA) is an easy-to-use compute solution for hosting our chat AI application. The application is implemented as a FastAPI server that exposes a simple <code>/create_request</code> API endpoint to clients for direct use or integration with third-party clients</em>.</p>
-<details class="info">
-<summary>Step 4: Validate Azure Container Apps is ready in tab 3️⃣</summary>
-<ol>
-<li>Switch to the Azure Portal tab 3️⃣ - <code>rg-AITOUR</code> resource Overview</li>
-<li>Click the <code>Azure Container App</code> resource - visit details page</li>
-<li>Click <code>Application Url</code> in <strong>Essentials</strong> section of Overview</li>
-<li>You should see: new tab 5️⃣ with page showing `{"message" : "Hello World" }" </li>
-<li>✅ | Your Azure Container App resource is ready <strong>and</strong> has app deployed!</li>
-</ol>
-</details>
-<p><em>When iterating on a prototype application, we start with manual testing - using a single "test prompt" to validate our prioritzed scenario interactively, before moving to automated evaluations with larger test datasets. The FastAPI server exposes a <code>Swagger API</code> endpoint that can be used to conduct such testing in both local (Codespaces) and cloud (Container Apps). Let's try it!</em></p>
-<details class="info">
-<summary>Step 5: Test the Deployed Container App in tab 5️⃣ </summary>
-<ol>
-<li>Visit the <code>Application Url</code> page from Step 10 in tab 5️⃣</li>
-<li>Add a <code>/docs</code> suffix to that path - you should see: <strong>FastAPI</strong> page</li>
+<li>Return to your deployed Azure Container App in Tab 5️⃣ </li>
+<li>Add a <code>/docs</code> suffix to the URL and browse to that path - you will see: <strong>FastAPI</strong> page</li>
 <li>Expand the <code>POST</code> section by clicking the arrow<ul>
 <li>click <code>Try it out</code> to make inputs editable</li>
 <li>enter <code>Tell me about your tents</code> for <strong>question</strong></li>
 <li>enter <code>2</code> for <strong>customer_id</strong></li>
-<li>enter []` for <strong>chat_history</strong></li>
-<li>enter <strong>Execute</strong> to run the query</li>
+<li>enter <code>[]</code> for <strong>chat_history</strong></li>
+<li>enter <strong>Execute</strong> to run the endpoint with the provided parameters.</li>
 </ul>
 </li>
-<li>You should get a valid response with <code>answer</code> and <code>context</code>.</li>
-<li>✅ | Your Contoso Chat AI is deployed - and works with valid inputs!</li>
 </ol>
-</details>
+<p>You will get a response body with <code>answer</code> and <code>context</code> components.</p>
+<ul>
+<li><code>answer</code> is the chatbot's response to the customer's <code>question</code>, entered into the chat window</li>
+<li><code>context</code> is the additional information provided to the Generative AI model, which it uses to ground its answer. In this app, that includes information about products relevant to the customer question. The products selected may depend on the <code>customer_id</code> and their associated order history. </li>
+<li>The web app provides the <code>chat_history</code> from the chat window, which provides additional context for the generative AI model to ground its response.</li>
+</ul>
+<p>✅ | Your Contoso Chat AI is deployed - and works with valid inputs!</p>
 <hr />
 <p><em>Now you understand the application architecture, and have a sense for the retail copilot API, it's time to dig into the codebase and understand the three stages of our GenAIOps workflow - ideation, evaluation, and operationalization</em>.</p>
 <div class="admonition example">

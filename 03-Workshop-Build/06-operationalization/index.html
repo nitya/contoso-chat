@@ -663,27 +663,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8️⃣ | Resources
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -725,41 +704,47 @@
 
 
 <h1 id="6-deploy-with-aca">6️⃣ | Deploy with ACA</h1>
-<details class="success">
-<summary>Step 1: Explore the Codebase</summary>
+<h1 id="step-1-explore-the-codebase">Step 1: Explore the Codebase</h1>
+<p>The Contoso Chat app is deployed as an Azure Container App (now in Tab 5️⃣)</p>
 <ul>
-<li>The Contoso Chat app is deployed as an Azure Container App (shown prior)</li>
 <li>It is implemented as a FASTAPI endpoint with two routes ("/" and "/api/create_response")</li>
 <li>View the <code>src/api/main.py</code> to learn about the parameters expected by the latter</li>
 <li>View the <code>src/api/product/product.py</code> to see information retrieval for RAG pattern usage</li>
 <li>View the <code>src/api/contoso_chat/chat_request.py</code> to see main chat AI workflow orchestration</li>
 </ul>
-</details>
-<details class="success">
-<summary>Step 2: Test Endpoint Locally</summary>
+<h1 id="step-2-test-endpoint-locally">Step 2: Test Endpoint Locally</h1>
 <ol>
-<li>Let's run the server locally, for testing:<ul>
-<li>change directories to the root of your repo</li>
-<li>run this command: <code>fastapi dev src/api/main.py</code></li>
+<li>
+<p>Let's run the server locally, for testing:</p>
+<ul>
+<li>change directories to the root of your repository</li>
+<li>run this command:
+<div class="highlight"><pre><span></span><code>fastapi dev src/api/main.py
+</code></pre></div></li>
 <li>you should see a popup dialog - click "Open in Browser"</li>
 <li>you should see: the default "Hello World" page (route=<code>/</code>)</li>
 </ul>
+<div class="admonition success">
+<p class="admonition-title">You just launched the endpoint within Codespaces for testing!</p>
+</div>
 </li>
-<li>Add a <code>/docs</code> suffix to page URL - you should see: <strong>FastAPI</strong> page</li>
+<li>
+<p>Add a <code>/docs</code> suffix to page URL - you should see: <strong>FastAPI</strong> page</p>
+</li>
 <li>Expand the <code>POST</code> section by clicking the arrow<ul>
 <li>click <code>Try it out</code> to make inputs editable</li>
 <li>enter <code>Tell me about your tents</code> for <strong>question</strong></li>
 <li>enter <code>2</code> for <strong>customer_id</strong></li>
-<li>enter []` for <strong>chat_history</strong></li>
+<li>enter <code>[]</code> for <strong>chat_history</strong></li>
 <li>enter <strong>Execute</strong> to run the query</li>
 </ul>
 </li>
 <li>You should get a valid response with <code>answer</code> and <code>context</code>.</li>
-<li>✅ | You just tested your Contoso Chat app with valid inputs!</li>
 </ol>
-</details>
-<details class="success">
-<summary>Step 3: Make changes &amp; test (awareness only)</summary>
+<div class="admonition success">
+<p class="admonition-title">You just tested your Contoso Chat app with valid inputs!</p>
+</div>
+<p>Step 3: Make changes &amp; test effects locally</p>
 <ol>
 <li>Make changes to <code>main.py</code> - e.g., change "Hello World" to "Hello AI Tour!"</li>
 <li>Run <code>fastapi dev src/api/main.py</code> again to see changes<ul>
@@ -768,7 +753,6 @@
 </li>
 <li>The repository uses <code>azd</code> for deployment - learn more in the docs.</li>
 </ol>
-</details>
 <hr />
 <p><em>You made it!. That was a lot to cover - but don't worry! Now that you have a fork of the repo, you can check out the <a href="../../02-Self-Guide-Setup/01-setup/">Self-Guided Workshop</a> option to revisit ideas at your own pace! Before you go, some important cleanup tasks you need to do!!</em></p>
 <div class="admonition example">

@@ -650,6 +650,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#set-the-temperature-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set the temperature parameter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use-a-sample-data-file" class="md-nav__link">
     <span class="md-ellipsis">
       Use a sample data file
@@ -804,27 +813,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8️⃣ | Resources
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -927,6 +915,15 @@
   
     <nav class="md-nav" aria-label="Step 3: Update the prompt template">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-the-temperature-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set the temperature parameter
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#use-a-sample-data-file" class="md-nav__link">
@@ -1106,8 +1103,17 @@
 <div class="highlight"><pre><span></span><code>cp chat-0.prompty chat-1.prompty
 </code></pre></div></p>
 <p>Open the file <code>chat-1.prompty</code> and edit it as described below.</p>
+<h3 id="set-the-temperature-parameter">Set the temperature parameter</h3>
+<ol>
+<li>Add the following at Line 15 (at the end of the <code>parameters:</code> section):
+<div class="highlight"><pre><span></span><code>    temperature: 0.2
+</code></pre></div></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title"><a href="https://learn.microsoft.com/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#temperature-and-top_p-parameters">Temperature</a> is one of the parameters you can use to modify the behavior of Generative AI models. It controls the degree of randomness in the response, from 0.0 (deterministic) to 1.0 (maximum variability).</p>
+</div>
 <h3 id="use-a-sample-data-file">Use a sample data file</h3>
-<p>For now, we'll supply data in a JSON file to provide context for the generative AI model to provide in the model. (Later, we'll extract this data from the databases.)</p>
+<p>From here, we'll supply data in a JSON file to provide context for the generative AI model to provide in the model. (Later, we'll extract this data from the databases.)</p>
 <ol>
 <li>
 <p>Copy a JSON file with sample data to provide as context in our Prompty. 
@@ -1174,8 +1180,6 @@ The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {
 </li>
 <li>
 <p>Ideate on your own!</p>
-</li>
-</ol>
 <p>You can change the system prompt to modify the style and tone of the responses from the chatbot.</p>
 <ul>
 <li>Try adding <code>Provide responses in a bullet list of items</code> to the end of the <code>system:</code> section. What happens to the output?</li>
@@ -1185,6 +1189,8 @@ The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {
 <li>Have you observed truncated responses in the output? Try changing <code>max_tokens</code> to 3000 - does that fix the problem?</li>
 <li>Try changing <code>temperature</code> to 0.7. Try some other values between 0.0 and 1.0. What happens to the output?</li>
 </ul>
+</li>
+</ol>
 <p>✅ | Your prompty template is updated, and uses a sample test data file</p>
 <h2 id="step-4-update-prompt-template-add-safety-instructions">Step 4: Update prompt template, add Safety instructions</h2>
 <details class="tip">
@@ -1200,10 +1206,10 @@ cp chat-1.json chat-2.json
 </code></pre></div></p>
 <ol>
 <li>
-<p>Open <code>chat-1.prompty</code> for editing</p>
+<p>Open <code>chat-2.prompty</code> for editing</p>
 </li>
 <li>
-<p>Change line 22 to input the new data file:</p>
+<p>Change line 21 to input the new data file:</p>
 <div class="highlight"><pre><span></span><code>sample: ${file:chat-2.json}
 </code></pre></div>
 </li>
@@ -1261,7 +1267,7 @@ cp ../docs/workshop/src/1-build/chat-3.json .
 </code></pre></div>
 </li>
 <li>
-<p>In the Explorer pane, right-click on the new <code>chat-3.prompty</code> file: select <code>Add Code &gt; Add Prompty Code</code>. This creates a new Python file <code>chat-3.py</code> and opens it in VS Code.</p>
+<p>In the Explorer pane, right-click on the new <code>chat-3.prompty</code> file and select <code>Add Code &gt; Add Prompty Code</code>. This creates a new Python file <code>chat-3.py</code> and opens it in VS Code.</p>
 </li>
 <li>
 <p>Add the three lines below to the top of <code>chat-3.py</code>:</p>
@@ -1275,6 +1281,7 @@ cp ../docs/workshop/src/1-build/chat-3.json .
 <p>Execute <code>chat-3.py</code> by clicking the "play" at the top-right of its VS Code window.</p>
 </li>
 </ol>
+<p>A Python script forms the basis of the FASTAPI endpoint we deployed in Tab 5️⃣. We'll explore the source code later.</p>
 <div class="admonition quote">
 <p class="admonition-title">Congratulations! You just learned prompt engineering with Prompty!</p>
 <p>Let's recap what we tried:</p>

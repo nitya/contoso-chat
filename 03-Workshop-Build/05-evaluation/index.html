@@ -663,27 +663,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-Workshop-Wrapup/08-resources/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8️⃣ | Resources
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -725,59 +704,83 @@
 
 
 <h1 id="5-evaluate-with-ai">5️⃣ | Evaluate with AI</h1>
-<details class="info">
-<summary>Step 1: Understand custom Prompty Evaluators</summary>
+<p>To make sure our app is working as intended, we can <strong>evaluate</strong> its response (the ANSWER) given the customer's QUESTION and the CONTEXT provided. We will evaluate the responses according to the following criteria:</p>
 <ul>
-<li>Switch to <code>src/api/evaluators/custom_evals</code></li>
-<li>You should see 4 prompty files. Open each in order, and run them</li>
-<li>You should see something like this (output simplified for clarity)
+<li><strong>Coherence</strong>: how well all the sentences in the ANSWER fit together and sound naturally as a whole</li>
+<li><strong>Fluency</strong>: the quality of individual sentences in the ANSWER, and whether they are well-written and grammatically correct</li>
+<li><strong>Groundedness</strong>: given CONTEXT, whether the ANSWER uses information provided by the CONTEXT</li>
+<li><strong>Relevance</strong>: how well the ANSWER addresses the main aspects of the QUESTION, based on the CONTEXT</li>
+</ul>
+<p>These evaluations <em>could</em> be performed by a human, who could use their subjective judgement to rate an answer on a scale from one star to five stars. But in this section, we will <strong>automate</strong> the process using a powerful generative AI model (GPT-4) to evaluate responses.</p>
+<h1 id="step-1-understand-custom-prompty-evaluators">Step 1: Understand custom Prompty Evaluators</h1>
+<p>Prompty files to evaluate answers on the criteria above can be found in the repository at <code>src/api/evaluators/custom_evals</code>.</p>
+<ol>
+<li>Open the <code>src/api/evaluators/custom_evals</code> folder in VS Code Explorer</li>
+<li>Open the file <code>coherence.prompty</code> look at it. The default inputs in the <code>sample:</code> section are:<ul>
+<li><strong>question</strong>: What feeds all the fixtures in low voltage tracks instead of each light having a line-to-low voltage transformer?</li>
+<li><strong>context</strong>: Track lighting, invented by Lightolier, was popular at one period of time because it was much easier to install than recessed lighting, and individual fixtures are decorative and can be easily aimed at a wall. It has regained some popularity recently in low-voltage tracks, which often look nothing like their predecessors because they do not have the safety issues that line-voltage systems have, and are therefore less bulky and more ornamental in themselves. A master transformer feeds all of the fixtures on the track or rod with 12 or 24 volts, instead of each light fixture having its own line-to-low voltage transformer. There are traditional spots and floods, as well as other small hanging fixtures. A modified version of this is cable lighting, where lights are hung from or clipped to bare metal cables under tension</li>
+<li><strong>answer</strong>: The main transformer is the object that feeds all the fixtures in low voltage tracks.</li>
+</ul>
+</li>
+<li>Run the prompty file. You will see output like this:
     <div class="highlight"><pre><span></span><code><span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:43.602<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>/workspaces/contoso-chat/.env
 <span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:43.678<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Calling<span class="w"> </span>...
 <span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:44.488<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span><span class="m">5</span>
-
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:51.232<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>/workspaces/contoso-chat/.env
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:43.678<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Calling<span class="w"> </span>...
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:52.081<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span><span class="m">4</span>
-
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:57.213<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>/workspaces/contoso-chat/.env
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:43.678<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Calling<span class="w"> </span>...
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:58.108<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span><span class="m">5</span>
-
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:36:05.996<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>/workspaces/contoso-chat/.env
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:35:43.678<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Calling<span class="w"> </span>...
-<span class="m">2024</span>-09-16<span class="w"> </span><span class="m">21</span>:36:06.910<span class="w"> </span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span><span class="m">5</span>
-</code></pre></div></li>
-<li>These are the outputs from running evaluators for 4 metrics<ul>
-<li>Coherence = how well do sentences fit together</li>
-<li>Fluency = quality of sentences in the answer</li>
-<li>Groundedness = is answer logically derived from context provided</li>
-<li>Relevance = does answer address the main elements of question</li>
+</code></pre></div><ul>
+<li>The system has given this ANSWER a coherence score of 5 out of 5 stars. Do you agree with the assessment?    </li>
 </ul>
 </li>
-<li><strong>Take a minute to open each prompty and understand the template setup.</strong></li>
-</ul>
-</details>
-<details class="info">
-<summary>Step 2: Execute AI-Assisted Evaluation</summary>
+<li>
+<p>Take another look at the prompty file. The meta-prompt provides guidance to the AI model on how to perform the assessment, and to provide its rating as a score from 1 to 5. </p>
+<div class="admonition info">
+<p class="admonition-title">Note the several examples given in the Prompty file of answers that represent each of the star ratings. This is an example of <a href="https://learn.microsoft.com/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#few-shot-learning">few-shot learning</a>, a common technique used to guide AI models.</p>
+</div>
+</li>
+<li>
+<p>Repeat the process for the other Prompty files:</p>
 <ul>
-<li>Click on <code>src/api/evaluate-chat-flow.ipynb</code></li>
-<li>You should see: a Jupyter notebook<ul>
-<li><code>pip install tabulate</code> if not already installed</li>
-<li>Select Kernel</li>
-<li>Run all - <strong>this will take a while</strong></li>
+<li><code>fluency.prompty</code></li>
+<li><code>groundedness.prompty</code></li>
+<li><code>relevance.prompty</code></li>
 </ul>
 </li>
-<li>Observe the following files while you wait<ul>
-<li><strong>Test Prompts</strong> = <code>evaluators/data.jsonl</code></li>
+</ol>
+<h1 id="step-2-execute-ai-assisted-evaluation">Step 2: Execute AI-Assisted Evaluation</h1>
+<p>Now that you understand the process of evaluation, let's evaluate the perfomance of our Contoso Chat application on a suite of test questions.</p>
+<ol>
+<li>
+<p>Click on <code>src/api/evaluate-chat-flow.ipynb</code></p>
+<ul>
+<li>You will see: a Jupyter notebook</li>
+<li>Click Select Kernel, choose "Python Environments" and then choose the recommended (starred) option: Python 3.11.x.</li>
+<li>Click Run all. <strong>This will take a while</strong>, so while it's running let's take a look at the process in detail.</li>
+</ul>
+</li>
+<li>
+<p>Open the file <code>src/api/evaluators/data.jsonl</code></p>
+<ul>
+<li>This file contains the suite of test questions, each associated with a specific customer.</li>
+<li>Sample question: "what is the waterproof rating of the tent I bought?"</li>
+</ul>
+</li>
+<li>
+<p>Take another look at  <code>src/api/evaluate-chat-flow.ipynb</code></p>
+<ul>
+<li>Look at Cell 3, beginning <code>def create_response_data(df):</code></li>
+<li>For each question in the file, the <code>get_response</code> function is used to call our deployed endpoint and generate the response and associated context</li>
+<li>Each response is then evaluated for the four criteria, given the supplied question and returned context.</li>
+</ul>
+</li>
+<li>
+<p>When the notebook completes, check out the results of the evaluations in these files created in the  <code>src/api/evaluators</code> folder:</p>
+<ul>
 <li><strong>Chat Responses</strong> = <code>result.jsonl</code></li>
-<li><strong>Evaluated Results</strong> = <code>result_evaluated.jsonl</code></li>
-<li><strong>Evaliation Summary</strong> = computed from <code>eval_results.jsonl</code></li>
+<li><strong>Evaluated Results</strong> = <code>result_evaluated.jsonl</code> (The scores are at the end of each line.)</li>
+<li><strong>Evaliation Summary</strong> = computed from <code>eval_results.jsonl</code> (Complete data from the evaluation process.)</li>
 </ul>
 </li>
-</ul>
-</details>
-<details class="info">
-<summary>Step 3: Understand Evaluation Workflow</summary>
+</ol>
+<h1 id="step-3-understand-evaluation-workflow">Step 3: Understand Evaluation Workflow</h1>
 <ul>
 <li>Walk through the steps in the notebook<ul>
 <li>Load test data - from JSONL file</li>
@@ -801,26 +804,24 @@
 </ul>
 </li>
 </ul>
-</details>
-<details class="info">
-<summary>Step 4: Understand Observability with Tracer (optional)</summary>
+<div class="admonition success">
+<p class="admonition-title">Congratulations! You just used custom evaluators in an AI-Assisted Evaluation flow!</p>
+</div>
+<h1 id="step-4-understand-observability-with-tracer-optional">Step 4: Understand Observability with Tracer (optional)</h1>
 <ul>
 <li>Revisit the <code>contoso_chat/chat_request.py</code> and <code>evaluators/coherence.py</code> files</li>
 <li>Explain the <code>PromptyTracer</code> and <code>@trace</code> decoration features</li>
 <li>Look for the <code>src/api/.runs</code> folder and click on a <code>.tracy</code> file</li>
 <li>Explore the traces to understand the telemetry captured for debugging</li>
 </ul>
-</details>
-<div class="admonition quote">
-<p class="admonition-title">Congratulations! You just used custom evaluators in an AI-Assisted Evaluation flow!</p>
-<p><strong>Challenge yourself at home:</strong> </p>
+<h1 id="step-5-optional-homework">Step 5 (Optional) Homework</h1>
+<p><strong>Here are some other things to try when you run this workshop at home:</strong> </p>
 <ul>
 <li>Build a new evaluator that assesses a metric you made up </li>
 <li>Define the scoring criteria, and give examples of usage</li>
 <li>Create the test dataset, then assess results against your evaluator. </li>
 <li>Think about how this approach extends to <em>safety</em> evaluations. </li>
 </ul>
-</div>
 <hr />
 <p><em>In this section, you saw how Prompty-based custom evaluators work with AI-Assisted evaluation, to assess the quality of your application using defined metrics like coherence, fluency, relevance, and groundedness. You got a sense for how these custom evaluators are crafted.</em></p>
 <div class="admonition example">

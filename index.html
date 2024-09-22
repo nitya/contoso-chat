@@ -296,9 +296,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-related-resources" class="md-nav__link">
+  <a href="#4-the-app-lifecycle" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Related Resources
+      4. The App Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Related Resources
     </span>
   </a>
   
@@ -786,9 +795,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-related-resources" class="md-nav__link">
+  <a href="#4-the-app-lifecycle" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Related Resources
+      4. The App Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Related Resources
     </span>
   </a>
   
@@ -812,44 +830,53 @@
 <h1 id="build-a-retail-copilot-code-first-on-azure-ai">Build a Retail Copilot Code-First on Azure AI</h1>
 <p>This website contains the step-by-step instructions for a hands-on workshop that teaches you how to <strong>build, evaluate, and deploy a retail copilot code-first on Azure AI</strong>. </p>
 <ul>
-<li>The solution uses the <a href="https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation">Retrieval Augmented Generation (RAG) pattern</a> to ground chat AI responses in the retailer's product catalog and cusomer data.</li>
-<li>The implementation uses <a href="https://prompty.ai">Prompty</a> for ideation, <a href="https://ai.azure.com">Azure AI Studio</a> as the underlying platform for GenAIOps, and <a href="https://aka.ms/azcontainerapps">Azure Container Apps</a> for hosting the deployed copilot.</li>
+<li>Our solution use the <a href="https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation">Retrieval Augmented Generation (RAG) pattern</a> to ground chat AI responses in the retailer's product catalog and cusomer data.</li>
+<li>Our implementation uses <a href="https://prompty.ai">Prompty</a> for ideation, <a href="https://ai.azure.com">Azure AI Studio</a> as the platform for code-first copilotdevelopment, and <a href="https://aka.ms/azcontainerapps">Azure Container Apps</a> for hosting the deployed copilot.</li>
 </ul>
-<p>This section introduces you to the application scenario (retail copilot), briefly reviews the Retrieval Augmented Generation (RAG) design pattern implemented, and illustrates the Azure AI application architecture used for solution deployment - with a link to resources for the key developer tools and services used.</p>
+<p>In this section, we introduce the application scenario (Contoso Chat), review the design pattern used (RAG) and understand how it maps to our application architecture (on Azure AI). We'll wrap the section by understanding the application lifecycle (GenAIOps) and the three stages for end-to-end development that we will follow in this workshop.</p>
 <hr />
 <h2 id="1-the-app-scenario">1. The App Scenario</h2>
-<p><strong>Contoso Outdoors</strong> is an enterprise retailer that sells a wide variety of hiking and camping equipment to outdoor adventurers. The retailer's website has an extensive catalog of products with customers constantly asking questions and looking for information and recommendations, to make relevant purchases. The retailer decides to build a <em>customer support agent</em> to handle these queries right within the website.</p>
+<p><strong>Contoso Outdoors</strong> is an enterprise retailer that sells a wide variety of hiking and camping equipment to outdoor adventurer through their website. Customers visiting the site often call the customer support line with requests for product information or recommendations, before making their purchases. The retailer decides to build and integrate an AI-based <em>customer support agent</em> (retail copilot) to handle these queries right from their website, for efficiency.</p>
 <p><img alt="Contoso Chat UI" src="img/chat-ui.png" /></p>
-<p><strong>Contoso Chat</strong> is the implementation of that vision, with a retail copilot backend that can be interacted with directly from the website. Customers can now ask the chatbot questions <em>in natural language</em> - and get back valid responses that are grounded in the product catalog and their own purchase history.</p>
+<p><strong>Contoso Chat</strong> is the chat AI implementation (<em>backend</em>) for the retail copilot experience. It has a hosted API (<em>endpoint</em>) that the chat UI (<em>frontend</em>) can interact with to process user requests. Customers can now ask questions in a conversational format, using natural language, and get valid responses grounded in product data and their own purchase history.</p>
 <p><img alt="Contoso Chat AI" src="img/chat-ai.png" /></p>
 <h2 id="2-the-rag-pattern">2. The RAG Pattern</h2>
-<p>Many foundation models are trained on massive quantities of public data, giving them the ability to answer general-purpose queries effectively. However, in our app scenario we want responses based on private data from the retailer databases. The <em>Retrieval Augmented Generation</em> (RAG) pattern is currently the recommended approach to solving this problem.</p>
+<p>Foundation large language models are trained on massive quantities of public data, giving them the ability to answer general questions effectively. However, our retail copilot needs responses grounded in <em>private data</em> that exists in the retailer's data stores. <em>Retrieval Augmented Generation</em> (RAG) is a design pattern that provides a popular solution to this challenge with this workflow:</p>
 <ol>
 <li>The user query arrives at our copilot implementation via the endpoint (API).</li>
-<li>It sends the text query to a <strong>retrieval</strong> service which vectorizes it for efficiency.</li>
+<li>The copilot sends the text query to a <strong>retrieval</strong> service which vectorizes it for efficiency.</li>
 <li>It uses this vector to query a search index for matching results (e.g., based on similarity)</li>
-<li>It then returns results to the copilot, potentially with semantic ranking applied.</li>
-<li>The copilot <strong>augments</strong> the prompt with the results, then calls the chat model.</li>
-<li>The chat model now <strong>generates</strong> responses <em>grounded</em> in the knowledge provided.</li>
+<li>The retrieval service returns results to the copilot, potentially with semantic ranking applied.</li>
+<li>The copilot <strong>augments</strong> the user prompt with this knowledge, and invokes the chat model.</li>
+<li>The chat model now <strong>generates</strong> responses <em>grounded</em> in the provided knowledge.</li>
 </ol>
 <p><img alt="RAG" src="img/rag-design-pattern.png" /></p>
 <h2 id="3-the-app-architecture">3. The App Architecture</h2>
-<p>Implementing this design pattern requires:</p>
+<p>Implementing this design pattern requires these architectural components:</p>
 <ul>
 <li>an <strong>information retrieval</strong> service (data indexing, similarity search, semantic ranking)</li>
 <li>a <strong>database</strong> service for storing other data (customer orders)</li>
 <li>a <strong>model deployments</strong> capability (for chat, embeddings - and AI-assisted evaluation)</li>
 <li>a <strong>copilot hosting</strong> capability (for real-world access to deployed endpoint)</li>
 </ul>
-<p>The figure below shows the Azure application architecture for the Contoso Chat Retail Copilot, showcasing these elements. The copilot is deployed to Azure Container Apps, providing a hosted API endpoint for client integration. Requests to that endpoint are processed with:</p>
+<p>The corresponding Azure AI application architecture for the Contoso Chat retail copilot is shown below. The copilot is deployed to Azure Container Apps, providing a hosted API endpoint for client integration. The copilot processes incoming requests with the help of:</p>
 <ul>
 <li><strong>Azure OpenAI Services</strong>  - provides model deployments for chat and text embeddings</li>
 <li><strong>Azure CosmosDB</strong>  - stores the customer order data (JSON) in a noSQL database</li>
 <li><strong>Azure AI Search</strong>  - indexes the product catalog with search-retrieval capability. </li>
 </ul>
 <p><img alt="ACA Architecture" src="img/aca-architecture.png" /></p>
-<p>The <em>orchestration</em> of RAG workflow steps is achieved using <strong>Prompty</strong> assets configured with relevant Azure OpenAI models and executed in a Prompty runtime (Python). This solution can support <em>multi-turn conversations</em> and illustrates usage of <em>responsible AI</em> practices (i.e., evaluation, content safety) to deliver responses that meet desired quality and safety standards.</p>
-<h2 id="4-related-resources">4. Related Resources</h2>
+<p>The copilot <em>orchestrates</em> the steps of the RAG workflow using <strong>Prompty</strong> assets (configured with required Azure OpenAI models) executed in a Prompty runtime (Python). It supports multi-turn conversations and responsible AI practices to meet response quality and safety requirements.</p>
+<h2 id="4-the-app-lifecycle">4. The App Lifecycle</h2>
+<p>Building generative AI applications requires an iterative process of refinement from <em>prompt</em> to <em>production</em>. The application  lifecycle (GenAIOps) is best illustrated by the three stages shown:</p>
+<ol>
+<li><strong>Ideation</strong> - involves building the initial prototype, validating it manually with a test prompt.</li>
+<li><strong>Evaluation</strong> - involves assessing it for quality and safety with large, diverse test datasets.</li>
+<li><strong>Operationalization</strong> - involves deploying it for real-world usage &amp; monitoring it for insights.</li>
+</ol>
+<p><img alt="GenAIOps" src="img/gen-ai-ops.png" /></p>
+<p>In our workshop, you willl see the development workflow organized into sections that mimic this lifecycle - giving you a more intuitive sense for how you can iteratively go from promt to production, code-first, with Azure AI.</p>
+<h2 id="5-related-resources">5. Related Resources</h2>
 <ol>
 <li><strong>Prompty</strong> | <a href="https://prompty.ai">Documentation</a> · <a href="https://github.com/microsoft/prompty/blob/main/Prompty.yaml">Specification</a>  · <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.prompty">Tooling</a> · <a href="https://pypi.org/project/prompty/">SDK</a></li>
 <li><strong>Azure AI Studio</strong>  | <a href="https://learn.microsoft.com/en-us/azure/ai-studio/">Documentation</a>  · <a href="https://learn.microsoft.com/azure/ai-studio/concepts/architecture">Architecture</a> · <a href="https://learn.microsoft.com/azure/ai-studio/how-to/develop/sdk-overview">SDKs</a> ·  <a href="https://learn.microsoft.com/azure/ai-studio/how-to/evaluate-generative-ai-app">Evaluation</a></li>

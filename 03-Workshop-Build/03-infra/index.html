@@ -807,6 +807,21 @@
 </div>
 <p><em>In this section, we'll take a minute to understand what our Azure infrastructure looks like, and validate that the resources are deployed and initialized correctly. Here's a reminder of the Azure Application Architecure showing the key resources used. Let's dive in.</em></p>
 <p><img alt="ACA Architecture" src="../../img/aca-architecture.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Recall that the <a href="https://learn.microsoft.com/en-us/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">Retrieval Augmented Generation</a> works by <em>retrieving</em> relevant knowledge from your data stores, and <em>augmenting</em> the user query with it to create an enhanced prompt - which <em>generates</em> the final response.</p>
+<p>To implement this RAG pattern, we need to execute three steps:</p>
+<ol>
+<li><strong>Setup data sources</strong> and populate them with the required data (product catalog, customer orders)</li>
+<li><strong>Create <a href="https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">indexes</a></strong> for efficient information retrieval (by LLMs) during request processing (e.g., product index)</li>
+<li><strong>Connect our Azure AI project</strong> to our data/indexes, so we can use them in orchestrating the RAG workflow.</li>
+</ol>
+<p>In the previous step, we ran <em>post provisioning scripts</em> that completed the first two steps (which we will validate here).</p>
+<ol>
+<li><strong>Azure CosmosDB</strong> - loaded <strong>12 customer records</strong> from <code>data/customer_info</code>, created <em>customers</em> database.</li>
+<li><strong>Azure AI Search</strong> - loaded <strong>20 product records</strong> from <code>data/product_info</code>, created <em>contoso-products</em> index.</li>
+</ol>
+<p>In our next section (Ideation) we will see how to use a code-first approach to access these in our copilot.</p>
+</div>
 <h2 id="step-1-validate-azure-cosmos-db-is-populated">Step 1: Validate Azure Cosmos DB is populated</h2>
 <p>The Azure CosmosDB resource holds the customer data for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made.</p>
 <ol>

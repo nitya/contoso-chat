@@ -743,18 +743,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-update-default-code" class="md-nav__link">
+  <a href="#2-update-default-code" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Update Default Code
+      2. Update Default Code
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-troubleshooting" class="md-nav__link">
+  <a href="#3-troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Troubleshooting
+      3. Troubleshooting
     </span>
   </a>
   
@@ -1136,18 +1136,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-update-default-code" class="md-nav__link">
+  <a href="#2-update-default-code" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Update Default Code
+      2. Update Default Code
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-troubleshooting" class="md-nav__link">
+  <a href="#3-troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Troubleshooting
+      3. Troubleshooting
     </span>
   </a>
   
@@ -1253,6 +1253,7 @@
 </div>
 <p><a href="https://prompty.ai">Prompty</a> is an open-source generative AI templating framework that makes it easy to experiment with prompts, context, parameters, and other ways to change the behavior of language models. The <a href="https://prompty.ai/docs/prompty-file-spec">prompty file spec</a> describes the sections of a Prompty file in detail, but we'll explore Prompty now by changing sections step by step.</p>
 <ol>
+<li>Return to your GitHub Codespaces Tab 2️⃣ and open the VS Code termial.</li>
 <li>Create an empty directory in root of your filesytem. From the Terminal:
     <div class="highlight"><pre><span></span><code>mkdir sandbox
 </code></pre></div></li>
@@ -1531,7 +1532,7 @@ cp ../docs/workshop/src/1-build/chat-3.json .
 <p>Run the default code by clicking the play icon. <strong>It will fail with an error</strong> indicating there are missing environment variables. Let's fix that.</p>
 </li>
 </ol>
-<h3 id="1-update-default-code">1. Update Default Code</h3>
+<h3 id="2-update-default-code">2. Update Default Code</h3>
 <ol>
 <li>
 <p>Add the three lines below to the top of <code>chat-3.py</code>:</p>
@@ -1547,16 +1548,16 @@ cp ../docs/workshop/src/1-build/chat-3.json .
 <p>Execute <code>chat-3.py</code> by clicking the "play" at the top-right of its VS Code window. You should now see a valid response being generated.</p>
 </li>
 </ol>
-<h3 id="1-troubleshooting">1. Troubleshooting</h3>
-<p><em>The <a href="https://prompty.ai">Prompty</a> tooling is in preview and evolving constantly. This section captures any known issues with workarounds you can use till the fix is made in the next release.</em></p>
-<p>In the previous step, you might encounter an error where the code generation fails with an <code>AZURE_OPENAI_KEY</code> error.</p>
+<h3 id="3-troubleshooting">3. Troubleshooting</h3>
+<p><em>The <a href="https://prompty.ai">Prompty</a> tooling is in preview. This section captures any issues and workarounds that can be used to resolve them (till fixed in a new release).</em></p>
+<p>In the previous step, you may still get an error citing a missing <code>AZURE_OPENAI_KEY</code> variable. <strong>This will be fixed in an upcoming release. For now, here is the workaround:</strong></p>
 <ul>
-<li><strong>Verify</strong>: You should have a <code>prompty.json</code> file created in the same folder.</li>
-<li><strong>Verify</strong>: That file will have a line with the <code>AZURE_OPENAI_KEY</code> specified</li>
-<li><strong>Fix It</strong>: Delete this line from the file and save changes.</li>
-<li><strong>Retry</strong>: Re-run the prompty. It should now work.</li>
+<li><strong>Check</strong>: The previous step created a <code>prompty.json</code> file created in the same folder.</li>
+<li><strong>Check</strong>: That file will has a line with <code>AZURE_OPENAI_KEY</code> specified</li>
+<li><strong>Make Fix</strong>: Delete this line from the file and save changes.</li>
+<li><strong>Test Fix</strong>: Re-run the prompty. It should now work.</li>
 </ul>
-<p><strong>Explanation:</strong> The auto-generation makes use of the default environment variables and model configuration used for your Prompty development. This error may occur if some default setting still maintains the KEY variable even though our environment is setup for managed identity.</p>
+<p><strong>Why did this happen?</strong> - The <code>prompty.json</code> file is auto-generated to reflect the default prompty settings used by the VS Code extension so that the runtime execution operates consistently. In this case the <code>AZURE_OPENAI_KEY</code> was included by accident, likely due to the presence of a default model configuration in VS Code that we were not actively using.</p>
 <h2 id="recap-ideation-with-prompty">Recap: Ideation With Prompty</h2>
 <div class="admonition quote">
 <p class="admonition-title">Congratulations! You just learned prompt engineering with Prompty!</p>

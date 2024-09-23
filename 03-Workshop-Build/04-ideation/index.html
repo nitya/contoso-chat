@@ -1448,15 +1448,17 @@ The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {
 <h2 id="step-4-update-prompt-template">Step 4: Update prompt template</h2>
 <h3 id="1-add-safety-instructions">1. Add Safety instructions</h3>
 <details class="tip">
-<summary>OPTIONAL: You can skip this step and copy over a pre-edited file with the commands hidden below.</summary>
+<summary>OPTIONAL: Skip this step and copy over a pre-edited file with these hidden commands (click to reveal).</summary>
 <div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-2.prompty .
-cp ../docs/workshop/src/1-build/chat-2.json .
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-2.json .
 </code></pre></div>
 </details>
 <p>Since this chatbot will be exposed on a public website, it's likely that nefarious users will try and make it do things it wasn't supposed to do. Let's add a <code>Safety</code> guidance section to try and address that.</p>
 <p>Copy your Prompty file and data file to new versions for editing:
-<div class="highlight"><pre><span></span><code>cp chat-1.prompty chat-2.prompty
-cp chat-1.json chat-2.json
+<div class="highlight"><pre><span></span><code>cp chat-1.prompty chat-2.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cp chat-1.json chat-2.json
 </code></pre></div></p>
 <ol>
 <li>

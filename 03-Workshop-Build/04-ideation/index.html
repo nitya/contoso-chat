@@ -1236,7 +1236,8 @@
 <h1 id="4-ideate-with-prompty">4️⃣ | Ideate With Prompty</h1>
 <div class="admonition success">
 <p class="admonition-title">Let's Review where we are right now</p>
-<p>We still have these 5 tabs open.</p>
+<p><img alt="Dev Workflow" src="../../img/workshop-developer-flow.png" /></p>
+<p>We currently have these 5 tabs open in our development environment.</p>
 <ol>
 <li>Github Repo - starting tab 1️⃣</li>
 <li>GitHub Codespaces 2️⃣</li>
@@ -1244,7 +1245,7 @@
 <li>Azure AI Studio 4️⃣</li>
 <li>Azure Container Apps 5️⃣</li>
 </ol>
-<p>We also have a fully-provisioned Azure infrastructure (backend), successfully deployed the first version of our application - and tested it manually, with a single input.</p>
+<p>We also have a fully-provisioned Azure infrastructure (backend), successfully deployed the first version of our application - and tested it manually, with a single input. <strong>It's time to move into the <code>IDEATE</code> phase of our workflow.</strong></p>
 </div>
 <p><em>Now it's time to understand how that application was developed - and specifically, understand how we can go from "prompt to prototype" in the <strong>Ideation</strong> phase of our developer workflow</em>.</p>
 <h2 id="step-1-create-a-new-prompty">Step 1: Create a New Prompty</h2>
@@ -1456,7 +1457,7 @@ The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {
 </details>
 <p>Since this chatbot will be exposed on a public website, it's likely that nefarious users will try and make it do things it wasn't supposed to do. Let's add a <code>Safety</code> guidance section to try and address that.</p>
 <p>Copy your Prompty file and data file to new versions for editing:
-<div class="highlight"><pre><span></span><code>cp chat-1.prompty chat-2.
+<div class="highlight"><pre><span></span><code>cp chat-1.prompty chat-2.prompty
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>cp chat-1.json chat-2.json
 </code></pre></div></p>
@@ -1523,9 +1524,10 @@ questions about our products or services, feel free to ask! 😊
 <ol>
 <li>
 <p>First, let's copy over final versions of our Prompty file and input data:</p>
-<div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-3.prompty .
-cp ../docs/workshop/src/1-build/chat-3.json .
+<p><div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-3.prompty .
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-3.json .
+</code></pre></div></p>
 </li>
 <li>
 <p>In the Explorer pane, right-click on the new <code>chat-3.prompty</code> file and select <code>Add Code &gt; Add Prompty Code</code>. This creates a new Python file <code>chat-3.py</code> and opens it in VS Code.</p>

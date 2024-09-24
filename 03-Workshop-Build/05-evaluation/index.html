@@ -1151,7 +1151,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Relevance</strong></td>
-<td style="text-align: left;">How well does the ANSWER address the main aspects o fthe QUESTION, based on the CONTEXT?</td>
+<td style="text-align: left;">How well does the ANSWER address the main aspects of the QUESTION, based on the CONTEXT?</td>
 </tr>
 </tbody>
 </table>
@@ -1278,7 +1278,7 @@
 <p>On occasion, the evaluation notebook may throw an error after a couple of iterations. This is typically a transient error. To fix it, <code>Clear inputs</code> in the Jupyter Notebook, then <code>Restart</code> it. It should complete the run this time.</p>
 </div>
 <h3 id="32-watch-evaluation-runs">3.2 Watch Evaluation Runs</h3>
-<p>One of the benefits of using Prompty is the built-in <code>Tracer</code> feature that captures execution traces for the entire workflow. These trace <em>runs</em> are stored in  <code>.tracy</code> files in in the <code>api/.runs/</code> folder as shown in the figure below.</p>
+<p>One of the benefits of using Prompty is the built-in <code>Tracer</code> feature that captures execution traces for the entire workflow. These trace <em>runs</em> are stored in  <code>.tracy</code> files in the <code>api/.runs/</code> folder as shown in the figure below.</p>
 <ul>
 <li>Keep this explorer sidebar open while the evaluation notebook runs/</li>
 <li>You see: <code>get_response</code> traces when our chat application is running</li>
@@ -1400,7 +1400,7 @@
 <ul>
 <li>Copy the <code>Coherence.prompty</code> to a new <code>Politeness.prompty</code> file</li>
 <li>Modify the <strong>system</strong> segment to define a "Politeness" metric</li>
-<li>Modify the <strong>user</strong> segment to define your scoring guidanc</li>
+<li>Modify the <strong>user</strong> segment to define your scoring guidance</li>
 <li>Define a sample input &amp; refine Prompty to return valid score</li>
 <li>Create the test dataset, then assess results against your evaluator. </li>
 <li>Think about how this approach extends to <em>safety</em> evaluations. </li>

@@ -751,15 +751,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#3-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Troubleshooting
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1144,15 +1135,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#3-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Troubleshooting
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1254,7 +1236,7 @@
 </div>
 <p><a href="https://prompty.ai">Prompty</a> is an open-source generative AI templating framework that makes it easy to experiment with prompts, context, parameters, and other ways to change the behavior of language models. The <a href="https://prompty.ai/docs/prompty-file-spec">prompty file spec</a> describes the sections of a Prompty file in detail, but we'll explore Prompty now by changing sections step by step.</p>
 <ol>
-<li>Return to your GitHub Codespaces Tab 2️⃣ and open the VS Code termial.</li>
+<li>Return to your GitHub Codespaces Tab 2️⃣ and open the VS Code terminal.</li>
 <li>Create an empty directory in root of your filesytem. From the Terminal:
     <div class="highlight"><pre><span></span><code>mkdir sandbox
 </code></pre></div></li>
@@ -1390,8 +1372,8 @@ sample: ${file:chat-1.json}
 </li>
 </ol>
 <h3 id="update-the-system-prompt">Update the system prompt</h3>
-<p>The <strong>sytem</strong> section of a Prompty file specifies the "meta-prompt". This additional text is added to the user's actual question to provide the context necessary to answer accurately. With some Generative AI models like the GPT family, this is passed to a special "system prompt", which guides the AI model in its response to the but does not generate a response directly. </p>
-<p>You can use the <strong>sytem</strong> section to provide guidence on how the model should behave, and to provide information the model can use as context.</p>
+<p>The <strong>sytem</strong> section of a Prompty file specifies the "meta-prompt". This additional text is added to the user's actual question to provide the context necessary to answer accurately. With some Generative AI models like the GPT family, this is passed to a special "system prompt", which guides the AI model in its response to the question, but does not generate a response directly. </p>
+<p>You can use the <strong>sytem</strong> section to provide guidance on how the model should behave, and to provide information the model can use as context.</p>
 <p>Prompty constructs the meta-prompt from the inputs before passing it to the model. Parameters like <code>{{firstName}}</code> are replaced by the corresponding input. You can also use syntax like <code>{{customer.firstName}}</code> to extract named elements from objects.</p>
 <ol>
 <li>
@@ -1511,7 +1493,7 @@ and even add some personal flair with appropriate emojis.
 </code></pre></div>
 </li>
 <li>
-<p>Run <code>chat-2.prompty</code> again. Because of the new #Safefy section in the meta-prompt, the response will be something like this:</p>
+<p>Run <code>chat-2.prompty</code> again. Because of the new #Safety section in the meta-prompt, the response will be something like this:</p>
 <div class="highlight"><pre><span></span><code>I&#39;m sorry, but I&#39;m not able to change my rules. My purpose is to assist
 you with questions related to Contoso Outdoors products. If you have any
 questions about our products or services, feel free to ask! 😊
@@ -1530,7 +1512,7 @@ questions about our products or services, feel free to ask! 😊
 </code></pre></div></p>
 </li>
 <li>
-<p>In the Explorer pane, right-click on the new <code>chat-3.prompty</code> file and select <code>Add Code &gt; Add Prompty Code</code>. This creates a new Python file <code>chat-3.py</code> and opens it in VS Code.</p>
+<p>In the Explorer pane, right-click on the new <code>chat-3.prompty</code> file and select <em>"Add Code &gt; Add Prompty Code"</em>. This creates a new Python file <code>chat-3.py</code> and opens it in VS Code.</p>
 </li>
 <li>
 <p>Run the default code by clicking the play icon. <strong>It will fail with an error</strong> indicating there are missing environment variables. Let's fix that.</p>
@@ -1552,16 +1534,21 @@ questions about our products or services, feel free to ask! 😊
 <p>Execute <code>chat-3.py</code> by clicking the "play" at the top-right of its VS Code window. You should now see a valid response being generated.</p>
 </li>
 </ol>
-<h3 id="3-troubleshooting">3. Troubleshooting</h3>
-<p><em>The <a href="https://prompty.ai">Prompty</a> tooling is in preview. This section captures any issues and workarounds that can be used to resolve them (till fixed in a new release).</em></p>
-<p>In the previous step, you may still get an error citing a missing <code>AZURE_OPENAI_KEY</code> variable. <strong>This will be fixed in an upcoming release. For now, here is the workaround:</strong></p>
-<ul>
-<li><strong>Check</strong>: The previous step created a <code>prompty.json</code> file created in the same folder.</li>
-<li><strong>Check</strong>: That file will has a line with <code>AZURE_OPENAI_KEY</code> specified</li>
-<li><strong>Make Fix</strong>: Delete this line from the file and save changes.</li>
-<li><strong>Test Fix</strong>: Re-run the prompty. It should now work.</li>
-</ul>
-<p><strong>Why did this happen?</strong> - The <code>prompty.json</code> file is auto-generated to reflect the default prompty settings used by the VS Code extension so that the runtime execution operates consistently. In this case the <code>AZURE_OPENAI_KEY</code> was included by accident, likely due to the presence of a default model configuration in VS Code that we were not actively using.</p>
+<!-->
+### 3. Troubleshooting
+
+_The [Prompty](https://prompty.ai) tooling is in preview. This section captures any issues and workarounds that can be used to resolve them (till fixed in a new release)._
+
+In the previous step, you may still get an error citing a missing `AZURE_OPENAI_KEY` variable. **This will be fixed in an upcoming release. For now, here is the workaround:**
+
+- **Check**: The previous step created a `prompty.json` file created in the same folder.
+- **Check**: That file will has a line with `AZURE_OPENAI_KEY` specified
+- **Make Fix**: Delete this line from the file and save changes.
+- **Test Fix**: Re-run the prompty. It should now work.
+
+**Why did this happen?** - The `prompty.json` file is auto-generated to reflect the default prompty settings used by the VS Code extension so that the runtime execution operates consistently. In this case the `AZURE_OPENAI_KEY` was included by accident, likely due to the presence of a default model configuration in VS Code that we were not actively using.
+-->
+
 <h2 id="recap-ideation-with-prompty">Recap: Ideation With Prompty</h2>
 <div class="admonition quote">
 <p class="admonition-title">Congratulations! You just learned prompt engineering with Prompty!</p>
@@ -1766,7 +1753,7 @@ questions about our products or services, feel free to ask! 😊
 </ol>
 </details>
 <h3 id="explore-product-prompt">Explore: Product Prompt</h3>
-<p>We'll leave this as an exercise for you to explore on your own.s</p>
+<p>We'll leave this as an exercise for you to explore on your own.</p>
 <details class="info">
 <summary>Here is some guidance for unpacking this code</summary>
 <ol>

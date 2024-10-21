@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.06209087.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1255,7 +1255,8 @@
 </ol>
 <p><img alt="The extension 'Prompty' wants to sign in using Microsoft." src="../../img/prompty-auth.png" /></p>
 <ul>
-<li>Result: <strong>You will get an Error</strong> in the Output pane. This is because we haven't yet configured a model for Prompty to use.<ul>
+<li>Result: The Visual Studio Code console will switch to the "Output" tab.<ul>
+<li><strong>You will get an Error</strong> in the Output pane as shown below. This is expected. It is because we haven't yet configured a model for Prompty to use.</li>
 <li>❌ | <code>Error: 404 The API deployment for this resource does not exist.</code></li>
 </ul>
 </li>
@@ -1269,8 +1270,10 @@
 </details>
 <h3 id="1-update-model-configuration">1. Update model configuration</h3>
 <ol>
+<li>Return to the Visual Studio Code terminal pane. </li>
+<li>If you are still seeing the error message from the previous step, then you are in the <em>Output</em> tab. Switch to the <em>Terminal</em> tab to get a command prompt.</li>
 <li>
-<p>Copy the previous prompty to a new one. From the Terminal pane:
+<p>Now, use this command to copy the previous prompty to a new one. 
     <div class="highlight"><pre><span></span><code>cp basic.prompty chat-0.prompty
 </code></pre></div></p>
 </li>
@@ -1356,7 +1359,7 @@
     <div class="highlight"><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.json .
 </code></pre></div></p>
 <div class="admonition note">
-<p class="admonition-title">Open the file to take a look at its contents. It provides a customer's name, age, membership level, and purchase history. It also provides the customer's question to the chatbot: What can you tell me about your tents?.</p>
+<p class="admonition-title">Open the file to take a look at its contents. It has the customer's name, age, membership level, and purchase history. It also has the default customer question for our chatbot: <em>What cold-weather sleeping bag would go well with what I have already purchased?</em></p>
 </div>
 </li>
 <li>
@@ -1532,9 +1535,12 @@ questions about our products or services, feel free to ask! 😊
 </li>
 <li>
 <p>Execute <code>chat-3.py</code> by clicking the "play" at the top-right of its VS Code window. You should now see a valid response being generated.</p>
+<div class="admonition tip">
+<p class="admonition-title">Press Alt-Z (or Cmd-Z on Mac) to toggle word wrap. This will make the prompts in the <code>.prompty</code> file easier to read within the limited screen view.</p>
+</div>
 </li>
 </ol>
-<!-->
+<!--
 ### 3. Troubleshooting
 
 _The [Prompty](https://prompty.ai) tooling is in preview. This section captures any issues and workarounds that can be used to resolve them (till fixed in a new release)._
@@ -1906,7 +1912,7 @@ In the previous step, you may still get an error citing a missing `AZURE_OPENAI_
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

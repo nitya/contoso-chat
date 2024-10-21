@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.06209087.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -667,18 +667,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-test-changes-at-app-level" class="md-nav__link">
+  <a href="#step-5-test-changes-at-app-server-level" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 5: Test changes at app level
+      Step 5: Test changes at app server level
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-test-changes-at-prompty" class="md-nav__link">
+  <a href="#step-6-test-changes-at-prompty-asset" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 6: Test changes at prompty
+      Step 6: Test changes at prompty asset
     </span>
   </a>
   
@@ -844,18 +844,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-test-changes-at-app-level" class="md-nav__link">
+  <a href="#step-5-test-changes-at-app-server-level" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 5: Test changes at app level
+      Step 5: Test changes at app server level
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-test-changes-at-prompty" class="md-nav__link">
+  <a href="#step-6-test-changes-at-prompty-asset" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 6: Test changes at prompty
+      Step 6: Test changes at prompty asset
     </span>
   </a>
   
@@ -894,8 +894,8 @@
 <h2 id="building-fastapi-apps">Building FastAPI Apps</h2>
 <p><a href="https://fastapi.tiangolo.com/">FastAPI</a> is a modern, high-performance web framework for building and serving APIs using Python code. With FastAPI you get a default application server (that can listen on a specified port) that can be configured with various paths (API routes) by defining functions that should be called in response to invocations on those endpoints.</p>
 <ul>
-<li>Run the FastAPI server <em>locally</em> using <code>fastapi dev &lt;app-entry&gt;</code> to get a <strong>development server</strong> with hot reload. Now, changes you make to the code are automatically reflected in the server without having to restart it, making it easy to iterate rapidly.</li>
-<li>Run the FastAPI server <em>in production</em> using a hosting service like Azure Container Apps. This packages the application into a <strong>production container</strong> with the necessary dependencies, and deploys it to a hosted endpoint on Azure for use by real-world applications.</li>
+<li>You can run the FASTAPI server <em>locally</em> to get a development server with hot reload. Code changes are instantly reflected in the app preview, making it easy to iterate rapidly.</li>
+<li>You can run the FASTAPI server <em>in production</em> by packaging it into a container and deploying it to a  hosting service like Azure Container Apps, for real-world use.</li>
 </ul>
 <p>Let's take a look at how this helps us take our <em>Prompty</em> based prototype to a full-fledged application with a hosted API endpoint on Azure.</p>
 <h2 id="step-1-explore-the-codebase">Step 1: Explore the Codebase</h2>
@@ -1068,8 +1068,8 @@
 <li>Return to the dev server preview tab in the browser (ends in <code>github.dev</code>)</li>
 <li>Append <code>/docs</code> to the URL to get the Swagger UI interactive testing page</li>
 <li>Expand the POST section and click <code>Try it out</code><ul>
-<li>Specify a question: <code>What camping stove should I get?</code></li>
-<li>Specify a customer_id: try <strong>1</strong> ("John Smith")</li>
+<li>Specify a question: <code>What camping gear do I own already?</code></li>
+<li>Specify a customer_id: try <strong>3</strong> ("Michael Johnson")</li>
 <li>Specify chat_history: leave it at <code>[]</code> for now </li>
 </ul>
 </li>
@@ -1101,14 +1101,28 @@
 <div class="admonition success">
 <p class="admonition-title">You just tested and debugged your chat AI locally!</p>
 </div>
-<h2 id="step-5-test-changes-at-app-level">Step 5: Test changes at app level</h2>
+<h2 id="step-5-test-changes-at-app-server-level">Step 5: Test changes at app server level</h2>
 <p>Leave the FastAPI dev server running. Now, let's make changes to the application. We can change things at different processing stages:</p>
 <ul>
 <li>Want to change handling of incoming request at API endpoint? <em>Modify <code>src/main.py</code></em></li>
 <li>Want to change steps in orchestration of <code>get_request</code> handle? <em>Modify <code>chat_request.py</code></em></li>
 <li>Want to change the response format or instructions for copilot? <em>Modify <code>chat.prompty</code></em></li>
 </ul>
-<p>Let's try the first option and change the default message that the app returns when you hit the "/" route. This is a simple change that lets us validate automatic reload on the FastAPI server.</p>
+<p>Let's try the first option, and change how an incoming API request is handled.</p>
+<div class="admonition note">
+<p class="admonition-title">Sidebar: Understanding API Routes and Requests</p>
+<p>By default, API requests are sent to a server "endpoint" (or route) that the server listens on, for incoming requests.</p>
+<ul>
+<li>The "/" route is the default API server URL that returns a message (as a health check)</li>
+<li>The "/api/create_response" route is an enhanced URL that listens for copilot requests.</li>
+</ul>
+<p>Our API server is implemented in the <code>src/api/main.py</code> file. Let's see how it handles these requests:</p>
+<ul>
+<li>See: <code>@app.get("/")</code> - requests to the default route ("/") get a "Hello World" health check message.</li>
+<li><code>@app.put("/api/create_response")</code> - requests to this endpoint are parsed, with query parameters extracted and passed to the <code>get_response</code> function (copilot), with the response then returned to the caller.</li>
+</ul>
+</div>
+<p><strong>Let's change how the API server handles the health-check request on "/"</strong>. This is a simple change that lets us validate automatic reload on the FastAPI server.</p>
 <ol>
 <li>Make sure the <code>fastapi dev src/main.py</code> command is still running</li>
 <li><strong>Check:</strong> the browser is showing the "/" route on <code>*.github.dev</code> with "Hello, World"</li>
@@ -1125,8 +1139,8 @@
 <div class="admonition success">
 <p class="admonition-title">You just made changes &amp; verified them live (without restarting dev server)!</p>
 </div>
-<h2 id="step-6-test-changes-at-prompty">Step 6: Test changes at prompty</h2>
-<p>Let's try to make a change that will be visible in the <code>/api/create_response</code> route handling.</p>
+<h2 id="step-6-test-changes-at-prompty-asset">Step 6: Test changes at prompty asset</h2>
+<p><strong>Now, let's try to make a change that will be visible in the <code>/api/create_response</code> route handling.</strong></p>
 <ol>
 <li>Open <code>src/api/contoso_chat/chat.prompty</code><ul>
 <li>Find the <code>system:</code> section of the file</li>
@@ -1207,7 +1221,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

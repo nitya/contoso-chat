@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.06209087.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1275,7 +1275,7 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Troubleshooting: Evaluation gives an error message in the Notebook</p>
-<p>On occasion, the evaluation notebook may throw an error after a couple of iterations. This is typically a transient error. To fix it, <code>Clear inputs</code> in the Jupyter Notebook, then <code>Restart</code> it. It should complete the run this time.</p>
+<p>On occasion, the evaluation notebook may throw an error after a few iterations. This is typically a transient error. To fix it, <code>Clear outputs</code> in the Jupyter Notebook, then <code>Restart</code> the kernel. <code>Run All</code> should complete the run this time.</p>
 </div>
 <h3 id="32-watch-evaluation-runs">3.2 Watch Evaluation Runs</h3>
 <p>One of the benefits of using Prompty is the built-in <code>Tracer</code> feature that captures execution traces for the entire workflow. These trace <em>runs</em> are stored in  <code>.tracy</code> files in the <code>api/.runs/</code> folder as shown in the figure below.</p>
@@ -1340,17 +1340,17 @@
 <li>
 <p>When notebook execution completes, look in the <code>src/api/evaluators</code> folder:</p>
 <ul>
-<li>See: <strong>Chat Responses</strong> in <code>result.jsonl</code></li>
-<li>See: <strong>Evaluated Results</strong> in <code>result_evaluated.jsonl</code> (scores at end of each line)</li>
-<li>See: <strong>Evaluation Summary</strong> computed from <code>eval_results.jsonl</code> (complete data.)</li>
+<li>You see: <strong>Chat Responses</strong> in <code>result.jsonl</code></li>
+<li>You see: <strong>Evaluated Results</strong> in <code>result_evaluated.jsonl</code> (scores at end of each line)</li>
+<li>You see: <strong>Evaluation Summary</strong> computed from <code>eval_results.jsonl</code> (complete data.)</li>
 </ul>
 </li>
 <li>
-<p>Scroll to the bottom of the notebook and view the results cell:</p>
+<p>Scroll to the bottom of the notebook to view the results cell:</p>
 <ul>
 <li>Click the <code>View as scrollable element</code> link to redisplay output</li>
 <li>Scroll to the bottom of redisplayed cell to view scores table</li>
-<li>You should see something like this</li>
+<li>You should see something like the table below - we reformatted it manually for clarity.</li>
 </ul>
 </li>
 </ol>
@@ -1358,23 +1358,24 @@
 <h3 id="44-understand-eval-results">4.4 Understand: Eval Results</h3>
 <p>The figure shows you what that tabulated data looks like in the notebook results. Ignore the formatting for now, and let's look at what this tells us:</p>
 <ol>
-<li>You see 12 rows of data - correspoding to 12 test inputs</li>
-<li>You see 3 columns of metrics - corresponding to evaluators</li>
-<li>Each metric records a score between <code>1</code> and <code>5</code></li>
+<li>You see 12 rows of data - corresponding to 12 test inputs (in <code>data.jsonl</code>)</li>
+<li>You see 4 metrics from custom evaluators - <code>groundedness</code>,<code>fluency</code>,<code>coherence</code>,<code>relevance</code></li>
+<li>Each metric records a score - between <code>1</code> and <code>5</code></li>
 </ol>
 <p>Let's try to put the scores in context of the responses we see. Try these exercises:</p>
 <ol>
-<li>Find a row that has a <code>groundedness</code> of 5.<ul>
-<li>View the related row in the evaluation results file</li>
-<li>Observe the answer and context provided - <em>was the answer grounded in the context?</em></li>
+<li>Pick a row above that has a <code>groundedness</code> of 5.<ul>
+<li>View the related row in the <code>result_evaluation.jsonl</code> file</li>
+<li>Observe related answer and context in file - <em>was the answer grounded in the context?</em></li>
 </ul>
 </li>
-<li>Find a row that has a <code>groundedness</code> of 1.<ul>
-<li>View the related row in the evaluation results file</li>
-<li>Observe the answer and context provided - <em>was THIS answer grounded in the context?</em></li>
+<li>Pick a row that has a <code>groundedness</code> of 1.<ul>
+<li>View the related row in the <code>result_evaluation.jsonl</code> file</li>
+<li>Observe related answer and context in file - <em>was THIS answer grounded in the context?</em></li>
 </ul>
 </li>
 </ol>
+<p>As one example, we can see that the first response in the visualized results (<code>row 0</code>) had a groundedness of 5, while the third row from the bottom (<code>row 9</code>) had a groundedness of 1. You might find that in the first case the answers provided matched the data context. While in the second case, the answers may quote specific context but did not actually reflect correct usage.</p>
 <div class="admonition note">
 <p class="admonition-title">Explore the data in more detail on your own. Try to build your intuition for how scores are computed, and how that assessment reflects in the quality of your application.</p>
 </div>
@@ -1459,7 +1460,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

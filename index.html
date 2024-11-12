@@ -6,23 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Build a custom RAG-based retail copilot code-first on Azure AI.">
+      
+      
+        <meta name="author" content="Nitya Narasimhan">
+      
+      
+        <link rel="canonical" href="https://nitya.github.io/contoso-chat/">
       
       
       
-      
-        <link rel="next" href="00-Before-You-Begin/">
+        <link rel="next" href="01-Introduction/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
-        <title>Contoso Chat Workshop</title>
+        <title>Contoso Chat: Workshop Guide</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -61,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-a-retail-copilot-code-first-on-azure-ai" class="md-skip">
+        <a href="#before-you-begin" class="md-skip">
           Skip to content
         </a>
       
@@ -84,9 +90,9 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Contoso Chat Workshop" class="md-header__button md-logo" aria-label="Contoso Chat Workshop" data-md-component="logo">
+    <a href="." title="Contoso Chat: Workshop Guide" class="md-header__button md-logo" aria-label="Contoso Chat: Workshop Guide" data-md-component="logo">
       
   <img src="img/logo.svg" alt="logo">
 
@@ -99,13 +105,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Contoso Chat Workshop
+            Contoso Chat: Workshop Guide
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build a Retail Copilot Code-First on Azure AI
+              Before You Begin
             
           </span>
         </div>
@@ -118,9 +124,19 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
       </label>
     
@@ -128,10 +144,10 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="cyan"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -181,15 +197,184 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/Azure-Samples/contoso-chat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Azure-Samples/contoso-chat
+  </div>
+</a>
+      </div>
+    
   </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Before You Begin
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="01-Introduction/" class="md-tabs__link">
+          
+  
+    
+  
+  01 Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="02-Setup/0-PreRequisites/" class="md-tabs__link">
+          
+  
+    
+  
+  02 Setup
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="03-Ideate/" class="md-tabs__link">
+          
+  
+    
+  
+  03 Ideate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="04-Evaluate/" class="md-tabs__link">
+          
+  
+    
+  
+  04 Evaluate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="05-Deploy/" class="md-tabs__link">
+          
+  
+    
+  
+  05 Deploy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="Tear-Down/" class="md-tabs__link">
+          
+  
+    
+  
+  Tear Down
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
   
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -203,16 +388,30 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Contoso Chat Workshop" class="md-nav__button md-logo" aria-label="Contoso Chat Workshop" data-md-component="logo">
+    <a href="." title="Contoso Chat: Workshop Guide" class="md-nav__button md-logo" aria-label="Contoso Chat: Workshop Guide" data-md-component="logo">
       
   <img src="img/logo.svg" alt="logo">
 
     </a>
-    Contoso Chat Workshop
+    Contoso Chat: Workshop Guide
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Azure-Samples/contoso-chat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Azure-Samples/contoso-chat
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -232,90 +431,15 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Build a Retail Copilot Code-First on Azure AI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Build a Retail Copilot Code-First on Azure AI
+    Before You Begin
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-the-app-scenario" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. The App Scenario
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-rag-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The RAG Pattern
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-the-app-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. The App Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-the-app-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. The App Lifecycle
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-related-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Related Resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -329,32 +453,63 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="01-Introduction/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    00 Before You Begin
+    01 Introduction
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            00 Before You Begin
+            01 Introduction
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -363,11 +518,95 @@
   
   
     <li class="md-nav__item">
-      <a href="00-Before-You-Begin/" class="md-nav__link">
+      <a href="01-Introduction/01-App-Scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    0️⃣ | Pre-Requisites
+    1. The App Scenario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-Introduction/02-RAG-Pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. The RAG Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-Introduction/03-App-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. The App Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-Introduction/04-App-Lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. The App Lifecycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-Introduction/05-Dev-Workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. The Dev Workflow
   </span>
   
 
@@ -392,20 +631,31 @@
   
     
     
+      
+        
+      
+        
+      
+    
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    01 Tour Guide Setup
+    02 Setup
   </span>
   
 
@@ -415,7 +665,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            01 Tour Guide Setup
+            02 Setup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -425,12 +675,133 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="02-Setup/0-PreRequisites/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    0 PreRequisites
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            0 PreRequisites
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="02-Setup/1-Provision-And-Setup/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    1 Provision And Setup
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            1 Provision And Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="01-Tour-Guide-Setup/01-setup/" class="md-nav__link">
+      <a href="02-Setup/1-Provision-And-Setup/01-Self-Guided/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1️⃣ | Getting Started: Instructor-Led Workshop
+    A. Self-Guided Setup
   </span>
   
 
@@ -447,15 +818,44 @@
   
   
     <li class="md-nav__item">
-      <a href="01-Tour-Guide-Setup/02-validate/" class="md-nav__link">
+      <a href="02-Setup/1-Provision-And-Setup/02-Skillable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2️⃣ | Validate Setup and Provision
+    B. Skillable-Based Setup
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-Setup/1-Provision-And-Setup/03-Validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validate Your Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -476,32 +876,65 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="03-Ideate/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    02 Self Guide Setup
+    03 Ideate
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            02 Self Guide Setup
+            03 Ideate
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -510,11 +943,11 @@
   
   
     <li class="md-nav__item">
-      <a href="02-Self-Guide-Setup/01-setup/" class="md-nav__link">
+      <a href="03-Ideate/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1️⃣ | Getting Started (Self-Guided Workshop)
+    3.1 Create a New Prompty
   </span>
   
 
@@ -531,11 +964,95 @@
   
   
     <li class="md-nav__item">
-      <a href="02-Self-Guide-Setup/02-provision/" class="md-nav__link">
+      <a href="03-Ideate/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2️⃣ | Provision Infra
+    3.2: Update Prompt Metadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Ideate/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3: Update Prompt Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Ideate/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 Refine Prompt Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Ideate/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.5 Convert Prompty To Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Ideate/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.6 Let's Connect The Dots! 💡
   </span>
   
 
@@ -560,45 +1077,76 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="04-Evaluate/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    03 Workshop Build
+    04 Evaluate
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            03 Workshop Build
+            04 Evaluate
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="03-Workshop-Build/03-infra/" class="md-nav__link">
+      <a href="04-Evaluate/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    3️⃣ | Explore App Infrastructure
+    4.1 Understand Metrics
   </span>
   
 
@@ -615,11 +1163,11 @@
   
   
     <li class="md-nav__item">
-      <a href="03-Workshop-Build/04-ideation/" class="md-nav__link">
+      <a href="04-Evaluate/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    4️⃣ | Ideate With Prompty
+    4.2 Understand Evaluators
   </span>
   
 
@@ -636,11 +1184,11 @@
   
   
     <li class="md-nav__item">
-      <a href="03-Workshop-Build/05-evaluation/" class="md-nav__link">
+      <a href="04-Evaluate/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5️⃣ | Evaluate with AI
+    4.3 Run Batch Evaluation
   </span>
   
 
@@ -657,11 +1205,32 @@
   
   
     <li class="md-nav__item">
-      <a href="03-Workshop-Build/06-operationalization/" class="md-nav__link">
+      <a href="04-Evaluate/04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6️⃣ | Deploy with ACA
+    4.4 Understand Eval Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-Evaluate/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.5. (Optional) Homework
   </span>
   
 
@@ -686,32 +1255,67 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="05-Deploy/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    04 Workshop Wrapup
+    05 Deploy
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            04 Workshop Wrapup
+            05 Deploy
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -720,11 +1324,11 @@
   
   
     <li class="md-nav__item">
-      <a href="04-Workshop-Wrapup/07-cleanup/" class="md-nav__link">
+      <a href="05-Deploy/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7️⃣ | Cleanup
+    1. Explore the Codebase
   </span>
   
 
@@ -732,6 +1336,190 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Run API Server Locally
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Testing the Chat AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Debugging Execution Errors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Testing Code Changes Live
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Test Code Changes to Prompty
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-Deploy/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Redeploy Copilot to Azure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="Tear-Down/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tear Down
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tear Down
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
             
           </ul>
@@ -761,59 +1549,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-the-app-scenario" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. The App Scenario
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-the-rag-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. The RAG Pattern
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-the-app-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. The App Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-the-app-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. The App Lifecycle
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-related-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Related Resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -826,70 +1561,53 @@
                 
                   
 
+  
+  
 
-<h1 id="build-a-retail-copilot-code-first-on-azure-ai">Build a Retail Copilot Code-First on Azure AI</h1>
-<div class="admonition example">
-<p class="admonition-title">Microsoft AI Tour Attendees:  <br/> To get started with this workshop, <a href="00-Before-You-Begin/">make sure you have everything you need</a> to start building.</p>
+
+<h1 id="before-you-begin">Before You Begin<a class="headerlink" href="#before-you-begin" title="Permanent link">&para;</a></h1>
+<p>The workshop teaches you to <strong>build, evaluate, and deploy a retail copilot</strong> code-first on Azure AI. </p>
+<p>You can complete it as a <strong>self-guided</strong> workshop at home. Or you can register for an <strong>instructor-led</strong> workshop at specific events like the <a href="https://aka.ms/aitour">Microsoft AI Tour (2024-2025)</a> and <a href="https://ignite.microsoft.com/en-US/sessions?search=LAB401">Microsoft Ignite 2024</a>. The primary difference will be in the initial setup steps and the Azure subscription used.</p>
+<p><br/></p>
+<div class="admonition task">
+<p class="admonition-title">CHOOSE THE TAB FOR YOUR SESSION - This becomes the default context site-wide.</p>
 </div>
-<p>This website contains the step-by-step instructions for a hands-on workshop that teaches you how to <strong>build, evaluate, and deploy a retail copilot code-first on Azure AI</strong>. </p>
-<ul>
-<li>Our solution use the <a href="https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation">Retrieval Augmented Generation (RAG) pattern</a> to ground chat AI responses in the retailer's product catalog and cusomer data.</li>
-<li>Our implementation uses <a href="https://prompty.ai">Prompty</a> for ideation, <a href="https://ai.azure.com">Azure AI Studio</a> as the platform for code-first copilotdevelopment, and <a href="https://aka.ms/azcontainerapps">Azure Container Apps</a> for hosting the deployed copilot.</li>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="self-guided" name="__tabbed_1" type="radio" /><input id="microsoft-ai-tour" name="__tabbed_1" type="radio" /><input id="microsoft-ignite" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="self-guided">Self-Guided</label><label for="microsoft-ai-tour">Microsoft AI Tour</label><label for="microsoft-ignite">Microsoft Ignite</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own GitHub account</strong> - you can <a href="https://github.com/signup">get one for free</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own Azure subscription</strong> - you can <a href="https://aka.ms/free">get one for free</a> </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to <strong>self-provision the infrastructure</strong> - we provide instructions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own laptop</strong> - keep it charged for the session duration</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You can complete the lab at your own pace - no time constraints!</li>
 </ul>
-<p>In this section, we introduce the application scenario (Contoso Chat), review the design pattern used (RAG) and understand how it maps to our application architecture (on Azure AI). We'll wrap the section by understanding the application lifecycle (GenAIOps) and the three stages for end-to-end development that we will follow in this workshop.</p>
-<hr />
-<h2 id="1-the-app-scenario">1. The App Scenario</h2>
-<p><strong>Contoso Outdoors</strong> is an enterprise retailer that sells a wide variety of hiking and camping equipment to outdoor adventurer through their website. Customers visiting the site often call the customer support line with requests for product information or recommendations, before making their purchases. The retailer decides to build and integrate an AI-based <em>customer support agent</em> (retail copilot) to handle these queries right from their website, for efficiency.</p>
-<p><img alt="Contoso Chat UI" src="img/chat-ui.png" /></p>
-<p><strong>Contoso Chat</strong> is the chat AI implementation (<em>backend</em>) for the retail copilot experience. It has a hosted API (<em>endpoint</em>) that the chat UI (<em>frontend</em>) can interact with to process user requests. Customers can now ask questions in a conversational format, using natural language, and get valid responses grounded in product data and their own purchase history.</p>
-<p><img alt="Contoso Chat AI" src="img/chat-ai.png" /></p>
-<h2 id="2-the-rag-pattern">2. The RAG Pattern</h2>
-<p>Foundation large language models are trained on massive quantities of public data, giving them the ability to answer general questions effectively. However, our retail copilot needs responses grounded in <em>private data</em> that exists in the retailer's data stores. <em>Retrieval Augmented Generation</em> (RAG) is a design pattern that provides a popular solution to this challenge with this workflow:</p>
-<ol>
-<li>The user query arrives at our copilot implementation via the endpoint (API).</li>
-<li>The copilot sends the text query to a <strong>retrieval</strong> service which vectorizes it for efficiency.</li>
-<li>It uses this vector to query a search index for matching results (e.g., based on similarity)</li>
-<li>The retrieval service returns results to the copilot, potentially with semantic ranking applied.</li>
-<li>The copilot <strong>augments</strong> the user prompt with this knowledge, and invokes the chat model.</li>
-<li>The chat model now <strong>generates</strong> responses <em>grounded</em> in the provided knowledge.</li>
-</ol>
-<p><img alt="RAG" src="img/rag-design-pattern.png" /></p>
-<h2 id="3-the-app-architecture">3. The App Architecture</h2>
-<p>Implementing this design pattern requires these architectural components:</p>
-<ul>
-<li>an <strong>information retrieval</strong> service (data indexing, similarity search, semantic ranking)</li>
-<li>a <strong>database</strong> service for storing other data (customer orders)</li>
-<li>a <strong>model deployments</strong> capability (for chat, embeddings - and AI-assisted evaluation)</li>
-<li>a <strong>copilot hosting</strong> capability (for real-world access to deployed endpoint)</li>
+</div>
+<div class="tabbed-block">
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own GitHub account</strong> - you can <a href="https://github.com/signup">get one for free</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Uses the <strong>built-in Azure subscription</strong> from Skillable - you get auth credentials</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Uses the <strong>pre-provisioned infrastructure</strong> from Skillable - you save setup time</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own laptop</strong> - keep it charged for the session duration</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You have 75 minutes for the entire session - assume 60 mins for the lab alone</li>
 </ul>
-<p>The corresponding Azure AI application architecture for the Contoso Chat retail copilot is shown below. The copilot is deployed to Azure Container Apps, providing a hosted API endpoint for client integration. The copilot processes incoming requests with the help of:</p>
-<ul>
-<li><strong>Azure OpenAI Services</strong>  - provides model deployments for chat and text embeddings</li>
-<li><strong>Azure CosmosDB</strong>  - stores the customer order data (JSON) in a noSQL database</li>
-<li><strong>Azure AI Search</strong>  - indexes the product catalog with search-retrieval capability. </li>
+<div class="admonition question">
+<p class="admonition-title">Are you currently in a Microsoft AI Tour session? <a href="02-Setup/1-Provision-And-Setup/02-Skillable/">Go directly to Provision &amp; Setup!</a></p>
+</div>
+</div>
+<div class="tabbed-block">
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Requires you to use <strong>your own GitHub account</strong> - you can <a href="https://github.com/signup">get one for free</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Uses the <strong>built-in Azure subscription</strong> from Skillable - you get auth credentials</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Uses the <strong>pre-provisioned infrastructure</strong> from Skillable - you save setup time</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Uses the <strong>in-venue workstations</strong> setup for event - just find an open seat to use</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You have 75 minutes for the entire session - assume 60 mins for the lab alone</li>
 </ul>
-<p><img alt="ACA Architecture" src="img/aca-architecture.png" /></p>
-<p>The copilot <em>orchestrates</em> the steps of the RAG workflow using <strong>Prompty</strong> assets (configured with required Azure OpenAI models) executed in a Prompty runtime (Python). It supports multi-turn conversations and responsible AI practices to meet response quality and safety requirements.</p>
-<h2 id="4-the-app-lifecycle">4. The App Lifecycle</h2>
-<p>Building generative AI applications requires an iterative process of refinement from <em>prompt</em> to <em>production</em>. The application  lifecycle (GenAIOps) is best illustrated by the three stages shown:</p>
-<ol>
-<li><strong>Ideation</strong> - involves building the initial prototype, validating it manually with a test prompt.</li>
-<li><strong>Evaluation</strong> - involves assessing it for quality and safety with large, diverse test datasets.</li>
-<li><strong>Operationalization</strong> - involves deploying it for real-world usage &amp; monitoring it for insights.</li>
-</ol>
-<p><img alt="GenAIOps" src="img/gen-ai-ops.png" /></p>
-<p>In our workshop, you willl see the development workflow organized into sections that mimic this lifecycle - giving you a more intuitive sense for how you can iteratively go from promt to production, code-first, with Azure AI.</p>
-<h2 id="5-related-resources">5. Related Resources</h2>
-<ol>
-<li><strong>Prompty</strong> | <a href="https://prompty.ai">Documentation</a> · <a href="https://github.com/microsoft/prompty/blob/main/Prompty.yaml">Specification</a>  · <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.prompty">Tooling</a> · <a href="https://pypi.org/project/prompty/">SDK</a></li>
-<li><strong>Azure AI Studio</strong>  | <a href="https://learn.microsoft.com/en-us/azure/ai-studio/">Documentation</a>  · <a href="https://learn.microsoft.com/azure/ai-studio/concepts/architecture">Architecture</a> · <a href="https://learn.microsoft.com/azure/ai-studio/how-to/develop/sdk-overview">SDKs</a> ·  <a href="https://learn.microsoft.com/azure/ai-studio/how-to/evaluate-generative-ai-app">Evaluation</a></li>
-<li><strong>Azure AI Search</strong> | <a href="https://learn.microsoft.com/azure/search/">Documentation</a>  · <a href="https://learn.microsoft.com/azure/search/semantic-search-overview">Semantic Ranking</a> </li>
-<li><strong>Azure Container Apps</strong>  | <a href="https://learn.microsoft.com/azure/container-apps/">Azure Container Apps</a>  · <a href="https://learn.microsoft.com/en-us/azure/container-apps/quickstart-repo-to-cloud?tabs=bash%2Ccsharp&amp;pivots=with-dockerfile">Deploy from code</a></li>
-<li><strong>Responsible AI</strong>  | <a href="https://www.microsoft.com/ai/responsible-ai">Overview</a>  · <a href="https://learn.microsoft.com/en-us/azure/ai-services/responsible-use-of-ai-overview?context=%2Fazure%2Fai-studio%2Fcontext%2Fcontext">With AI Services</a>  · <a href="https://learn.microsoft.com/en-us/azure/ai-services/content-safety/">Azure AI Content Safety</a></li>
-</ol>
-<hr />
-<div class="admonition example">
-<p class="admonition-title">To get started with this workshop, <a href="00-Before-You-Begin/">make sure you have everything you need</a> to start building.</p>
+<div class="admonition question">
+<p class="admonition-title">Are you currently in a Microsoft Ignite session? <a href="02-Setup/1-Provision-And-Setup/02-Skillable/">Go directly to Provision &amp; Setup!</a></p>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -908,22 +1626,54 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="01-Introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - present Microsoft
+
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
@@ -936,11 +1686,13 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.expand", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.footer", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>

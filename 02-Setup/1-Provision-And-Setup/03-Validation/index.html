@@ -1758,12 +1758,12 @@
 <p><img alt="ACA Architecture" src="../../../img/aca-architecture.png" /></p>
 <ol>
 <li>
-<p>Open a new browser tab and navigate to the link below. You will be prompted to login.
+<p>Open a new browser tab and navigate to the link below. You may be prompted to login.
     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>https://portal.azure.com/#browse/resourcegroups
 </code></pre></div></td></tr></table></div></p>
 </li>
 <li>
-<p><strong>Sign in</strong> → Use the <code>Username</code> and <code>Password</code> from the "Azure Credentials" section in your Skillable Lab instructions panel.</p>
+<p><strong>Sign in</strong> → If prompted, use the <code>Username</code> and <code>Password</code> from the "Azure Credentials" section in your Skillable Lab instructions panel.</p>
 </li>
 <li>You may be presented with a "Welcome to Microsoft Azure" screen. Click <strong>Cancel</strong> (to dismiss it) or click <strong>Get Started</strong> (to take an introductory tour of the Azure Portal).</li>
 <li>You should be taken directly to the Resource Groups page for your subscription.<ul>
@@ -1771,7 +1771,7 @@
 </ul>
 </li>
 <li><strong>Click</strong> <code>rg-AITOUR</code> to visit the Resource Group overview page.<ul>
-<li><strong>Check:</strong> Deployments (under "Essentials") - You should see: <em>35 succeeded</em>. </li>
+<li><strong>Check:</strong> Deployments (look under "Essentials") - You should see: <em>35 succeeded</em>. </li>
 <li><strong>Check:</strong> Resources (in Overview) - You should see: <em>15 resources</em>.</li>
 </ul>
 </li>
@@ -1793,19 +1793,21 @@
 <li>
 <p><strong>Click <code>Sign in</code></strong> → you will auto-login with the Azure credentials used to sign into the portal.</p>
 <ul>
+<li><strong>Check:</strong> You should see a Hub resource (with a name like <em>ai-hub-XXXXXXXX</em>)</li>
 <li>
-<p><strong>Check:</strong> You should see a Project and a Hub listed.</p>
+<p><strong>Check:</strong> You should see a Project resource (with a name like <em>ai-project-XXXXXXXX</em>)</p>
 <div class="admonition info">
 <p class="admonition-title">The <a href="https://learn.microsoft.com/azure/ai-studio/concepts/ai-resources">Azure AI hub</a> collects AI resources that can be shared between AI projects. The <a href="https://learn.microsoft.com/azure/ai-studio/how-to/create-projects?tabs=ai-studio">Azure AI project</a> helps you organize your work when building applications.</p>
 </div>
 </li>
 <li>
-<p>Click on the Hub resource name → it should be in the form <em>ai-hub-XXXXXXXX</em></p>
+<p>Click the Project link. You will be taken to a Project details page.</p>
 </li>
-<li><strong>Check:</strong> There is 1 project listed under <code>Projects</code> for this hub.</li>
 <li>Click "Connected Resources" in the left pane,</li>
+<li><strong>Check:</strong> You should see Hub connections to OpenAI endpoints, Azure AI Search &amp; Storage.</li>
+<li>Click "Models + endpoints" in the left pane.</li>
 <li>
-<p><strong>Check:</strong> You see Hub connections to OpenAI endpoints, Azure AI Search &amp; Storage.</p>
+<p><strong>Check:</strong> You should see deployed models for this project.</p>
 <div class="admonition info">
 <p class="admonition-title">For this application, we will use the chat completion models <code>gpt-4</code> and <code>gpt-35-turbo</code>, and the embedding model <code>text-embedding-ada-002</code>.</p>
 </div>

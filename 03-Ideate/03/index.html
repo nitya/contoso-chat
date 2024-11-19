@@ -1683,12 +1683,12 @@
 <h1 id="33-update-prompt-template">3.3: Update Prompt Template<a class="headerlink" href="#33-update-prompt-template" title="Permanent link">&para;</a></h1>
 <details class="tip">
 <summary>OPTIONAL: <br/> If you get stuck, you can skip this step and copy over a pre-edited file. <br/> Click to expand this section to see the hidden commands to do this.</summary>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.prompty .
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.prompty .
 </code></pre></div></td></tr></table></div>
 </details>
 <h2 id="1-copy-prompty-to-iterate">1. Copy Prompty to Iterate<a class="headerlink" href="#1-copy-prompty-to-iterate" title="Permanent link">&para;</a></h2>
 <p>To mimic the iterative process of ideation, we start each step by copying the Prompty from the previous step (<code>chat-0.prompty</code>) to a new file (<code>chat-1.prompty</code>) to make edits.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp chat-0.prompty chat-1.prompty
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp chat-0.prompty chat-1.prompty
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="2-set-the-temperature-parameter">2. Set the Temperature Parameter<a class="headerlink" href="#2-set-the-temperature-parameter" title="Permanent link">&para;</a></h2>
@@ -1701,7 +1701,7 @@
 </li>
 <li>
 <p>Add the following at Line 15 (at the end of the <code>parameters:</code> section):
-    <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>temperature: 0.2
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>temperature: 0.2
 </code></pre></div></td></tr></table></div></p>
 </li>
 </ol>
@@ -1713,7 +1713,7 @@
 <p>In this example, we'll use a <code>JSON</code> file to provide the sample test inputs for the Prompty asset. This allows us to test the Prompty execution by <strong>rendering</strong> the prompt template using the data in this file to fill in the placeholder variables. <em>Later, when we convert the Prompty asset to code, we'll use functions to populate this data from real sources (databases, search indexes, user query)</em>.</p>
 <ol>
 <li>Copy a JSON file with sample data to provide as context in our Prompty. 
-    <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.json .
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.json .
 </code></pre></div></td></tr></table></div></li>
 <li>
 <p>Open the JSON file and review the contents</p>
@@ -1724,7 +1724,7 @@
 </li>
 <li>
 <p>Replace the <code>sample:</code> section of <code>chat-1.prompty</code> (lines 16-18) with the following:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1747,7 +1747,7 @@ sample: ${file:chat-1.json}
 <ol>
 <li>
 <p>Update the system section of <code>chat-1.prompty</code> with the text below. Note that the commented lines (like "<code># Customer</code>") are not part of the Prompty file specification -- that text is passed directly to the Generative AI model. (Experience suggests AI models perform more reliably if you organize the meta-prompt with Markdown-style headers.)</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>

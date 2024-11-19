@@ -907,9 +907,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-check-installed-tools" class="md-nav__link">
+  <a href="#24-check-tools-installed" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4 Check Installed Tools
+      2.4 Check Tools Installed
     </span>
   </a>
   
@@ -1726,9 +1726,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-check-installed-tools" class="md-nav__link">
+  <a href="#24-check-tools-installed" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4 Check Installed Tools
+      2.4 Check Tools Installed
     </span>
   </a>
   
@@ -1870,8 +1870,8 @@
 <li>You should see a Visual Studio Code editor view loading (takes a few mins)</li>
 <li>When ready, you should see the README for the "Contoso Chat" repository</li>
 </ul>
-<div class="admonition task">
-<p class="admonition-title">Close the README file - we won't use it. Continue next steps in this guide.</p>
+<div class="admonition warning">
+<p class="admonition-title">The README is for information only. Please continue to follow <em>this</em> guide for the workshop.</p>
 </div>
 </li>
 </ol>
@@ -1929,29 +1929,16 @@
 <p>Now, run this command to fork the repo.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>GITHUB_TOKEN=&quot;&quot; gh repo fork --remote
 </code></pre></div></td></tr></table></div>
-<ol>
-<li>You see: a <code>Created fork..</code> message followed by <code>Added remote origin ..</code>. </li>
-<li>On completion, you should have a fork of the repo in your personal profile.</li>
-<li>Your local Codespaces environment is now setup to use your fork for commits.</li>
-</ol>
+<p>You should see a <code>Created fork..</code> followed by an <code>Added remote origin ..</code> message. On completion, you should have a fork of the repo in your personal profile <em>and</em> your local Codespaces environment will now be setup to commit changes to your fork.</p>
+</li>
+<li>
+<p><strong>Optional</strong>. Visit your GitHub profile and check that the fork was created. It should be at the location in the form <code>https://github.com/&lt;username&gt;/contoso-chat</code> where <code>&lt;username&gt;</code> should be replaces by your GitHub profile.</p>
 </li>
 </ol>
-<details class="quote">
-<summary>OPTIONAL TASK: Verify fork was created (expand for steps)</summary>
-<ol>
-<li>Visit your GitHub profile page</li>
-<li>Click the <code>Repositories</code> tab</li>
-<li>Search for <code>contoso-chat</code> </li>
-</ol>
-</details>
-<h3 id="24-check-installed-tools">2.4 Check Installed Tools<a class="headerlink" href="#24-check-installed-tools" title="Permanent link">&para;</a></h3>
-<p>The workshop uses the following tools and commands: <code>python</code>, <code>fastapi</code>, <code>prompty</code>, <code>az</code>, <code>azd</code>. These are pre-installed for you. </p>
-<p>The <code>azd</code> tool is updated regularly. Let's verify <code>azd</code> version now. </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd version
-</code></pre></div></td></tr></table></div>
-<strong>If an update is required, you will be prompted with instructions</strong> - just follow them in the terminal. The update should take seconds. <strong>Use the command above again, to check new version.</strong></p>
-<details class="quote">
-<summary>OPTIONAL TASK: Verify other tool installation (expand for steps)</summary>
+<h3 id="24-check-tools-installed">2.4 Check Tools Installed<a class="headerlink" href="#24-check-tools-installed" title="Permanent link">&para;</a></h3>
+<p>The workshop uses the following tools and commands: <code>python</code>, <code>fastapi</code>, <code>prompty</code>, <code>az</code>, <code>azd</code>. These are pre-installed for you, but you can optionally verify these to get a sense for their current versions.</p>
+<details class="task">
+<summary>(Optional: Expand to view details) Verify intalled tools.</summary>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python<span class="w"> </span>--version
 </code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>fastapi<span class="w"> </span>--version
@@ -1998,29 +1985,25 @@
 <li>Note: you won't need to enter the password again. Just select the Skillable lab account.</li>
 </ol>
 </details>
+<div class="admonition success">
+<p class="admonition-title">CONGRATULATIONS. You are logged in from Azure CLI and Azure Developer CLI</p>
+</div>
 <h2 id="4-configure-env-variables">4. Configure Env Variables<a class="headerlink" href="#4-configure-env-variables" title="Permanent link">&para;</a></h2>
 <p>To build code-first solutions, we will need to use the Azure SDK from our development environment. This requires configuration information for the various resources we've already provisioned for you in the <code>francecentral</code> region. Let's retrieve those now.</p>
-<div class="admonition task">
-<p class="admonition-title">1. Run the commands below in the same Visual Studio Code terminal.</p>
-</div>
+<ol>
+<li>
+<p>Run the commands below in the same Visual Studio Code terminal.</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd env set AZURE_LOCATION francecentral -e AITOUR --no-prompt
 </code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd env refresh -e AITOUR 
 </code></pre></div></td></tr></table></div></p>
-<p>Press ENTER to select the default Azure subscription presented.</p>
-<div class="admonition task">
-<p class="admonition-title">2. Verify the environment variables were refreshed.</p>
-</div>
-<ol>
-<li>This creates a <code>.azure/AITOUR/.env</code> file in your repo.</li>
+<p>(Press ENTER to select the default Azure subscription presented). </p>
+</li>
 <li>
-<p>Open the file in VS Code explorer to verify values.</p>
-<details class="quote">
-<summary>OPTIONAL TASK: Verify the env variables from command line instead</summary>
-<p>Run this command to see <code>.env</code> values in the terminal.
+<p>Verify the environment variables were refreshed.</p>
+<p>The above commands will have created a <code>.azure/AITOUR/.env</code> file in your GitHub Codespaces environment with all the configuration information we will need to build our app. You can open the file from the VS Code file explorer <strong>or</strong> you can run the command below to view the values in the terminal:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd env get-values
-</code></pre></div></td></tr></table></div></p>
-</details>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Note that the <code>.env</code> file does not contain any secrets (passwords or keys). Instead, we use  <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview">Azure Managed Identities</a> for keyless authentication as a <em>security best practice</em></p>
 </div>
@@ -2029,36 +2012,25 @@
 <h2 id="5-do-post-provisioning">5. Do Post-Provisioning<a class="headerlink" href="#5-do-post-provisioning" title="Permanent link">&para;</a></h2>
 <p><em>We can now use these configured tools and SDK to perform some post-provisioning tasks. This includes populating data in Azure AI Search (product indexes) and Azure Cosmos DB (customer data), and deploying the initial version of our application to Azure Container Apps</em>.</p>
 <p>Return to the Visual Studio Code Terminal above:</p>
-<div class="admonition task">
-<p class="admonition-title">1. Update Role Access Permissions.</p>
-</div>
-<p>Run this command. It takes a few minutes to complete.</p>
+<ol>
+<li>
+<p>Run the command below. (This will take a few minutes to complete.)</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>bash ./docs/workshop/src/0-setup/azd-update-roles.sh
 </code></pre></div></td></tr></table></div>
-<blockquote>
-<p>Why is this step needed?</p>
-</blockquote>
-<ul>
-<li>We pre-provisioned the Azure resources for you using a service principal. </li>
-<li>In this step, we update the resource roles to allow user access so you can populate data in Azure AI Search and Azure Cosmos DB from code. </li>
-<li>This step is not required in self-guided mode where you provision all resources yourself.</li>
-</ul>
-<div class="admonition task">
-<p class="admonition-title">2. Populate Catalog &amp; Customer Data.</p>
+<div class="admonition info">
+<p class="admonition-title">We pre-provisioned the Azure resources for you using a service principal. In this step, we update the resource roles to allow user access so you can populate data in Azure AI Search and Azure Cosmos DB from code. This step is not required in self-guided mode where you provision all resources yourself.</p>
 </div>
-<p>Run this command. It takes a few minutes to complete.</p>
+</li>
+<li>
+<p>Once complete, run the command below. It will take a few minutes to complete.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd hooks run postprovision
 </code></pre></div></td></tr></table></div>
-<blockquote>
-<p>Why is this step needed?</p>
-</blockquote>
-<ul>
-<li>Our <code>data/</code> subfolder contains customer and product info.</li>
-<li>Each subfolder comes with a Jupyter Notebook to load data.</li>
-<li>This step runs those notebooks once resources are ready.</li>
-<li>Customer data is populated in Azure Cosmos DB (database)</li>
-<li>Product data is populated in Azure AI Search (indexes)</li>
-</ul>
+<div class="admonition info">
+<p class="admonition-title">This step runs the Jupyter Notebooks found in the relevant <code>data/</code> subfolders, populating the Azure AI Search and Azure CosmosDB resources with product catalog (index) and customer profile (orders).</p>
+</div>
+<p>This step should take just a few minutes to complete from the commandline.</p>
+</li>
+</ol>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. Your Skillable-based Setup is Complete! We'll Validate this, next!</p>

@@ -1684,27 +1684,28 @@
 <li>You see: <code>groundedness</code> traces when its groundeness is evaluated</li>
 <li>You see: similar <code>fluency</code>, <code>coherence</code> and <code>relevance</code> traces</li>
 </ul>
-<p>These are live trace runs so you should be able to make the following observations when completed:</p>
+<p>These are live trace runs! Observe the following:</p>
 <ul>
-<li>There will be 12 <code>get_response</code> traces corresponding to 12 chat prompts that are executed by our chat AI.</li>
-<li>For each of these responses, you should see 4 traces for each of the 4 custom evaluators we have defined.</li>
-<li>Clicking on an <code>.tracy</code> file should open the <em>Trace Viewer</em> window, allowing you to dive into the data visually.</li>
+<li>There are 12 <code>get_response</code> traces → correspond to the 12 prompts in our test file.</li>
+<li>There are 4 eval traces for each response → for the 4 custom evaluators defined.</li>
+<li>Clicking on an <code>.tracy</code> file opens a <em>Trace Viewer</em> window → it should look like this:</li>
 </ul>
 <p><img alt="Eval" src="../../img/Evaluation%20Runs.png" /></p>
-<hr />
-<h2 id="3-explore-evaluation-trace">3. Explore: Evaluation Trace<a class="headerlink" href="#3-explore-evaluation-trace" title="Permanent link">&para;</a></h2>
-<div class="admonition task">
-<p class="admonition-title">OPTIONAL: Explore .tracy files with Trace Viewer</p>
-<p>The Prompty runtime generates <code>.tracy</code> files (underlying JSON format) that capture the execution trace from prompt (input) to response (output). This section explains how you can use the traces to view or debug workflows.</p>
-</div>
-<p>To explore the evaluation trace:</p>
-<ul>
-<li>Wait till the batch evaluation process completes. </li>
-<li>Click on a <code>.tracy</code> file to launch trace viewer (see figure above). </li>
-</ul>
 <div class="admonition warning">
 <p class="admonition-title">The trace viewer feature is experimental. <em>You may need to click, wait, and retry a few times before the viewer loads the file successfully</em>. Skip this section and revisit it at home if time is limited.</p>
 </div>
+<hr />
+<h2 id="3-explore-evaluation-trace">3. Explore: Evaluation Trace<a class="headerlink" href="#3-explore-evaluation-trace" title="Permanent link">&para;</a></h2>
+<p>The Trace Viewer is an experimental feature. For optimal results you should: </p>
+<ul>
+<li>Wait till the batch evaluation process completes. </li>
+<li>Click on a <code>.tracy</code> file to launch trace viewer (see figure above). </li>
+<li>You may need to try this with a few options till the viewer launches.</li>
+</ul>
+<p><strong>To save time in-venue, we recommend completing these tasks later, at home</strong></p>
+<details class="quote">
+<summary>OPTIONAL: Explore the .tracy files with Trace Viewer</summary>
+<p>The Prompty runtime generates <code>.tracy</code> files (underlying JSON format) that capture the execution trace from prompt (input) to response (output). This section explains how you can use the traces to view or debug workflows.</p>
 <ol>
 <li>
 <p><strong>Observe the Trace View</strong></p>
@@ -1733,15 +1734,74 @@
 </ul>
 </li>
 <li>
-<p><strong>Explore a Prompty execution trace</strong></p>
+<p><strong>Explore the Prompty <code>execute</code> trace</strong></p>
+<ul>
+<li>Look at the overall performance in time and tokens</li>
+<li>Select a Prompty segment in the waterfall trace </li>
+<li>Understand what the <code>load</code> operation does</li>
+<li>Understand what the <code>prepare</code> operation does</li>
+<li>Understand what the <code>run</code> operation does</li>
+</ul>
 </li>
 <li>
 <p><strong>Explore the Prompty tracer code</strong></p>
+<ul>
+<li>Open the <code>src/api/chat_request.py</code> file</li>
+<li>Look for this code. It sets up Tracer to log to console and JSON formats.
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="kn">import</span> <span class="nn">prompty</span>
+    <span class="kn">import</span> <span class="nn">prompty.azure</span>
+    <span class="kn">from</span> <span class="nn">prompty.tracer</span> <span class="kn">import</span> <span class="n">trace</span><span class="p">,</span> <span class="n">Tracer</span><span class="p">,</span> <span class="n">console_tracer</span><span class="p">,</span> <span class="n">PromptyTracer</span>
+
+    <span class="c1"># add console and json tracer:</span>
+    <span class="c1"># this only has to be done once</span>
+    <span class="c1"># at application startup</span>
+    <span class="n">Tracer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;console&quot;</span><span class="p">,</span> <span class="n">console_tracer</span><span class="p">)</span>
+    <span class="n">json_tracer</span> <span class="o">=</span> <span class="n">PromptyTracer</span><span class="p">()</span>
+    <span class="n">Tracer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;PromptyTracer&quot;</span><span class="p">,</span> <span class="n">json_tracer</span><span class="o">.</span><span class="n">tracer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></li>
+<li>Look for this code. The <code>@trace</code> decorator identifies the functions that will be traced in this run.
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="nd">@trace</span>
+    <span class="k">def</span> <span class="nf">get_customer</span><span class="p">(</span><span class="n">customerId</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;COSMOS_ENDPOINT&quot;</span><span class="p">]</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">CosmosClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">DefaultAzureCredential</span><span class="p">())</span>
+            <span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database_client</span><span class="p">(</span><span class="s2">&quot;contoso-outdoor&quot;</span><span class="p">)</span>
+            <span class="n">container</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_container_client</span><span class="p">(</span><span class="s2">&quot;customers&quot;</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">container</span><span class="o">.</span><span class="n">read_item</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">customerId</span><span class="p">),</span> <span class="n">partition_key</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">customerId</span><span class="p">))</span>
+            <span class="n">response</span><span class="p">[</span><span class="s2">&quot;orders&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;orders&quot;</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error retrieving customer: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div></li>
+</ul>
 </li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Want to learn more about Prompty Tracing? <a href="https://github.com/microsoft/prompty/tree/main/runtime/prompty#using-tracing-in-prompty">Explore the documentation</a> to learn how to configure your application for traces, and how to view and publish traces for debugging and observability.</p>
 </div>
+</details>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. You ran a batch evaluation on the chat AI application responses!</p>

@@ -1751,57 +1751,38 @@
 <p>In this section, we'll validate our setup quickly, and organize our development environment into browser tabs before we move to the <strong>IDEATE</strong> phase of development. </p>
 <hr />
 <h3 id="31-azure-portal-tab">3.1 Azure Portal Tab<a class="headerlink" href="#31-azure-portal-tab" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
+<div class="admonition tip">
 <p class="admonition-title">The Azure Portal helps us view the resources provisioned on Azure and check that they are setup correctly</p>
 </div>
-<p>This is our Application Architecture. Let's verify these resources are provisioned correctly.</p>
+<p>Here's a reminder of the Azure Application Architecture - let's check our provisioned Resource Group to make sure these resources were created.</p>
 <p><img alt="ACA Architecture" src="../../../img/aca-architecture.png" /></p>
-<hr />
-<div class="admonition task">
-<p class="admonition-title">1. Open Azure Portal Tab. Verify <code>rg-AITOUR</code> Resource Group exists.</p>
-</div>
 <ol>
-<li>Open a new browser tab. Navigate to this link:
+<li>
+<p>Open a new browser tab and navigate to the link below. You may be prompted to login.
     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>https://portal.azure.com/#browse/resourcegroups
-</code></pre></div></td></tr></table></div></li>
-<li><strong>Sign in when prompted.</strong><ul>
-<li>Return to the Skillable VM tab. Look for the <strong>Azure Credentials</strong> section. </li>
-<li>Use this <code>Username</code> and <code>Password</code> to sign into Azure Portal.</li>
-<li>You may see a <code>Welcome to Microsoft Azure</code> screen. Click <strong>Cancel</strong> to dismiss.</li>
+</code></pre></div></td></tr></table></div></p>
+</li>
+<li>
+<p><strong>Sign in</strong> → If prompted, use the <code>Username</code> and <code>Password</code> from the "Azure Credentials" section in your Skillable Lab instructions panel.</p>
+</li>
+<li>You may be presented with a "Welcome to Microsoft Azure" screen. Click <strong>Cancel</strong> (to dismiss it) or click <strong>Get Started</strong> (to take an introductory tour of the Azure Portal).</li>
+<li>You should be taken directly to the Resource Groups page for your subscription.<ul>
+<li>You should see an <code>rg-AITOUR</code> resource. This was created for you and contains all the resources needed to build and deploy your RAG-based copilot. </li>
 </ul>
 </li>
-<li><strong>Check: the <code>rg-AITOUR</code> resource group exists.</strong><ul>
-<li>You should be taken to the Resource Groups page by default.</li>
-<li>If not, click the <code>Resource Groups</code> label on the landing page.</li>
-<li>You should see: <code>rg-AITOUR</code> listed. This has the pre-provisioned project resources!</li>
-</ul>
-</li>
-<li><strong>Check: the resources &amp; deployments completed.</strong><ul>
-<li><strong>Click</strong> <code>rg-AITOUR</code> to visit the Resource Group overview page.</li>
+<li><strong>Click</strong> <code>rg-AITOUR</code> to visit the Resource Group overview page.<ul>
 <li><strong>Check:</strong> Deployments (look under "Essentials") - You should see: <em>35 succeeded</em>. </li>
 <li><strong>Check:</strong> Resources (in Overview) - You should see: <em>15 resources</em>.</li>
 </ul>
 </li>
 </ol>
-<blockquote>
-<p><strong>Leave the Azure Portal open on this tab. We'll revisit it later.</strong></p>
-</blockquote>
+<div class="admonition task">
+<p class="admonition-title">Leave the Azure Portal open on this tab. We'll revisit it later.</p>
+</div>
 <hr />
 <h3 id="32-azure-ai-studio">3.2 Azure AI Studio<a class="headerlink" href="#32-azure-ai-studio" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">The Azure AI Studio portal lets us view and manage our Azure AI application.</p>
-<ul>
-<li>"The <a href="https://learn.microsoft.com/azure/ai-studio/concepts/ai-resources">Azure AI hub</a> collects AI resources that can be shared between AI projects. </li>
-<li>The <a href="https://learn.microsoft.com/azure/ai-studio/how-to/create-projects?tabs=ai-studio">Azure AI project</a> helps you organize your work when building applications."</li>
-<li>For this application, we will use the following models:<ul>
-<li>chat completion models <code>gpt-4</code> and <code>gpt-35-turbo</code></li>
-<li>embedding model <code>text-embedding-ada-002</code>." </li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="admonition task">
-<p class="admonition-title">1. Open Azure AI Studio portal in a new tab.</p>
+<div class="admonition tip">
+<p class="admonition-title">The Azure AI Studio portal lets us view and manage the Azure AI project for our app.</p>
 </div>
 <ol>
 <li>
@@ -1813,29 +1794,33 @@
 <p><strong>Click <code>Sign in</code></strong> → you will auto-login with the Azure credentials used to sign into the portal.</p>
 <ul>
 <li><strong>Check:</strong> You should see a Hub resource (with a name like <em>ai-hub-XXXXXXXX</em>)</li>
-<li><strong>Check:</strong> You should see a Project resource (with a name like <em>ai-project-XXXXXXXX</em>)</li>
-</ul>
-</li>
-</ol>
-<div class="admonition task">
-<p class="admonition-title">2. Verify the Azure AI project and hub resources exist.</p>
+<li>
+<p><strong>Check:</strong> You should see a Project resource (with a name like <em>ai-project-XXXXXXXX</em>)</p>
+<div class="admonition info">
+<p class="admonition-title">The <a href="https://learn.microsoft.com/azure/ai-studio/concepts/ai-resources">Azure AI hub</a> collects AI resources that can be shared between AI projects. The <a href="https://learn.microsoft.com/azure/ai-studio/how-to/create-projects?tabs=ai-studio">Azure AI project</a> helps you organize your work when building applications.</p>
 </div>
-<ul>
-<li>Click the Project link. You will be taken to a Project details page.</li>
+</li>
+<li>
+<p>Click the Project link. You will be taken to a Project details page.</p>
+</li>
 <li>Click "Connected Resources" in the left pane,</li>
 <li><strong>Check:</strong> You should see Hub connections to OpenAI endpoints, Azure AI Search &amp; Storage.</li>
 <li>Click "Models + endpoints" in the left pane.</li>
-<li><strong>Check:</strong> You should see deployed models for this project.</li>
+<li>
+<p><strong>Check:</strong> You should see deployed models for this project.</p>
+<div class="admonition info">
+<p class="admonition-title">For this application, we will use the chat completion models <code>gpt-4</code> and <code>gpt-35-turbo</code>, and the embedding model <code>text-embedding-ada-002</code>.</p>
+</div>
+</li>
 </ul>
+</li>
+</ol>
 <hr />
 <h3 id="33-azure-container-app-tab">3.3 Azure Container App Tab<a class="headerlink" href="#33-azure-container-app-tab" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
+<div class="admonition tip">
 <p class="admonition-title">The Azure Container App provides the hosting environment for our copilot (API endpoint)</p>
-<p><a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container Apps (ACA)</a> host the Contoso Chat <em>application server</em>, making our chat AI endpoint (API) visible to external clients (like the Contoso Outdoors chat UI) for integrations. Our application server is built using FastAPI and exposes a <code>/create_request</code> API route to direct requests to our custom copilot.  The Azure provisioning should have deployed a default Azure Container App to this endpoint.</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">1. Verify the Azure Container App has the app deployed.</p>
-</div>
+<p><a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container Apps</a> will host the endpoint used to serve the Contoso Chat application on the Contoso Outdoors website. The Azure provisioning should have deployed a default Azure Container App to this endpoint.</p>
 <ol>
 <li>Return to the Azure Portal tab</li>
 <li>Visit the <code>rg-AITOUR</code> Resource group page</li>
@@ -1843,14 +1828,11 @@
 <li>Look for <code>Application Url</code> (at top right), and click it to launch in new tab </li>
 <li>You should see: A <code>Hello World</code> message on the screen (confirming app was deployed)</li>
 </ol>
-<h2 id="34-check-azure-cosmos-db">3.4. Check Azure Cosmos DB<a class="headerlink" href="#34-check-azure-cosmos-db" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
-<p class="admonition-title">TThe Azure CosmosDB resource holds the customer data for our application</p>
-<p>We use the noSQL database to store the customer profile and order history data for each customer. The data is available in the <code>data/customer_info</code> folder as JSON files that get uploaded to the database when you run the notebook found in that folder. We ran this in our setup stage, so lets verify the data!</p>
+<p class="admonition-title">Azure Container Apps (ACA) is used to host our chat AI application. The application server is implemented using FastAPI and exposes a <code>/create_request</code> API endpoint to make requests to our copilot.</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">1. Verify the Azure CosmosDB has customer data populated.</p>
-</div>
+<h2 id="34-check-azure-cosmos-db">3.4. Check Azure Cosmos DB<a class="headerlink" href="#34-check-azure-cosmos-db" title="Permanent link">&para;</a></h2>
+<p>The Azure CosmosDB resource holds the customer data for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made.</p>
 <ol>
 <li>Switch to the <strong>Azure Portal</strong> tab and display the <code>rg-AITOUR</code> resource group Overview</li>
 <li><strong>Click</strong> the <code>Azure Cosmos DB account</code> resource name to visit its details page</li>
@@ -1924,19 +1906,14 @@
 </ul>
 </li>
 </ul>
-<details class="quote">
-<summary>OPTIONAL: Try this exercise at home</summary>
-<ul>
-<li>Repeat exercise with a different customer ID (1-12). How did the response change?</li>
-<li>Try asking a different question about products.</li>
-<li>Try asking a question related to previous purchases.</li>
-</ul>
-</details>
+<div class="admonition note">
+<p class="admonition-title">Exercise → Repeat exercise with a different customer ID (between 1 and 12). How did the response change?</p>
+</div>
 <hr />
 <h2 id="37-lets-connect-the-dots">3.7. Let's Connect The Dots 💡<a class="headerlink" href="#37-lets-connect-the-dots" title="Permanent link">&para;</a></h2>
-<p>Recall that the <a href="https://learn.microsoft.com/en-us/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">Retrieval Augmented Generation</a> works by <em>retrieving</em> relevant knowledge from your data stores, and <em>augmenting</em> the user query with it to create an enhanced prompt - which <em>generates</em> the final response. Let's connect the dots on how this works here.</p>
-<details class="quote">
-<summary>OPTIONAL: Connect The Dots sections provide explainers. Expand to read this if time permits.</summary>
+<div class="admonition info">
+<p class="admonition-title">Recall that the <a href="https://learn.microsoft.com/en-us/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">Retrieval Augmented Generation</a> works by <em>retrieving</em> relevant knowledge from your data stores, and <em>augmenting</em> the user query with it to create an enhanced prompt - which <em>generates</em> the final response.</p>
+</div>
 <p>To implement this RAG pattern, we need to execute three steps:</p>
 <ol>
 <li><strong>Setup data sources</strong> and populate them with our data (product catalog, customer orders)</li>
@@ -1949,7 +1926,6 @@
 <li><strong>Azure AI Search</strong> - loaded <strong>20 records</strong> from <code>data/product_info</code>, got <em>contoso-products</em> index.</li>
 </ol>
 <p>This checks off the first two idents from our RAG checklist above. Now, let's see how we can achieve the thirst ep with a code-first approach that makes use of the Azure AI Search, Azure CosmosDB and Azure OpenAI services through their Azure SDKs.</p>
-</details>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. You validated your setup! It's time to IDEATE!</p>

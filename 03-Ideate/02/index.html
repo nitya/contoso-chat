@@ -1709,9 +1709,11 @@
 <h2 id="2-edit-basic-information">2. Edit Basic information<a class="headerlink" href="#2-edit-basic-information" title="Permanent link">&para;</a></h2>
 <p>Basic information about the prompt template is provided at the top of the file.</p>
 <ul>
-<li><strong>name</strong>: Call this prompty <code>Contoso Chat Prompt</code></li>
-<li><strong>description</strong>: Use:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>A retail assistant for Contoso Outdoors products retailer.
+<li><strong>name</strong>: Change it to:
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Contoso Chat Prompt
+</code></pre></div></td></tr></table></div></li>
+<li><strong>description</strong>: Change it to:
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>A retail assistant for Contoso Outdoors products retailer.
 </code></pre></div></td></tr></table></div></li>
 <li><strong>authors</strong>: Replace the provided name with your own.</li>
 </ul>
@@ -1725,18 +1727,18 @@
 <p><strong>context</strong>: Remove this entire section. (We'll update this later)</p>
 </li>
 <li>
-<p><strong>question</strong>: Replace the provided text with:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>What can you tell me about your tents?
-</code></pre></div></td></tr></table></div></p>
+<p><strong>question</strong>: Replace the provided text with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>What can you tell me about your tents?
+</code></pre></div></td></tr></table></div>
 </li>
 </ul>
-<p>Your <strong>sample</strong> section should now look like this:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Your <strong>sample</strong> section should now look like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>sample:
-  firstName: Nitya
-  question: What can you tell me about your tents?
-</code></pre></div></td></tr></table></div></p>
+firstName: Nitya
+question: What can you tell me about your tents?
+</code></pre></div></td></tr></table></div>
 <h2 id="4-run-updated-prompty-file">4. Run updated Prompty file<a class="headerlink" href="#4-run-updated-prompty-file" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -1750,6 +1752,14 @@
 <div class="admonition info">
 <p class="admonition-title">Generative AI models use randomness when creating responses, so your results aren't always the same.</p>
 </div>
+<details class="quote">
+<summary>OPTIONAL: Try these exercises at home</summary>
+<p>Continue ideating on your own! Try each change below, then run the Prompty and observe how the output changes. Can you see how the Prompty template is rendered based on these changes?</p>
+<ul>
+<li>Change the <code>question</code> field to ask a different question about camping gear.</li>
+<li>Change the <code>firstName</code> to a different name</li>
+</ul>
+</details>
 </li>
 </ol>
 <hr />

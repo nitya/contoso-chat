@@ -907,9 +907,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-check-tools-installed" class="md-nav__link">
+  <a href="#24-optional-validate-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4 Check Tools Installed
+      2.4 (Optional) Validate Tools
     </span>
   </a>
   
@@ -1726,9 +1726,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-check-tools-installed" class="md-nav__link">
+  <a href="#24-optional-validate-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4 Check Tools Installed
+      2.4 (Optional) Validate Tools
     </span>
   </a>
   
@@ -1795,27 +1795,20 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The Skillable VM tab open, with the Azure subscription details shown.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The Skillable countdown timer visible, with <em>at least 1h 15 mins</em> remaining.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The <code>Deploy</code> button clicked, and showing a <em>Successful</em> completion message.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> This instruction guide open, with this section in focus.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> (Optional) A Deploy button that was clicked, and shows <em>Successful</em> completion.</li>
 </ul>
 <p><strong>If you already completed these steps in-venue with instructor help, then skip ahead to <a href="#2-launch-github-codespaces">Step 2</a></strong>. Otherwise, expand the section below to complete the task now.</p>
 <details class="task">
-<summary>GET STARTED: Launch Skillable VM, Click Deploy Button, Open Workshop Guide</summary>
+<summary>GET STARTED: Launch Skillable VM and Open Workshop Guide</summary>
 <p>The lab instructor should have shared a Skillable Lab link (URL or QR Code).</p>
 <ul>
-<li>Open the browser and navigate to the link - <em>locate LAB401 in the page</em>.</li>
+<li>Open the browser and navigate to the link - <em>locate WRK 550 in the page</em>.</li>
 <li>Click the <strong>Launch</strong> button - <em>wait till the launched page completes loading</em>.<ul>
 <li>(Left) You will see a login screen - <em>we can ignore this for now</em></li>
 <li>(Top Right) You will see a countdown timer - it should start at 1hr 15 mins. </li>
-<li>(Below that) You will see a <strong>Deploy</strong> button - we will use this, next.</li>
+<li>(Below that) You <strong>MAY</strong> see a <strong>Deploy</strong> button - we will use this, next.</li>
 <li>(Below That) You should see the instructions panel - we'll validate this, after.</li>
-</ul>
-</li>
-<li>Click the <strong>Deploy</strong> button - <em>wait till the loading progress icon stops</em>.<ul>
-<li>This triggers a background task to deploy our application to Azure</li>
-<li><strong>This step can take a few minutes to complete</strong></li>
-<li>When done, you should see a "Success" dialog below the button.</li>
-<li><em>Note: The dialog may use a red background to alert you - this does not imply failure!</em></li>
 </ul>
 </li>
 <li>Review other <strong>Instructions Panel</strong> details:<ul>
@@ -1825,8 +1818,29 @@
 </ul>
 </li>
 </ul>
-<p><strong>Leave the Skillable tab open in your browser</strong>. We'll use the Azure credentials in the next step. And we'll revisit this tab at the end, to complete lab teardown. You can also track remaining lab time in the countdown timer.</p>
+<p>Skillable pre-provisions resources for the application, including an Azure Container Apps resources with a default endpoint. During setup, we want to update this endpoint with an initial version of our Contoso App.</p>
+<div class="admonition tip">
+<p class="admonition-title">TO DEPLOY ACA: Pick the option that reflects your SKillable VM setup</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="with-deploy-button" name="__tabbed_1" type="radio" /><input id="without-deploy-button" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="with-deploy-button">With Deploy Button</label><label for="without-deploy-button">Without Deploy Button</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Some Skillable VMs may be setup to show you a <em>Deploy</em> button in the Instructions Panel. If you see this option in your VM follow these steps:</p>
+<ul>
+<li>Click the button to start Azure Container Apps deployment</li>
+<li>Wait for active progress indicator to complete. Takes ~2 minutes.</li>
+<li>Wait for <em>Successful</em> status message. This indicates deployment worked.</li>
+<li>If you see an <em>Error</em> message - wait a minute, then click Deploy again.</li>
+<li>If you do not succeed after a second retry, then ask a Proctor to help. </li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>If you Skillable VM was not setup with a <em>Deploy</em> button, that's okay. It just means you will complete this step <strong>manually</strong> using the commandline in the <a href="#4-configure-env-variables">4. Configure Env Variables</a> section. The process takes the same amount of time but will provide feedback via the terminal. We'll remind you of this step at that time.</p>
+</div>
+</div>
+</div>
 </details>
+<p><strong>Leave the Skillable tab open in your browser</strong>. We'll use the Azure credentials in the next step. And we'll revisit this tab at the end, to complete lab teardown. You can also track remaining lab time in the countdown timer.</p>
 <hr />
 <h2 id="2-launch-github-codespaces">2. Launch GitHub Codespaces<a class="headerlink" href="#2-launch-github-codespaces" title="Permanent link">&para;</a></h2>
 <p>The Contoso Chat sample repository is instrumented with a <a href="https://containers.dev">dev container</a> which specifies required tools and dependencies. Simply launch this from GitHub Codespaces to get a pre-built development environment with a Visual Studio Code editor and Python runtime ready to go.</p>
@@ -1860,7 +1874,7 @@
 <li>Click dropdown for <strong>2-core</strong> and verify it is <code>Prebuild ready</code></li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">Using the pre-build option makes your GitHub Codespaces load up faster.</p>
+<p class="admonition-title">Using the pre-build option makes your GitHub Codespaces load up faster. We will use the <code>msignite-LAB401</code> prebuild since that has the latest version of the codebase and instructions for this workshop.</p>
 </div>
 </li>
 <li>
@@ -1876,21 +1890,13 @@
 </li>
 </ol>
 <h3 id="23-fork-repo-to-your-profile">2.3 Fork Repo To Your Profile<a class="headerlink" href="#23-fork-repo-to-your-profile" title="Permanent link">&para;</a></h3>
-<p>Your GitHub Codespaces is running on the <em>original</em> Azure Samples repo for this sample. Let's fork this now, so we have a personal copy to modify and reviist. We will use the GitHub CLI to complete this in just a few quick steps!</p>
+<p>Your GitHub Codespaces is running on the <em>original</em> Azure Samples repo for this sample. We'll fork this to get a personal copy we can modify and revisit later. Let's use the GitHub CLI to do this!</p>
 <ol>
 <li>
-<p>Open the VS Code terminal and run this command to verify the GitHub CLI is installed.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gh<span class="w"> </span>--version
+<p>Run this command in the terminal to authenticate using the GitHub CLI. </p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">GITHUB_TOKEN</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span>gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--hostname<span class="w"> </span>github.com<span class="w"> </span>--git-protocol<span class="w"> </span>https<span class="w"> </span>--web<span class="w"> </span>--scopes<span class="w"> </span>workflow<span class="w"> </span>
 </code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>Next, run this command to authenticate with GitHub, with scope set to allow fork actions.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">GITHUB_TOKEN</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span>gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--hostname<span class="w"> </span>github.com<span class="w"> </span>--git-protocol<span class="w"> </span>https<span class="w"> </span>--web<span class="w"> </span>--scopes<span class="w"> </span>workflow<span class="w"> </span>
-</code></pre></div></td></tr></table></div>
-<p>The command ensures we complete the auth workflow from the web browser using the Git protocol over a secure HTTPS connection, and scope limited to workflow actions. Using an empty GITHUB_TOKEN ensure we don't use an existing token with broader scope. </p>
-</li>
-<li>
-<p>Follow the prompts to complete auth flow. (Expand the sections below for an example)</p>
+The command ensures we complete auth flow from a web broaser using the Git protocol over a secure HTTPS connection with scope limited to workflow actions. By using an empty GITHUB_TOKEN, we ensure that we don't accidentally use an existing token with broader scope. Expand the sections below to see screenshots from each step, for reference.</p>
 <details class="task">
 <summary>1. Complete Device Activation flow</summary>
 <ul>
@@ -1926,19 +1932,16 @@
 </details>
 </li>
 <li>
-<p>Now, run this command to fork the repo.</p>
+<p>Run this command next, to fork the repo to your personal profile.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>GITHUB_TOKEN=&quot;&quot; gh repo fork --remote
 </code></pre></div></td></tr></table></div>
-<p>You should see a <code>Created fork..</code> followed by an <code>Added remote origin ..</code> message. On completion, you should have a fork of the repo in your personal profile <em>and</em> your local Codespaces environment will now be setup to commit changes to your fork.</p>
-</li>
-<li>
-<p><strong>Optional</strong>. Visit your GitHub profile and check that the fork was created. It should be at the location in the form <code>https://github.com/&lt;username&gt;/contoso-chat</code> where <code>&lt;username&gt;</code> should be replaces by your GitHub profile.</p>
+<p>You should see: a <code>Created fork..</code> message followed by <code>Added remote origin ..</code>. On completion, you should have a fork of the repo in your personal profile <em>and</em> your local Codespaces environment will now be setup to commit changes to your fork. Verify this by visiting your GitHub profile page - you should see a <code>contoso-chat</code> repository listed.</p>
 </li>
 </ol>
-<h3 id="24-check-tools-installed">2.4 Check Tools Installed<a class="headerlink" href="#24-check-tools-installed" title="Permanent link">&para;</a></h3>
-<p>The workshop uses the following tools and commands: <code>python</code>, <code>fastapi</code>, <code>prompty</code>, <code>az</code>, <code>azd</code>. These are pre-installed for you, but you can optionally verify these to get a sense for their current versions.</p>
-<details class="task">
-<summary>(Optional: Expand to view details) Verify intalled tools.</summary>
+<h3 id="24-optional-validate-tools">2.4 (Optional) Validate Tools<a class="headerlink" href="#24-optional-validate-tools" title="Permanent link">&para;</a></h3>
+<p>The workshop uses the following tools and commands: <code>python</code>, <code>fastapi</code>, <code>prompty</code>, <code>az</code>, <code>azd</code>. These are pre-installed in the devcontainer, but you can verify this at commandline if needed.</p>
+<details class="quote">
+<summary>OPTIONAL: Use these commands to verify required tools are installed</summary>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python<span class="w"> </span>--version
 </code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>fastapi<span class="w"> </span>--version
@@ -1951,7 +1954,7 @@
 </code></pre></div></td></tr></table></div></p>
 </details>
 <h2 id="3-authenticate-with-azure">3. Authenticate with Azure<a class="headerlink" href="#3-authenticate-with-azure" title="Permanent link">&para;</a></h2>
-<p>To access our Azure resources, we need to be authenticated from VS Code. Make sure the Terminal pane is active in the GitHub Codespaces tab. Then, complete both the steps below (click each to expland for instructions).</p>
+<p>To access our Azure resources, we need to be authenticated from VS Code. Make sure the Terminal pane is active in the GitHub Codespaces tab. Then, <strong>complete both steps</strong> below (click each to expand for instructions).</p>
 <details class="task">
 <summary>1. Authenticate with <code>az</code> for post-provisioning tasks</summary>
 <ol>
@@ -2007,6 +2010,16 @@
 <div class="admonition tip">
 <p class="admonition-title">Note that the <code>.env</code> file does not contain any secrets (passwords or keys). Instead, we use  <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview">Azure Managed Identities</a> for keyless authentication as a <em>security best practice</em></p>
 </div>
+</li>
+<li>
+<p>Update the Azure Container Apps instance to show the <code>Hello World</code> version.</p>
+<div class="admonition tip">
+<p class="admonition-title">Skip this step if you had previously clicked a <code>Deploy</code> button as part of the <a href="#1-launch-skillable-vm">1. Launch Skillable VM</a> setup phase of the workshop. If you did <em>not</em> see the button or complete that step, you can do so now.</p>
+</div>
+<p>If you clicked a <code>Deploy</code> button during setup, you effectively pushed an initial version of the Contoso Chat application to the provisioned Azure Container Apps resource for our project. If you did <em>not</em> do so then, you can fix that now with this command:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>azd deploy
+</code></pre></div></td></tr></table></div>
+<p>Wait till the command completes - this may take a couple of minutes but you should see progress updates in the terminal. Wait till you get the "Success" message.</p>
 </li>
 </ol>
 <h2 id="5-do-post-provisioning">5. Do Post-Provisioning<a class="headerlink" href="#5-do-post-provisioning" title="Permanent link">&para;</a></h2>

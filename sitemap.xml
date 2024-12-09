@@ -2,138 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://nitya.github.io/contoso-chat/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/01-App-Scenario/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/02-RAG-Pattern/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/03-App-Architecture/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/04-App-Lifecycle/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/01-Introduction/05-Dev-Workflow/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
-         <loc>https://nitya.github.io/contoso-chat/02-Setup/0-PreRequisites/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <loc>https://nitya.github.io/contoso-chat/02-Setup/1-PreRequisites/</loc>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
-         <loc>https://nitya.github.io/contoso-chat/02-Setup/1-Provision-And-Setup/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <loc>https://nitya.github.io/contoso-chat/02-Setup/2-Provision-And-Setup/</loc>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
-         <loc>https://nitya.github.io/contoso-chat/02-Setup/1-Provision-And-Setup/01-Self-Guided/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <loc>https://nitya.github.io/contoso-chat/02-Setup/2-Provision-And-Setup/01-Self-Guided/</loc>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
-         <loc>https://nitya.github.io/contoso-chat/02-Setup/1-Provision-And-Setup/02-Skillable/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <loc>https://nitya.github.io/contoso-chat/02-Setup/2-Provision-And-Setup/02-Skillable/</loc>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
-         <loc>https://nitya.github.io/contoso-chat/02-Setup/1-Provision-And-Setup/03-Validation/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <loc>https://nitya.github.io/contoso-chat/02-Setup/3-Validation/</loc>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/01/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/02/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/03/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/04/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/05/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/03-Ideate/06/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/01/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/02/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/03/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/04/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/04-Evaluate/05/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/01/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/02/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/03/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/04/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/05/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/06/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/05-Deploy/07/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
     <url>
          <loc>https://nitya.github.io/contoso-chat/Tear-Down/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-09</lastmod>
     </url>
 </urlset>

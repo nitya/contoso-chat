@@ -930,45 +930,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-azure-container-app-tab" class="md-nav__link">
+  <a href="#33-check-azure-cosmos-db" class="md-nav__link">
     <span class="md-ellipsis">
-      3.3 Azure Container App Tab
+      3.3. Check Azure Cosmos DB
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#34-check-azure-cosmos-db" class="md-nav__link">
+  <a href="#34-check-azure-ai-search" class="md-nav__link">
     <span class="md-ellipsis">
-      3.4. Check Azure Cosmos DB
+      3.4. Check Azure AI Search
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#35-check-azure-ai-search" class="md-nav__link">
+  <a href="#35-check-azure-container-app" class="md-nav__link">
     <span class="md-ellipsis">
-      3.5. Check Azure AI Search
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#36-check-azure-container-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.6. Check Azure Container App
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#37-lets-connect-the-dots" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.7. Let's Connect The Dots 💡
+      3.5. Check Azure Container App
     </span>
   </a>
   
@@ -1716,45 +1698,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-azure-container-app-tab" class="md-nav__link">
+  <a href="#33-check-azure-cosmos-db" class="md-nav__link">
     <span class="md-ellipsis">
-      3.3 Azure Container App Tab
+      3.3. Check Azure Cosmos DB
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#34-check-azure-cosmos-db" class="md-nav__link">
+  <a href="#34-check-azure-ai-search" class="md-nav__link">
     <span class="md-ellipsis">
-      3.4. Check Azure Cosmos DB
+      3.4. Check Azure AI Search
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#35-check-azure-ai-search" class="md-nav__link">
+  <a href="#35-check-azure-container-app" class="md-nav__link">
     <span class="md-ellipsis">
-      3.5. Check Azure AI Search
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#36-check-azure-container-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.6. Check Azure Container App
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#37-lets-connect-the-dots" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.7. Let's Connect The Dots 💡
+      3.5. Check Azure Container App
     </span>
   </a>
   
@@ -1858,22 +1822,7 @@
 </li>
 </ol>
 <hr />
-<h3 id="33-azure-container-app-tab">3.3 Azure Container App Tab<a class="headerlink" href="#33-azure-container-app-tab" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">The Azure Container App provides the hosting environment for our copilot (API endpoint)</p>
-</div>
-<p><a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container Apps</a> will host the endpoint used to serve the Contoso Chat application on the Contoso Outdoors website. The Azure provisioning should have deployed a default Azure Container App to this endpoint.</p>
-<ol>
-<li>Return to the Azure Portal tab</li>
-<li>Visit the <code>rg-AITOUR</code> Resource group page</li>
-<li>Click the <code>Container App</code> resource to display the Overview page</li>
-<li>Look for <code>Application Url</code> (at top right), and click it to launch in new tab </li>
-<li>You should see: A <code>Hello World</code> message on the screen (confirming app was deployed)</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Azure Container Apps (ACA) is used to host our chat AI application. The application server is implemented using FastAPI and exposes a <code>/create_request</code> API endpoint to make requests to our copilot.</p>
-</div>
-<h2 id="34-check-azure-cosmos-db">3.4. Check Azure Cosmos DB<a class="headerlink" href="#34-check-azure-cosmos-db" title="Permanent link">&para;</a></h2>
+<h2 id="33-check-azure-cosmos-db">3.3. Check Azure Cosmos DB<a class="headerlink" href="#33-check-azure-cosmos-db" title="Permanent link">&para;</a></h2>
 <p>The Azure CosmosDB resource holds the customer data for our application. It is a noSQL database that contains JSON data for each customer, and the prior purchases they made.</p>
 <ol>
 <li>Switch to the <strong>Azure Portal</strong> tab and display the <code>rg-AITOUR</code> resource group Overview</li>
@@ -1886,7 +1835,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="35-check-azure-ai-search">3.5. Check Azure AI Search<a class="headerlink" href="#35-check-azure-ai-search" title="Permanent link">&para;</a></h2>
+<h2 id="34-check-azure-ai-search">3.4. Check Azure AI Search<a class="headerlink" href="#34-check-azure-ai-search" title="Permanent link">&para;</a></h2>
 <p>The Azure AI Search resources contains the product index for our retailer's product catalog. It is the information <strong>retrieval</strong> service for <strong>R</strong>AG solutions, using sentence similarity and semantic ranking to return the most relevant results for a given customer query.</p>
 <ol>
 <li>Switch to the Azure Portal tab and display the  <code>rg-AITOUR</code> resource group Overview</li>
@@ -1909,9 +1858,19 @@
 </ul>
 </li>
 </ol>
-<h2 id="36-check-azure-container-app">3.6. Check Azure Container App<a class="headerlink" href="#36-check-azure-container-app" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">How The Custom Copilot Experience Works</p>
+<h2 id="35-check-azure-container-app">3.5. Check Azure Container App<a class="headerlink" href="#35-check-azure-container-app" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">The Azure Container App provides the hosting environment for our copilot (API endpoint)</p>
+</div>
+<p><a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container Apps</a> hosts the API endpoint for the Contoso Chat application that remote clients talk to. We should have deployed an initial version of Contoso Chat at this point.</p>
+<ol>
+<li>Switch to the Azure Portal tab and display the  <code>rg-AITOUR</code> resource group Overview</li>
+<li>Click the <code>Container App</code> resource to display the Overview page</li>
+<li>Look for <code>Application Url</code> (at top right), and click it to launch in new tab </li>
+<li>You should see: A <code>Hello World</code> message on the screen (confirming app was deployed)</li>
+</ol>
+<details class="quote">
+<summary>Azure Container Apps (ACA) using a FastAPI-based application server to expose a <code>/create_request</code> API endpoint to make requests to our copilot. (click to expand for details). The server has a <code>Swagger API</code> endpoint that we can use for manual testing. Let's do that next.</summary>
 <p>Our chat application works by sending chat messages to a custom endpoint hosted as an Azure Container App. </p>
 <ul>
 <li>The inputs to the endpoint are <ul>
@@ -1923,10 +1882,9 @@
 <li>The <strong>response</strong> from the endpoint is the response returned by the chatbot.</li>
 </ul>
 <p>When iterating on a prototype application, we start with manual testing, using a single "test prompt" to validate our scenario. We then move to automated evaluations with larger test datasets.</p>
-</div>
-<p>The FastAPI server exposes a <code>Swagger API</code> endpoint that we can use for manual testing in both local (Codespaces) and cloud (Container Apps). Let's try it out now!</p>
+</details>
 <ol>
-<li>Return to your deployed Azure Container App tab</li>
+<li>Return to the deployed Azure Container App tab</li>
 <li>Add a <code>/docs</code> suffix to the URL and browse to that path - you will see: <strong>FastAPI</strong> page</li>
 <li>Expand the <code>POST</code> section by clicking the arrow<ul>
 <li>click <code>Try it out</code> to make inputs editable</li>
@@ -1939,23 +1897,20 @@
 </ol>
 <p>You will get a response body with <code>question</code>, <code>answer</code> and <code>context</code> components. </p>
 <ul>
-<li><strong>Check</strong> <code>question</code> -  is the customer's question the same as that typed in the chat window on the Contoso Outdoor website</li>
-<li><strong>Check</strong> <code>answer</code> -  is the chatbot's response to the customer's <code>question</code>, as generated by this RAG application</li>
-<li><strong>Check</strong> <code>context</code> - is the additional information provided to the Generative AI model being used by it used to ground its answer.<ul>
-<li>In this app, that includes information about products relevant to the customer question.</li>
+<li>Check that the <code>question</code> reflects the one you entered above</li>
+<li>Check that the <code>answer</code> provides a relevant response to the question</li>
+<li>Check that the <code>context</code> shows the retrieved knowledge used to ground the response.<ul>
+<li>This includes information about products relevant to the customer question.</li>
 <li>The products selected may depend on <code>customer_id</code> and the associated order history. </li>
-<li>The web app provides <code>chat_history</code> from the chat window - which can serve as additional context that the model can use to ground the response.</li>
 </ul>
 </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Exercise → Repeat exercise with a different customer ID (between 1 and 12). How did the response change?</p>
 </div>
-<hr />
-<h2 id="37-lets-connect-the-dots">3.7. Let's Connect The Dots 💡<a class="headerlink" href="#37-lets-connect-the-dots" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Recall that the <a href="https://learn.microsoft.com/en-us/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">Retrieval Augmented Generation</a> works by <em>retrieving</em> relevant knowledge from your data stores, and <em>augmenting</em> the user query with it to create an enhanced prompt - which <em>generates</em> the final response.</p>
-</div>
+<details class="task">
+<summary>(OPTIONAL) CONNECT THE DOTS - Click to expand the section to learn how this works</summary>
+<p>"Recall that the <a href="https://learn.microsoft.com/en-us/azure/ai-studio/concepts/retrieval-augmented-generation#how-does-rag-work">Retrieval Augmented Generation</a> works by <em>retrieving</em> relevant knowledge from your data stores, and <em>augmenting</em> the user query with it to create an enhanced prompt - which <em>generates</em> the final response."</p>
 <p>To implement this RAG pattern, we need to execute three steps:</p>
 <ol>
 <li><strong>Setup data sources</strong> and populate them with our data (product catalog, customer orders)</li>
@@ -1968,6 +1923,7 @@
 <li><strong>Azure AI Search</strong> - loaded <strong>20 records</strong> from <code>data/product_info</code>, got <em>contoso-products</em> index.</li>
 </ol>
 <p>This checks off the first two idents from our RAG checklist above. Now, let's see how we can achieve the thirst ep with a code-first approach that makes use of the Azure AI Search, Azure CosmosDB and Azure OpenAI services through their Azure SDKs.</p>
+</details>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. You validated your setup! It's time to IDEATE!</p>

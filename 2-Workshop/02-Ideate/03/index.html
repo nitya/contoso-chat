@@ -1092,6 +1092,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Update the System Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-update-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Update the template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-run-chat-1prompty" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Run chat-1.prompty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ideate-on-your-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Ideate on your own
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1704,6 +1737,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Update the System Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-update-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Update the template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-run-chat-1prompty" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Run chat-1.prompty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ideate-on-your-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Ideate on your own
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1732,7 +1798,7 @@
 </details>
 <h2 id="1-copy-prompty-to-iterate">1. Copy Prompty to Iterate<a class="headerlink" href="#1-copy-prompty-to-iterate" title="Permanent link">&para;</a></h2>
 <p>To mimic the iterative process of ideation, we start each step by copying the Prompty from the previous step (<code>chat-0.prompty</code>) to a new file (<code>chat-1.prompty</code>) to make edits.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp chat-0.prompty chat-1.prompty
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cp chat-0.prompty chat-1.prompty</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="2-set-the-temperature-parameter">2. Set the Temperature Parameter<a class="headerlink" href="#2-set-the-temperature-parameter" title="Permanent link">&para;</a></h2>
@@ -1744,54 +1810,66 @@
 <p>Open the file <code>chat-1.prompty</code> in the editor.</p>
 </li>
 <li>
-<p>Add the following at Line 15 (at the end of the <code>parameters:</code> section):
-    <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>temperature: 0.2
-</code></pre></div></td></tr></table></div></p>
+<p>Add the a temperature parameter to the model configuration as shown:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span>
+<span class="w">    </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</code></pre></div></td></tr></table></div>
 </li>
 </ol>
 <hr />
 <h2 id="3-provide-sample-input-file">3. Provide Sample Input File<a class="headerlink" href="#3-provide-sample-input-file" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
-<p class="admonition-title">The <a href="https://www.prompty.ai/docs/prompty-specification">sample</a> property of a Prompty asset provides the data to be used in test execution. It can be defined inline (with an object) or as an external file (with a string providing the file pathname)</p>
+<p class="admonition-title">The <a href="https://www.prompty.ai/docs/prompty-specification"><strong>sample</strong></a> property of a Prompty asset provides the data to be used in test execution. It can be defined inline (with an object) or as an external file (with a string providing the file pathname)</p>
 </div>
-<p>In this example, we'll use a <code>JSON</code> file to provide the sample test inputs for the Prompty asset. This allows us to test the Prompty execution by <strong>rendering</strong> the prompt template using the data in this file to fill in the placeholder variables. <em>Later, when we convert the Prompty asset to code, we'll use functions to populate this data from real sources (databases, search indexes, user query)</em>.</p>
+<p>In this example we use a <em>JSON</em> file to contain the sample input values, allowing us to <em>shape</em> the data we need for the RAG pattern as we go. Once we have our final prompt template, we can determine how to fetch that type of data from real-world sources (databases, search indexes, user query) using function tools or API calls.</p>
 <ol>
-<li>Copy a JSON file with sample data to provide as context in our Prompty. 
-    <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cp ../docs/workshop/src/1-build/chat-1.json .
-</code></pre></div></td></tr></table></div></li>
+<li>
+<p>Copy a JSON file with sample data to provide as context in our Prompty. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cp ../docs/workshop/src/1-build/chat-1.json .</span>
+</code></pre></div></td></tr></table></div>
+</li>
 <li>
 <p>Open the JSON file and review the contents</p>
 <ul>
 <li>It has the customer's name, age, membership level, and purchase history. </li>
-<li>It has the default customer question for our chatbot: <em>What cold-weather sleeping bag would go well with what I have already purchased?</em>"</li>
+<li>It has a sample question: <br/> <em>What cold-weather sleeping bag would go well with what I have already purchased?</em>"</li>
 </ul>
 </li>
 <li>
-<p>Replace the <code>sample:</code> section of <code>chat-1.prompty</code> (lines 16-18) with the following:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Tip: Use the files icon at far right to copy the text</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Update the sample section of <code>chat-1.prompty</code> with the following: (preserve indentation)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>inputs:
-  customer:
-    type: object
-  question:
-    type: string
-sample: ${file:chat-1.json}
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">customer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">  </span><span class="nt">question</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">sample</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${file:chat-1.json}</span>
 </code></pre></div></td></tr></table></div>
-<p>This declares the inputs to the prompty: <code>customer</code> (a JSON object) and <code>question</code> (a string). It also declares that sample data for these inputs is to be found in the file <code>chat-1.json</code>.</p>
 </li>
+<li>
+<p>This declares the inputs to the prompty: <code>customer</code> (a JSON object) and <code>question</code> (a string). </p>
+</li>
+<li>It also declares that sample data for these inputs is to be found in the file <code>chat-1.json</code>.</li>
 </ol>
 <hr />
 <h2 id="4-update-the-system-prompt">4. Update the System Prompt<a class="headerlink" href="#4-update-the-system-prompt" title="Permanent link">&para;</a></h2>
-<p>The <strong>system</strong> section of a Prompty file specifies the "meta-prompt". This additional text is added to the user's actual question to provide the context necessary to answer accurately. With some Generative AI models like the GPT family, this is passed to a special "system prompt", which guides the AI model in its response to the question, but does not generate a response directly. </p>
-<p>You can use the <strong>sytem</strong> section to provide guidance on how the model should behave, and to provide information the model can use as context.</p>
-<p>Prompty constructs the meta-prompt from the inputs before passing it to the model. Parameters like <code>{{firstName}}</code> are replaced by the corresponding input. You can also use syntax like <code>{{customer.firstName}}</code> to extract named elements from objects.</p>
-<ol>
-<li>
-<p>Update the system section of <code>chat-1.prompty</code> with the text below. Note that the commented lines (like "<code># Customer</code>") are not part of the Prompty file specification -- that text is passed directly to the Generative AI model. (Experience suggests AI models perform more reliably if you organize the meta-prompt with Markdown-style headers.)</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="admonition info">
+<p class="admonition-title">The <strong>system</strong> section of a Prompty file specifies the "meta-prompt". This additional text is added to the user's actual question to provide the context necessary to answer accurately. With some Generative AI models like the GPT family, this is passed to a special "system prompt", which guides the AI model in its response to the question, but does not generate a response directly.</p>
+</div>
+<ul>
+<li>You can use the <strong>sytem</strong> section to provide guidance on how the model should behave, and to provide information the model can use as context.</li>
+<li>Prompty constructs the meta-prompt from the inputs before passing it to the model. Parameters like <code>{{firstName}}</code> are replaced by the corresponding input. You can also use syntax like <code>{{customer.firstName}}</code> to extract named elements from objects.</li>
+</ul>
+<h3 id="41-update-the-template">4.1 Update the template<a class="headerlink" href="#41-update-the-template" title="Permanent link">&para;</a></h3>
+<p>Update the template section of <code>chat-1.prompty</code> with the content below:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1812,55 +1890,50 @@ sample: ${file:chat-1.json}
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>system:
-You are an AI agent for the Contoso Outdoors products retailer. 
-As the agent, you answer questions briefly, succinctly,
-and in a personable manner using markdown, the customers name 
-and even add some personal flair with appropriate emojis. 
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">system</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">You are an AI agent for the Contoso Outdoors products retailer.</span><span class="w"> </span>
+<span class="l l-Scalar l-Scalar-Plain">As the agent, you answer questions briefly, succinctly,</span>
+<span class="l l-Scalar l-Scalar-Plain">and in a personable manner using markdown, the customers name</span><span class="w"> </span>
+<span class="l l-Scalar l-Scalar-Plain">and even add some personal flair with appropriate emojis.</span><span class="w"> </span>
 
-# Documentation
-Make sure to reference any documentation used in the response.
+<span class="c1"># Documentation</span>
+<span class="l l-Scalar l-Scalar-Plain">Make sure to reference any documentation used in the response.</span>
 
-# Previous Orders
-Use their orders as context to the question they are asking.
-{% for item in customer.orders %}
-name: {{item.name}}
-description: {{item.description}}
-{% endfor %} 
+<span class="c1"># Previous Orders</span>
+<span class="l l-Scalar l-Scalar-Plain">Use their orders as context to the question they are asking.</span>
+<span class="p p-Indicator">{</span><span class="err">%</span><span class="w"> </span><span class="nv">for item in customer.orders %</span><span class="p p-Indicator">}</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">item.name</span><span class="p p-Indicator">}}</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">item.description</span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{</span><span class="err">%</span><span class="w"> </span><span class="nv">endfor %</span><span class="p p-Indicator">}</span><span class="w"> </span>
 
-# Customer Context
-The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {{customer.age}} years old.
-{{customer.firstName}} {{customer.lastName}} has a &quot;{{customer.membership}}&quot; membership status.
+<span class="c1"># Customer Context</span>
+<span class="l l-Scalar l-Scalar-Plain">The customer&#39;s name is {{customer.firstName}} {{customer.lastName}} and is {{customer.age}} years old.</span>
+<span class="p p-Indicator">{{</span><span class="nv">customer.firstName</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">customer.lastName</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has a &quot;{{customer.membership}}&quot; membership status.</span>
 
-# user
-{{question}}
+<span class="c1"># user</span>
+<span class="p p-Indicator">{{</span><span class="nv">question</span><span class="p p-Indicator">}}</span>
 </code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>Run <code>chat-1.prompty</code></p>
-<p>In the OUTPUT pane, you see: a <strong>valid response</strong> to the question: "What cold-weather sleeping bag would go well with what I have already purchased?"</p>
-<p>Note the following:</p>
+<h3 id="42-run-chat-1prompty">4.2 Run <code>chat-1.prompty</code><a class="headerlink" href="#42-run-chat-1prompty" title="Permanent link">&para;</a></h3>
+<p>Run the updated prompty as before:</p>
 <ul>
-<li>The Generative AI model knows the customer's name, drawn from <code>{{customer.firstName}}</code> in the <code>chat-1.json</code> file and provided in section headed <code># Customer Context</code> in the meta-prompt.</li>
+<li>In the OUTPUT pane, you see: a <strong>valid response</strong> to the question: "What cold-weather sleeping bag would go well with what I have already purchased?"</li>
+<li><strong>Observe</strong>: The Generative AI model knows customer's name from <code>{{customer.firstName}}</code> in the <code>chat-1.json</code> file, provided via the <code># Customer Context</code> in the meta-prompt.</li>
 <li>The model knows the customers previous orders, which have been insterted into the meta-prompt under the heading <code># Previous Orders</code>.</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">In the meta-prompt, organize information under text headings like <code># Customer Info</code>. This helps many generative AI models find information more reliably, because they have been trained on Markdown-formatted data with this structure.</p>
 </div>
-</li>
-<li>
-<p>Ideate on your own!</p>
-<p>You can change the system prompt to modify the style and tone of the responses from the chatbot.</p>
+<h3 id="43-ideate-on-your-own">4.3 Ideate on your own<a class="headerlink" href="#43-ideate-on-your-own" title="Permanent link">&para;</a></h3>
+<p>Try these ideas at home, in your own time, to get more intuition for system prompt usage:</p>
 <ul>
-<li>Try adding <code>Provide responses in a bullet list of items</code> to the end of the <code>system:</code> section. What happens to the output?</li>
+<li>Add <code>Provide responses in a bullet list of items</code> to the end of the <code>system:</code> section</li>
+<li>What happens to the output?</li>
 </ul>
-<p>You can also change the parameters passed to the generative AI model in the <code>parameters:</code> section.</p>
+<p>You can also change the <code>parameters</code> section to configure generative AI model parameters:</p>
 <ul>
-<li>Try changing <code>max_tokens</code> to "150" and observe the response. How does this impact the length and quality of response (e.g., is is truncated?)</li>
-<li>Try changing <code>temperature</code> to 0.7. Try some other values between 0.0 and 1.0. What happens to the output?</li>
+<li>Change <code>max_tokens</code> to "150". What happens to response length or quality?</li>
+<li>Change <code>temperature</code> to 0.7 (or to other values between 0.0 and 0.9). What happens now?</li>
 </ul>
-</li>
-</ol>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. You updated the Prompty template &amp; added sample test data!</p>

@@ -1743,25 +1743,15 @@
 </code></pre></div></td></tr></table></div></li>
 <li>
 <p>Open the <code>chat-0.prompty</code> file in VS Code. The model configuration section looks like this:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">chat-0.prompty</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExamplePrompt</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A prompt that uses context to ground an incoming question</span>
-<span class="nt">authors</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Seth Juarez</span>
-<span class="nt">model</span><span class="p">:</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">chat-0.prompty</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">model</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat</span>
 <span class="w">    </span><span class="nt">configuration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure_openai</span>
@@ -1773,72 +1763,61 @@
 </code></pre></div></td></tr></table></div>
 </li>
 <li>
-<p>Let's update it to fix the <code>azure_deployment</code> value. Update the <code>model</code> section as shown below and leave all other content untouched. <em>We recommend you copy-paste this directly into your file to avoid indentation errors.</em></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">chat-0.prompty</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExamplePrompt</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A prompt that uses context to ground an incoming question</span>
-<span class="nt">authors</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Seth Juarez</span>
-<span class="nt">model</span><span class="p">:</span>
+<p>Update it to have configuration values replaced by environment variables as shown. Note that these correspond to the values in <code>.env</code> that we refreshed earlier.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">chat-0.prompty</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">model</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat</span>
 <span class="w">    </span><span class="nt">configuration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure_openai</span>
 <span class="w">        </span><span class="nt">azure_endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${env:AZURE_OPENAI_ENDPOINT}</span>
 <span class="w">        </span><span class="nt">azure_deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${env:AZURE_OPENAI_CHAT_DEPLOYMENT}</span>
-<span class="w">        </span><span class="nt">api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-07-01-preview</span>
+<span class="w">        </span><span class="nt">api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${env:AZURE_OPENAI_API_VERSION}</span>
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span>
 </code></pre></div></td></tr></table></div>
-<div class="admonition info">
-<p class="admonition-title">Prompty will use the AZURE_OPENAI_CHAT_DEPLOYMENT variable from the .env file we created earlier to find the OpenAI endpoint we pre-deployed. For now, that env specifies <em>gpt-35-turbo</em> as the model.</p>
+<div class="admonition warning">
+<p class="admonition-title">Prompty uses a YAML syntax which can be sensitive to indentation (tabs, spaces). Make sure that the various properties are aligned correctly.</p>
 </div>
 </li>
 </ol>
+<hr />
 <h2 id="2-edit-basic-information">2. Edit Basic information<a class="headerlink" href="#2-edit-basic-information" title="Permanent link">&para;</a></h2>
-<p>Basic information about the prompt template is provided at the top of the file.</p>
-<ul>
-<li><strong>name</strong>: Call this prompty <code>Contoso Chat Prompt</code></li>
-<li><strong>description</strong>: Use:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>A retail assistant for Contoso Outdoors products retailer.
-</code></pre></div></td></tr></table></div></li>
-<li><strong>authors</strong>: Replace the provided name with your own.</li>
-</ul>
-<h2 id="3-edit-the-sample-section">3. Edit the "sample" section<a class="headerlink" href="#3-edit-the-sample-section" title="Permanent link">&para;</a></h2>
-<p>The <strong>sample</strong> section specifies the inputs to the prompty, and supplies default values to use if no input are provided. Edit that section as well.</p>
-<ul>
-<li>
-<p><strong>firstName</strong>: Choose any name other than your own (for example, <code>Nitya</code>).</p>
-</li>
-<li>
-<p><strong>context</strong>: Remove this entire section. (We'll update this later)</p>
-</li>
-<li>
-<p><strong>question</strong>: Replace the provided text with:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>What can you tell me about your tents?
-</code></pre></div></td></tr></table></div></p>
-</li>
-</ul>
-<p>Your <strong>sample</strong> section should now look like this:
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Basic information about the prompt template is provided at the top of the file. Update the <code>name</code>, <code>description</code> and <code>authors</code> to reflect your application needs. as shown.</p>
+<div class="admonition tip">
+<p class="admonition-title">TIP: Copy this and replace the frontmatter in your asset - then update the authors name to your own</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>sample:
-  firstName: Nitya
-  question: What can you tell me about your tents?
-</code></pre></div></td></tr></table></div></p>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Contoso Chat Prompt</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A retail assistant for Contoso Outdoors products retailer.</span>
+<span class="nt">authors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nitya Narasimhan</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="3-edit-the-sample-section">3. Edit the "sample" section<a class="headerlink" href="#3-edit-the-sample-section" title="Permanent link">&para;</a></h2>
+<p>The <strong>sample</strong> section specifies the inputs to the prompty, and supplies default values to use if no input are provided. Replace it with the following:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">sample</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">firstName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nitya</span>
+<span class="w">  </span><span class="nt">question</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What can you tell me about your tents?</span>
+</code></pre></div></td></tr></table></div>
+<p>By doing this you will have removed the <code>context</code> input that was otherwise being used to ground the data in the default sample. Later, we will replace this with our own.</p>
+<hr />
 <h2 id="4-run-updated-prompty-file">4. Run updated Prompty file<a class="headerlink" href="#4-run-updated-prompty-file" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Generative AI models use randomness when creating responses, so your results may always be the same.</p>
+</div>
 <ol>
 <li>
 <p>Run <code>chat-0.prompty</code>. (Use the Run button or press F5.)</p>
@@ -1848,16 +1827,19 @@
 <ul>
 <li><code>"[info] Hey Nitya! Thank you for asking about our tents. ..."</code></li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">Generative AI models use randomness when creating responses, so your results aren't always the same.</p>
-</div>
+</li>
+<li>
+<p>Try other changes later, to get an intuition for prompt engineering.</p>
+<ul>
+<li>Try changing the question</li>
+<li>Try changing the firstName value</li>
+</ul>
 </li>
 </ol>
 <hr />
 <div class="admonition success">
 <p class="admonition-title">CONGRATULATIONS. You updated your Prompty model configuration!</p>
 </div>
-<p><strong>Continue ideating on your own!</strong> If you like, try changing the <code>firstName</code> and <code>question</code> fields in the Prompty file and run it again. How do your changes affect the response?</p>
 
 
 

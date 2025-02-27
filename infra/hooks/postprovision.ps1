@@ -43,5 +43,8 @@ python -m pip install -r ./src/api/requirements.txt > $null
 
 # populate data
 Write-Host "Populating data ...."
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > $null
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > $null
+python data/customer_info/create-cosmos-db.py
+python data/product_info/create-azure-search.py
+
+#jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > $null
+#jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > $null

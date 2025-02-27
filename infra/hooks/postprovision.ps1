@@ -39,12 +39,17 @@ azd env get-values > .env
 Write-Host "Script execution completed successfully."
 
 Write-Host 'Installing dependencies from "requirements.txt"'
-python -m pip install -r ./src/api/requirements.txt > $null
+#python -m pip install -r ./src/api/requirements.txt > $null
+
+# Install one by one (so error does not cause exit from all)
+Get-Content ./src/api/requirements.txt | ForEach-Object {    if (-not [string]::IsNullOrWhiteSpace($_) -and -not $_.StartsWith("#")) {        Write-Output "Installing package: $_"        pip install $_    }}
 
 # populate data
 Write-Host "Populating data ...."
-python data/customer_info/create-cosmos-db.py
-python data/product_info/create-azure-search.py
+cd data/customer_info/python 
+create-cosmos-db.py
+cd ../product_infopython 
+create-azure-search.py
 
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > $null
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > $null

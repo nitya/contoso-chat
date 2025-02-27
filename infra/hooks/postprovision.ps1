@@ -46,10 +46,10 @@ Get-Content ./src/api/requirements.txt | ForEach-Object {    if (-not [string]::
 
 # populate data
 Write-Host "Populating data ...."
-cd data/customer_info/python 
-create-cosmos-db.py
-cd ../product_infopython 
-create-azure-search.py
+cd data/customer_info/
+python create-cosmos-db.py
+cd ../product_info
+python create-azure-search.py
 
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > $null
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > $null

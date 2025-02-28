@@ -198,7 +198,7 @@ print(f"index {index_name} created")
 
 
 print(f"indexing documents")
-docs = gen_contoso_products("products.csv")
+docs = gen_contoso_products("../../data/product_info/products.csv")
 # Upload our data to the index.
 search_client = SearchClient(
     endpoint=contoso_search,

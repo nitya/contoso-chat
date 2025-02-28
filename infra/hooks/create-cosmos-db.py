@@ -54,7 +54,7 @@ print(database)
 import os
 import json
 import glob
-path = '.'
+path = '../../data/customer_info'
 for filename in glob.glob(os.path.join(path, '*.json')):
     with open(filename) as file:
         customer = json.load(file)

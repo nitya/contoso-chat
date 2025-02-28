@@ -41,6 +41,9 @@ Write-Host "Script execution completed successfully."
 #. ------- Commented out to debug Skillable wintest
 # Write-Host 'Installing dependencies from "requirements.txt"'
 # #python -m pip install -r ./src/api/requirements.txt > $null
+python -m pip install azure-identity azure-search-documents openai python-dotenv pandas
+python create-azure-search.py
+python create-cosmos-db.py
 
 # # Install one by one (so error does not cause exit from all)
 # Get-Content ./src/api/requirements.txt | ForEach-Object {    if (-not [string]::IsNullOrWhiteSpace($_) -and -not $_.StartsWith("#")) {        Write-Output "Installing package: $_"        pip install $_    }}

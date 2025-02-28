@@ -11,15 +11,15 @@ echo "--- ✅ | 1. Post-provisioning - env configured ---"
 
 # Setup to run notebooks
 echo 'Installing dependencies from "requirements.txt"'
-python -m pip install -r ./src/api/requirements.txt > /dev/null
-python -m pip install ipython ipykernel > /dev/null      # Install ipython and ipykernel
-ipython kernel install --name=python3 --user > /dev/null # Configure the IPython kernel
-jupyter kernelspec list > /dev/null                      # Verify kernelspec list isn't empty
-echo "--- ✅ | 2. Post-provisioning - ready execute notebooks ---"
+
+Get-Content ./src/api/requirements.txt | ForEach-Object {   
+     if (-not [string]::IsNullOrWhiteSpace($_) -and -not $_.StartsWith("#")) {        
+        Write-Output "Installing package: $_"        pip install $_    }}
+echo "--- ✅ | 2. Post-provisioning - ready execute scripts ---"
 
 echo "Populating data ...."
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > /dev/null
-jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > /dev/null
+python data/customer_info/create-cosmos-db.py  > /dev/null
+python data/product_info/create-azure-search.py  > /dev/null
 
 #echo "--- ✅ | 3. Post-provisioning - populated data ---"
 Write-Host "Script execution completed successfully."

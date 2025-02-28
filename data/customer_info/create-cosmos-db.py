@@ -44,6 +44,7 @@ CONTAINER_NAME = 'customers'
 database = client.get_database_client(DATABASE_NAME)
 container = database.get_container_client(CONTAINER_NAME)
 
+print(f"getting database")
 print(database)
 
 
@@ -54,7 +55,7 @@ print(database)
 import os
 import json
 import glob
-path = '../../data/customer_info'
+path = '.'
 for filename in glob.glob(os.path.join(path, '*.json')):
     with open(filename) as file:
         customer = json.load(file)

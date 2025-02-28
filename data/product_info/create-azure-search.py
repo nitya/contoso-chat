@@ -9,7 +9,7 @@
 # 
 # You can find the names and keys in the Azure Portal. These need to be entered in a `.env` file in the root of this repository. The `.env` file is not checked in to source control. You can use the [`.env.sample`](../../.env.sample) file as a template.
 
-# In[ ]:
+# In[1]:
 
 
 import os
@@ -177,7 +177,7 @@ def gen_contoso_products(
     return items
 
 
-# In[ ]:
+# In[5]:
 
 
 contoso_search = os.environ["AZURE_SEARCH_ENDPOINT"]
@@ -194,7 +194,7 @@ search_index_client.create_or_update_index(index)
 print(f"index {index_name} created")
 
 
-# In[ ]:
+# In[6]:
 
 
 print(f"indexing documents")

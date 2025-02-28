@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 from azure.cosmos import CosmosClient, exceptions, PartitionKey
@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# In[14]:
+# In[2]:
 
 
 # from azure.identity import DefaultAzureCredential, InteractiveBrowserCredential
@@ -27,7 +27,7 @@ load_dotenv()
 #     credential = InteractiveBrowserCredential()
 
 
-# In[15]:
+# In[3]:
 
 
 # Set the Cosmos DB endpoint, key and database name in the .env file. The key and endpoint can be found in the resource created in the portal.
@@ -37,18 +37,17 @@ DATABASE_NAME = 'contoso-outdoor'
 CONTAINER_NAME = 'customers'
 
 
-# In[ ]:
+# In[4]:
 
 
 # Get the database and container created by Bicep
 database = client.get_database_client(DATABASE_NAME)
 container = database.get_container_client(CONTAINER_NAME)
 
-print(f"getting database")
 print(database)
 
 
-# In[ ]:
+# In[5]:
 
 
 # Loop through each json file in data/customer_info and insert into container
@@ -63,7 +62,7 @@ for filename in glob.glob(os.path.join(path, '*.json')):
         print('Upserted item with id {0}'.format(customer['id']))
 
 
-# In[ ]:
+# In[6]:
 
 
 # Get items from container to validate they were inserted

@@ -38,18 +38,21 @@ if ([string]::IsNullOrEmpty($resourceGroupName) -or [string]::IsNullOrEmpty($ope
 azd env get-values > .env
 Write-Host "Script execution completed successfully."
 
-Write-Host 'Installing dependencies from "requirements.txt"'
-#python -m pip install -r ./src/api/requirements.txt > $null
+#. ------- Commented out to debug Skillable wintest
+# Write-Host 'Installing dependencies from "requirements.txt"'
+# #python -m pip install -r ./src/api/requirements.txt > $null
 
-# Install one by one (so error does not cause exit from all)
-Get-Content ./src/api/requirements.txt | ForEach-Object {    if (-not [string]::IsNullOrWhiteSpace($_) -and -not $_.StartsWith("#")) {        Write-Output "Installing package: $_"        pip install $_    }}
+# # Install one by one (so error does not cause exit from all)
+# Get-Content ./src/api/requirements.txt | ForEach-Object {    if (-not [string]::IsNullOrWhiteSpace($_) -and -not $_.StartsWith("#")) {        Write-Output "Installing package: $_"        pip install $_    }}
 
-# populate data
-Write-Host "Populating data ...."
-cd data/customer_info/
-python create-cosmos-db.py
-cd ../product_info
-python create-azure-search.py
+# # populate data
+# Write-Host "Populating data ...."
+# cd data/customer_info/
+# python create-cosmos-db.py
+# cd ../product_info
+# python create-azure-search.py
+#. ------- Commented out to debug Skillable wintest
+
 
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/customer_info/create-cosmos-db.ipynb > $null
 #jupyter nbconvert --execute --to python --ExecutePreprocessor.timeout=-1 data/product_info/create-azure-search.ipynb > $null

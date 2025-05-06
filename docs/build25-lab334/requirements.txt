@@ -1,0 +1,24 @@
+# ------ Lab 334 Requirements ------
+
+# Basic Python Support
+pandas
+python-dotenv
+
+# Azure AI Foundry Basics
+azure-ai-projects
+azure-identity
+
+# Evaluation Specific
+azure-ai-evaluation
+
+# Azure AI Foundry Inference (optional
+azure-ai-inference
+
+# RAG Specific (optional)
+azure-search-documents
+
+# Observability Specific
+opentelemetry-api
+# Fixes Error: `No module named 'azure.core.tracing.ext.opentelemetry_span`
+azure-core
+azure-monitor-opentelemetry

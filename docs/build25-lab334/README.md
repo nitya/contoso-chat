@@ -9,3 +9,5 @@
 - [ ] Add `docs/build-lab334/requirements.txt` to devcontainer
 - [ ] Create prebuild for specific branch
 - [ ] Update Skillable instructions to use prebuild branch
+- [ ] Update Contoso setup to use EastUS2
+- [ ] Update Contoso setup to run Lab334 requirements.txt

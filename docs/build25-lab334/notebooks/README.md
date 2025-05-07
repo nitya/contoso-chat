@@ -30,6 +30,9 @@ AZURE_OPENAI_API_VERSION=
 # Azure AI Foundry project
 AZURE_AI_CONNECTION_STRING=
 AZURE_AI_INFERENCE_ENDPOINT=
+# Comparison
+AZURE_OPENAI_GPT4_EP=
+AZURE_OPENAI_GPT4OMINI_EP=
 ```
 
 > 🚨 | Contoso Chat uses 'gpt-4o' version that will be retired on Jun 29. **We will update these post MSBuild to move to latest Azure OpenAI models**. For now, we re within expiry dates and Skillable VM is locked.
@@ -85,6 +88,8 @@ azure_ai_project = {
 ```
 
 <br/>
+<br/>
+<br/>
 
 ---
 
@@ -101,13 +106,9 @@ In this notebook, we'll explain how to setup your environment variables, install
 
 ### Code
 
-- [`data.jsonl`](./../notebooks/00-validate-setup/data.jsonl) - 3 lines, {query, ground_truth, answer}
-- [quickstart-azureai-sdk.ipynb](./../notebooks/00-validate-setup/quickstart-azureai-sdk.ipynb)
+- [`data.jsonl`](./../notebooks/00-validate-setup/data.jsonl) - {query, truth, answer}
+- [quickstart-azureai-sdk.ipynb](./../notebooks/00-validate-setup/quickstart-azureai-sdk.ipynb) - created from [SDK quickstart](https://pypi.org/project/azure-ai-evaluation/) - 15 min 🟠
 
-### Status 🟠
-
-- Notebook created from [SDK quickstart](https://pypi.org/project/azure-ai-evaluation/) with manual data creation
-- Samples need to be debugged and fixed
 
 <br/>
 
@@ -121,15 +122,10 @@ In this notebook, we'll explain how to setup your environment variables, install
     - Understand the role of datasets in evaluations
     - Understand how evaluations help with model selection
 
-### Dataset
-
-1. RAG Chat Data (Contoso Chat)
-1. Evaluations Sample (Comes with Notebook)
-
-### Notebooks
-
-1. [Evaluate Base Model Endpoints Using Azure AI Evaluation APIs](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Targets/Evaluate_Base_Model_Endpoint/Evaluate_Base_Model_Endpoint.ipynb) - 15 minutes
-1. [Manually evaluate prompts in the Azure AI Foundry portal playground](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/evaluate-prompts-playground) - 15 minutes 
+### Code
+- [`data.jsonl`](./01-select-model/data.jsonl) - {query, truth, answer}
+- [evaluate-base-models.ipynb](./01-select-model/evaluate-base-models.ipynb) created from - [azureai-samples](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Targets/Evaluate_Base_Model_Endpoint/Evaluate_Base_Model_Endpoint.ipynb) - 15 min - 🟠
+- [Manually evaluate prompts in the Azure AI Foundry portal playground](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/evaluate-prompts-playground) - 15 min - 🟢
 
 ---
 
@@ -145,9 +141,8 @@ In this notebook, we'll explain how to setup your environment variables, install
 ### Datasets
 
 ### Notebooks
- - [Simulate Queries and Responses from Azure Search Index](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Simulators/Simulate_Context-Relevant_Data/Simulate_From_Azure_Search_Index/Simulate_From_Azure_Search_Index.ipynb) - 15 mins
- - [Adversarial Simulator for an online endpont](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Simulators/Simulate_Adversarial_Data) - 15 mins
- - [Simulate Queries and Responses from input text](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Simulators/Simulate_Context-Relevant_Data/Simulate_From_Input_Text) - 15 mins
+ - [simulate-from-searchindex.ipynb](./02-simulate-data/simulate-from-searchindex.ipynb) created from - [azureai-samples](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Simulators/Simulate_Context-Relevant_Data/Simulate_From_Azure_Search_Index/Simulate_From_Azure_Search_Index.ipynb) - 15 mins 🔴
+ - [simulate-adversarial.ipynb](./02-simulate-data/simulate-adversarial.ipynb) created from - [azureai-samples](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Simulators/Simulate_Adversarial_Data) - 15 mins 🔴 
 
 ---
 
@@ -161,8 +156,8 @@ In this notebook, we'll explain how to setup your environment variables, install
 
 ### Notebooks
 
-- [Evaluate using AI as Judge Quality Evaluators with Azure AI Evaluation SDK](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Metrics/AI_Judge_Evaluators_Quality/AI_Judge_Evaluators_Quality.ipynb) - 15 mins
-- [Evaluate Risk and Safety of Text - Protected Material and Indirect Attack Jailbreak](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Metrics/AI_Judge_Evaluators_Safety_Risks/AI_Judge_Evaluators_Safety_Risks_Text.ipynb) - 15 mins
+- [ai-judge-quality.ipynb](./03-evaluate-model/ai-judge-quality.ipynb)- from [azureai-samples](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Metrics/AI_Judge_Evaluators_Quality/AI_Judge_Evaluators_Quality.ipynb) - 15 mins 🔴
+- [ai-judge-safety.ipynb](./03-evaluate-model/ai-judge-safety.ipynb)- from [azureai-samples](https://github.com/Azure-Samples/azureai-samples/blob/main/scenarios/evaluate/Supported_Evaluation_Metrics/AI_Judge_Evaluators_Safety_Risks/AI_Judge_Evaluators_Safety_Risks_Text.ipynb) - 15 mins 🔴
 
 
 ---
@@ -177,13 +172,41 @@ In this notebook, we'll explain how to setup your environment variables, install
 
 ### Notebooks
 
-- [Blocklisting](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Supported_Evaluation_Metrics/Custom_Evaluators/Custom_Evaluators_Blocklisting) - 15 mins
-- [Evaluate using Azure AI Evaluation custom privacy evaluator from Decoding Trust
-](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Supported_Evaluation_Metrics/Custom_Evaluators/Custom_Evaluators_Privacy)]- 15 mins
+- [custom-privacy.ipynb](./04-customize-evaluator/custom-privacy.ipynb)- from [azureai-samples](https://github.com/Azure-Samples/azureai-samples/tree/main/scenarios/evaluate/Supported_Evaluation_Metrics/Custom_Evaluators/Custom_Evaluators_Blocklisting) - 15 mins 🔴
 
 ---
 
-## 05 Bonus Labs
+<br/>
+<br/>
+
+## 05 | Bonus Notebooks
+
+
+### 5.1 | Red Teaming
+
+!!! quote "BY COMPLETING THIS SECTION YOU SHOULD"
+
+    - Thing 1
+    - Thing 2
+    - Thing 3
+
+### Notebooks
+
+---
+
+### 5.2 | Agent Evals
+
+!!! quote "BY COMPLETING THIS SECTION YOU SHOULD"
+
+    - Thing 1
+    - Thing 2
+    - Thing 3
+
+### Notebooks
+
+---
+
+### 5.3 | App Evals
 
 !!! quote "BY COMPLETING THIS SECTION YOU SHOULD"
 

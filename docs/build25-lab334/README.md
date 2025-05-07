@@ -58,3 +58,5 @@ You are now ready to switch to the [build25-lab334 notebooks](./../build25-lab33
 - [ ] Update Skillable instructions to use prebuild branch
 - [ ] Update Contoso setup to use EastUS2
 - [ ] Update Contoso setup to run Lab334 requirements.txt
+- [ ] Search index needs to support keys for use in manual eval
+- [ ] Copy model-specific EP for convenience for now

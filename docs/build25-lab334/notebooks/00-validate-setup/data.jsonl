@@ -1,0 +1,3 @@
+{"query":"When was United Stated found ?","ground_truth":"1776", "answer":"1600"}
+{"query":"What is the capital of France?","ground_truth":"Paris", "answer":"Paris"}
+{"query":"Who is the best tennis player of all time ?","ground_truth":"Roger Federer", "answer":"Rafael Nadal"}

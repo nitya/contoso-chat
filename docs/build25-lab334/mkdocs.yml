@@ -1,37 +1,23 @@
-# -----------------------------
-# Material Theme Configuration
-# ------------------------------
-# red, pink, purple, deep purple, indigo, 
-# blue, light blue, cyan, teal, green, light green, 
-# lime, yellow, amber, orange, deep orange, brown, 
-# grey, blue grey , black, white
-#    primary: pink # teal
-#    accent: indigo
-#
-# *** FONT ***
-# Guide: https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/?h=fonts
-# Google Fonts Supported: https://fonts.google.com/
-#
-# *** BLOG ***
-# https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
-# ---------------------------------
-
-
-
-# Project information .........................................
-site_name: "Microsoft Build: Lab 334"
-site_url: https://nitya.github.io/contoso-chat 
+# General ...................................................
+site_name: MSBuild 2025 - Lab 334
+site_url: https://microsoft.github.io/Build25-Lab334
 site_author: Nitya Narasimhan
 site_description: >-
-  Build a custom RAG-based retail copilot code-first on Azure AI.
+  Workshop on understanding evaluation tools and workflows for Generative AI
 
-# Repository ..................................................
-repo_name: Azure-Samples/contoso-chat
-repo_url: https://github.com/Azure-Samples/contoso-chat
+# Repository .................................................
+repo_name: microsoft/Build25-lab334
+repo_url: https://github.com/microsoft/Build25-lab334
 
 # Copyright ...................................................
 copyright: >
-  Copyright &copy; 2023 - present Microsoft
+  &copy; 2025 Microsoft &nbsp;|&nbsp;
+  <a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy </a>&nbsp;|&nbsp;
+  <a href="https://go.microsoft.com/fwlink/?LinkId=2259814">Consumer Health Privacy </a>&nbsp;|&nbsp;
+  <a onclick="window.manageConsent();">Cookies </a>&nbsp;|&nbsp;
+  <a href="https://go.microsoft.com/fwlink/?LinkID=206977">Terms of Use </a>&nbsp;|&nbsp;
+  <a href="https://www.microsoft.com/trademarks">Trademarks </a>
+
 
 # Configuration ...............................................
 theme:
@@ -44,28 +30,18 @@ theme:
 
   # Theme Modes ...............................................
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
+    - scheme: default
+      primary: black
       toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default 
-      primary: blue
-      accent: pink
-      toggle:
-        icon: material/brightness-2
+        icon: material/brightness-7
         name: Switch to dark mode
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: amber
-      accent: cyan
+
+    - scheme: slate
+      primary: black
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference 
-  
+        name: Switch to light mode
+
   # Theme Features ...............................................
   features:
     - navigation.instant
@@ -81,7 +57,7 @@ theme:
     - navigation.footer
     - content.code.copy             # allow copy-paste from codeblocks
     - content.tabs.link             # Ensures site-wide switch to same tab name
-
+    
 # Extras  ...............................................
 extra:
   generator: false
@@ -99,7 +75,11 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.emoji:
